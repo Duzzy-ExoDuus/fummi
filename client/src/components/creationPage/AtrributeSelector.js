@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Slider from '../general/Slider'
 
+import { Container } from 'reactstrap'
+
 const attributes = [
   {
     name: 'Acousticness',
@@ -36,39 +38,40 @@ class AttributeSelector extends Component {
 
   constructor() {
     super()
-    const initialSliders = {}
-    attributes.forEach(attribute => initialSliders[attribute.name] = 50)
-    this.state = { sliders: initialSliders }
+    const sliders = {}
+    attributes.forEach(attribute => sliders[attribute.name] = 50)
+    this.state = { sliders }
   }
 
   render() {
     const slidersToRender = attributes.map(attribute => {
       const { name, description } = attribute
       return (
-          <Slider
-            key={name}
-            name={name}
-            description={description}
-            handleOnMouseUp={e => {
-              let name = e.target.name
-              let value = e.target.value
-              this.setState(prevState => {
-                const sliders = prevState.sliders
-                sliders[name] = value
-                return { sliders: sliders }
-              })
-            }}
-          />
+        <Slider
+          key={name}
+          name={name}
+          description={description}
+          handleOnMouseUp={e => {
+            let name = e.target.name
+            let value = e.target.value
+            console.log(name,value)
+            this.setState(prevState => {
+              const sliders = prevState.sliders
+              sliders[name] = value
+              return { sliders: sliders }
+            })
+          }}
+        />
       )
     })
 
     return (
-      <div style={{backgroundColor:'green'}}>
-        <h1 className="container-header">Track attributes</h1>
+      <Container>
+        <h1>Track attributes</h1>
         {
           slidersToRender
         }
-      </div>
+      </Container>
     );
   }
 }

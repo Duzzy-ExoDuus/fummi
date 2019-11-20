@@ -14,7 +14,7 @@ import {
 
 class NavBar extends Component {
   state = {
-    isOpen: false
+    isOpen: true
   }
 
   toggle = () => {
@@ -22,6 +22,13 @@ class NavBar extends Component {
       isOpen: !this.state.isOpen
     })
   }
+
+  close= () => {
+    this.setState({
+      isOpen: false
+    })
+  }
+
 
   render() {
     return (
@@ -32,16 +39,19 @@ class NavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} to="/">Home</NavLink>
+                <NavLink tag={Link} onClick={this.close} to="/">Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/about">About</NavLink>
+                <NavLink tag={Link} onClick={this.close} to="/about">About</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/profile">My profile</NavLink>
+                <NavLink tag={Link} onClick={this.close} to="/profile">My profile</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} to="/create">Create playlist</NavLink>
+                <NavLink tag={Link} onClick={this.close} to="/create">Create playlist</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/">Log out</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

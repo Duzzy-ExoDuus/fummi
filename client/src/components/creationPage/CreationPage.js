@@ -1,17 +1,38 @@
 import React, { Component } from 'react';
-import AtrributeSelector from './AtrributeSelector';
-import SongRecommendations from './SongRecommendations';
+import PropTypes from 'prop-types'
+
+import { connect } from 'react-redux'
+
+import { Container, Button } from 'reactstrap'
+import AttributeSelector from './AtrributeSelector'
+import SeedSelector from './SeedSelector'
 
 class CreationPage extends Component {
-  state = {  }
-  render() { 
+
+  componentDidMount() {
+  }
+
+  render() {
     return (
-      <>
-        <AtrributeSelector />
-        <SongRecommendations />
-      </>
+      <Container>
+        <SeedSelector />
+        <hr />
+        <AttributeSelector />
+        <hr />
+        <Button color="warning">Pick a playlist duration</Button >
+        <hr />
+        <Button color="success">Grow playlist</Button >
+      </Container>
     );
   }
 }
- 
-export default CreationPage;
+
+CreationPage.propTypes = {
+  token: PropTypes.string.isRequired,
+}
+
+const mapStateToProps = (state) => {
+  return { token: state.token.token }
+}
+
+export default connect(mapStateToProps)(CreationPage);

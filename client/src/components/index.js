@@ -5,6 +5,7 @@ import LoginPage from './loginPage/LoginPage'
 import AboutPage from './aboutPage/AboutPage'
 import UserProfilePage from './userProfilePage/UserProfilePage'
 import CreationPage from './creationPage/CreationPage'
+import HomePage from './homePage/HomePage'
 import Slider from './general/Slider'
 
 export {
@@ -16,4 +17,5 @@ export {
   Navigation,
   LoginScreen,
   Loading,
+  HomePage
 }

@@ -1,19 +1,19 @@
-import { GET_USER, LOADING_USER } from '../actions/types';
+import { FETCH_PLAYLISTS, LOADING_PLAYLISTS } from '../actions/types';
 
 const initialState = { 
-  user: {},
+  playlists: {},
   loading: false
 }
 
 export default function(state = initialState, action) {
   switch( action.type ) {
-    case GET_USER:
+    case FETCH_PLAYLISTS:
       return {
         ...state,
-        user: action.payload,
+        playlists: action.payload,
         loading: false
       };
-    case LOADING_USER:
+    case LOADING_PLAYLISTS:
       return {...state,loading: true};
     default:
       return state;

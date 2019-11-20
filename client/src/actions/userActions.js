@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { GET_USER, FETCHING_USER } from './types';
+import { GET_USER, LOADING_USER } from './types';
 
 export const getUser = accessToken => dispatch => {
   dispatch(setUserLoading());
+  const headers = { headers: { 'Authorization': 'Bearer ' + accessToken }};
+  // fetch user information
   axios
-    .get('https://api.spotify.com/v1/me', { headers: { 'Authorization': 'Bearer ' + accessToken.token }})
+    .get('https://api.spotify.com/v1/me', headers)
     .then(res => 
       dispatch({
         type: GET_USER,
@@ -15,6 +17,6 @@ export const getUser = accessToken => dispatch => {
 
 export const setUserLoading = () => {
   return {
-    type: FETCHING_USER
+    type: LOADING_USER
   }
-}
+};

@@ -8,7 +8,7 @@ import { storeToken } from './actions/tokenActions'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-import { UserProfilePage, CreationPage, Navigation, AboutPage, LoginPage } from './components'
+import { UserProfilePage, CreationPage, Navigation, AboutPage, LoginPage, HomePage } from './components'
 
 function App() {
 
@@ -25,6 +25,7 @@ function App() {
           <>
             <Navigation />
             <Switch>
+              <Route path="/" exact component={HomePage}/>
               <Route path="/about" component={AboutPage} />
               <Route path="/create" component={CreationPage} />
               <Route path="/profile" component={UserProfilePage} />
