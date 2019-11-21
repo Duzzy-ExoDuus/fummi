@@ -18,8 +18,8 @@ class Slider extends Component {
           name={this.props.name}
           className='slider' type='range' min={0} max={100}
           onChange={e => this.setState({ value: e.target.value })}
-          onMouseUp={e => this.props.handleOnMouseUp(e)}
-          onTouchEnd={e => this.props.handleOnMouseUp(e)}
+          onMouseUp={e => this.props.handleSliderUpdate(e)}
+          onTouchEnd={e => this.props.handleSliderUpdate(e)}
         />
       </>
     );

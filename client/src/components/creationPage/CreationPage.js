@@ -4,22 +4,57 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 import { Container, Button } from 'reactstrap'
-import AttributeSelector from './AtrributeSelector'
+import AttributeSelector from './SliderAttributeContainer'
 import SeedSelector from './SeedSelector'
+import DurationPicker from './DurationPicker'
+
+import { attributes } from '../../assets/attributes'
+
 
 class CreationPage extends Component {
 
+  constructor() {
+    super()
+    const sliders = {}
+    attributes.forEach(attribute => sliders[attribute.name] = 50)
+    this.state = { sliders, duration: "00:20" }
+  }
+
   componentDidMount() {
   }
+
+  handleSliderUpdate = e => {
+    let name = e.target.name
+    let value = e.target.value
+    this.setState(prevState => {
+      const sliders = prevState.sliders
+      sliders[name] = value
+      return {
+        ...prevState,
+        sliders: sliders
+      }
+    })
+    setTimeout(() => console.log(this.state), 500)
+    
+  }
+
+  handleDurationUpdate = newDuration => {
+    this.setState(
+      prevState => ({
+        ...prevState,
+        duration: newDuration
+      }))
+      setTimeout(() => console.log(this.state), 500)
+    }
 
   render() {
     return (
       <Container>
         <SeedSelector />
         <hr />
-        <AttributeSelector />
+        <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
         <hr />
-        <Button color="warning">Pick a playlist duration</Button >
+        <DurationPicker updateDuration={this.handleDurationUpdate} />
         <hr />
         <Button color="success">Grow playlist</Button >
       </Container>

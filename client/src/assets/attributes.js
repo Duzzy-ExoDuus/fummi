@@ -1,9 +1,4 @@
-import React, { Component } from 'react';
-import Slider from '../general/Slider'
-
-import { Container } from 'reactstrap'
-
-const attributes = [
+export const attributes = [
   {
     name: 'Acousticness',
     description: 'A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.',
@@ -33,47 +28,3 @@ const attributes = [
     description: 'A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).',
   }
 ]
-
-class AttributeSelector extends Component {
-
-  constructor() {
-    super()
-    const sliders = {}
-    attributes.forEach(attribute => sliders[attribute.name] = 50)
-    this.state = { sliders }
-  }
-
-  render() {
-    const slidersToRender = attributes.map(attribute => {
-      const { name, description } = attribute
-      return (
-        <Slider
-          key={name}
-          name={name}
-          description={description}
-          handleOnMouseUp={e => {
-            let name = e.target.name
-            let value = e.target.value
-            console.log(name,value)
-            this.setState(prevState => {
-              const sliders = prevState.sliders
-              sliders[name] = value
-              return { sliders: sliders }
-            })
-          }}
-        />
-      )
-    })
-
-    return (
-      <Container>
-        <h1>Track attributes</h1>
-        {
-          slidersToRender
-        }
-      </Container>
-    );
-  }
-}
-
-export default AttributeSelector;
