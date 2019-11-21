@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
-
 import { connect } from 'react-redux'
-
-import {
-  Container, Input, InputGroup,
-  DropdownToggle, DropdownMenu, DropdownItem, InputGroupButtonDropdown
-} from 'reactstrap'
 
 import { buildUrl } from '../../util/queryBuilder';
 
-/* TODO re-emit search when seed type is changed */
+import {
+  Container,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Input,
+  InputGroup,
+  InputGroupButtonDropdown
+} from 'reactstrap'
+
 class SeedSelector extends Component {
 
   state = {
     searchResult: {},
     dropdownOpen: false,
-    seedType: 'artist'
+    seedType: 'artist,album,playlist,track'
   }
 
   inputRef = React.createRef()
@@ -30,10 +33,21 @@ class SeedSelector extends Component {
     }
     fetch(buildUrl('https://api.spotify.com/v1/search', params), headers)
       .then(response => response.json())
-      .then(searchRes => console.log(searchRes))
+      .then(searchResult => this.setState({ searchResult }))
+      .then(console.log(this.state))
   }
 
   toggleDropDown = () => this.setState({ dropdownOpen: !this.state.dropdownOpen });
+
+  displaySeedType = () => {
+    switch (this.state.seedType) {
+      case 'artist': return 'Artist';
+      case 'album': return 'Album';
+      case 'playlist': return 'playlist';
+      case 'track': return 'Track';
+      default: return 'All types'
+    }
+  }
 
   render() {
     return (
@@ -45,10 +59,11 @@ class SeedSelector extends Component {
           />
           <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
             <DropdownToggle caret >
-              {this.state.seedType}
+              {this.displaySeedType()}
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Select the type of seed</DropdownItem>
+              <DropdownItem onClick={() => this.setState({ seedType: 'artist,album,playlist,track' })}>All types</DropdownItem>
               <DropdownItem onClick={() => this.setState({ seedType: 'artist' })}>Artist</DropdownItem>
               <DropdownItem onClick={() => this.setState({ seedType: 'album' })}>Album</DropdownItem>
               <DropdownItem onClick={() => this.setState({ seedType: 'playlist' })}>Playlist</DropdownItem>

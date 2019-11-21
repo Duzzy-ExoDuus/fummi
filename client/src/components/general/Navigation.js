@@ -14,7 +14,7 @@ import {
 
 class NavBar extends Component {
   state = {
-    isOpen: true
+    isOpen: false
   }
 
   toggle = () => {
