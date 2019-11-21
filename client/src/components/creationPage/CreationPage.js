@@ -10,17 +10,18 @@ import DurationPicker from './DurationPicker'
 
 import { attributes } from '../../assets/attributes'
 
-
+const DEFAULT_PLAYLIST_DURATION = "00:20"
 class CreationPage extends Component {
 
   constructor() {
     super()
     const sliders = {}
     attributes.forEach(attribute => sliders[attribute.name] = 50)
-    this.state = { sliders, duration: "00:20" }
-  }
-
-  componentDidMount() {
+    this.state = { 
+      sliders,
+      duration: DEFAULT_PLAYLIST_DURATION,
+      seeds: []
+    }
   }
 
   handleSliderUpdate = e => {
