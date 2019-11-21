@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Slider from '../general/Slider'
+import Slider from './Slider'
 
 import { Container } from 'reactstrap'
 

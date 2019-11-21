@@ -1,15 +1,13 @@
 import Loading from './general/Loading'
-import LoginScreen from './loginPage/LoginPage'
+import LoginScreen from './pages/loginPage/LoginPage'
 import Navigation from './general/Navigation'
-import LoginPage from './loginPage/LoginPage'
-import AboutPage from './aboutPage/AboutPage'
-import UserProfilePage from './userProfilePage/UserProfilePage'
-import CreationPage from './creationPage/CreationPage'
-import HomePage from './homePage/HomePage'
-import Slider from './general/Slider'
+import LoginPage from './pages/loginPage/LoginPage'
+import AboutPage from './pages/aboutPage/AboutPage'
+import UserProfilePage from './pages/userProfilePage/UserProfilePage'
+import CreationPage from './pages/creationPage/CreationPage'
+import HomePage from './pages/homePage/HomePage'
 
 export {
-  Slider,
   CreationPage,
   UserProfilePage,
   LoginPage,

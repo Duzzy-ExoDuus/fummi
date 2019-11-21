@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
@@ -8,7 +10,7 @@ import AttributeSelector from './SliderAttributeContainer'
 import SeedSelector from './SeedSelector'
 import DurationPicker from './DurationPicker'
 
-import { attributes } from '../../assets/attributes'
+import { attributes } from '../../../assets/attributes'
 
 const DEFAULT_PLAYLIST_DURATION = "00:20"
 class CreationPage extends Component {
@@ -17,7 +19,7 @@ class CreationPage extends Component {
     super()
     const sliders = {}
     attributes.forEach(attribute => sliders[attribute.name] = 50)
-    this.state = { 
+    this.state = {
       sliders,
       duration: DEFAULT_PLAYLIST_DURATION,
       seeds: []
@@ -36,7 +38,7 @@ class CreationPage extends Component {
       }
     })
     setTimeout(() => console.log(this.state), 500)
-    
+
   }
 
   handleDurationUpdate = newDuration => {
@@ -45,8 +47,19 @@ class CreationPage extends Component {
         ...prevState,
         duration: newDuration
       }))
-      setTimeout(() => console.log(this.state), 500)
+    setTimeout(() => console.log(this.state), 500)
+  }
+
+  saveClickToDB = () => {
+    const data = {
+      "name": "ButtonPress",
+      "info": [{
+        "attribute": "test",
+        "value": 50
+      }]
     }
+    axios.post('/api/data', data).then(res => console.log(res))
+  }
 
   render() {
     return (
@@ -57,7 +70,7 @@ class CreationPage extends Component {
         <hr />
         <DurationPicker updateDuration={this.handleDurationUpdate} />
         <hr />
-        <Button color="success">Grow playlist</Button >
+        <Button color="success" onClick={this.saveClickToDB}>Grow playlist</Button >
       </Container>
     );
   }

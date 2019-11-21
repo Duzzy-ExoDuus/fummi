@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
-import { getUser } from '../../actions/userActions'
-import { fetchPlaylists } from '../../actions/playlistActions'
+import { getUser } from '../../../actions/userActions'
+import { fetchPlaylists } from '../../../actions/playlistActions'
 
 import { Container, Row, Col } from 'reactstrap';
-import PlaylistList from '../general/PlaylistList';
-import UserProfile from '../general/userProfile'
+import PlaylistList from './PlaylistList';
+import UserProfile from './userProfile'
 
 class UserProfilePage extends Component {
 

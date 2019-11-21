@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Col, Row } from 'reactstrap';
-import logo from '../../assets/seedbox.png'
+import logo from '../../../assets/seedbox.png'
 
 
 class AboutPage extends Component {

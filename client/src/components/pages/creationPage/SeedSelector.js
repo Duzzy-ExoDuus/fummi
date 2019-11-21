@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-import { buildUrl } from '../../util/queryBuilder';
+import { buildUrl } from '../../../util/queryBuilder';
 
 import {
   Container,
@@ -22,15 +22,15 @@ class SeedSelector extends Component {
     seedType: 'artist,album,playlist,track'
   }
 
-  inputRef = React.createRef()
 
-  getSearchResults = () => {
+  getSearchResults = searchString => {
     let headers = { headers: { 'Authorization': 'Bearer ' + this.props.token } }
     let params = {
-      q: this.inputRef.value,
+      q: searchString,
       type: this.state.seedType,
       limit: 5
     }
+    console.log(buildUrl('https://api.spotify.com/v1/search', params))
     fetch(buildUrl('https://api.spotify.com/v1/search', params), headers)
       .then(response => response.json())
       .then(searchResult => this.setState({ searchResult }))
@@ -53,9 +53,8 @@ class SeedSelector extends Component {
     return (
       <Container>
         <InputGroup>
-          <Input ref={this.inputRef}
-            value={this.state.searchString}
-            onChange={() => this.getSearchResults()}
+          <Input
+            onChange={e => this.getSearchResults(e.target.value)}
           />
           <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.dropdownOpen} toggle={this.toggleDropDown}>
             <DropdownToggle caret >

@@ -6,9 +6,9 @@ import { useDispatch } from 'react-redux'
 import { storeToken } from './actions/tokenActions'
 
 import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
 
 import { UserProfilePage, CreationPage, Navigation, AboutPage, LoginPage, HomePage } from './components'
+import EditPage from './components/pages/editPage/EditPage';
 
 function App() {
 
@@ -29,6 +29,7 @@ function App() {
               <Route path="/about" component={AboutPage} />
               <Route path="/create" component={CreationPage} />
               <Route path="/profile" component={UserProfilePage} />
+              <Route path="/playlist" component={EditPage} />} />
             </Switch>
           </>
           :
