@@ -62,7 +62,7 @@ class CreationPage extends Component {
   }
 
   render() {
-    return (
+      return (
       <Container>
         <SeedSelector />
         <hr />

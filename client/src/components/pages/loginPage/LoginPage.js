@@ -1,14 +1,35 @@
 import React from 'react';
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
+
+import Button from '../../general/LoginButton'
+import logo from "../../../images/logo.png"
+import styled from 'styled-components'
+
+
+const H1 = styled.h1`
+margin-top: 50px;
+text-align: center;
+font-size:12vw;
+color: #8B9358;
+font-family: 'Courier New', Courier, monospace;
+`
+const LogoImage = styled.img`
+  display: block;
+	margin-left: auto;
+	margin-right: auto;
+  width: 30%;
+  
+  @media (max-width: 800px) {
+    width: 50%;
+  }
+`
 
 
 const LoginPage = () =>
   <Jumbotron>
-    <h1>Welcome to the Seedbox!</h1>
-    <hr />
-    <p>
-      Please login to spotify to continue
-      </p>
+      <LogoImage id="logo" src={logo} alt="fireSpot" />
+       <H1>SeedBox</H1>    <hr />
+ 
     <Button
       onClick={() => {
         window.location = window.location.href.includes('localhost')

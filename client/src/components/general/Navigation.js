@@ -12,6 +12,9 @@ import {
   Container
 } from 'reactstrap'
 
+
+
+
 class NavBar extends Component {
   state = {
     isOpen: false
@@ -29,6 +32,8 @@ class NavBar extends Component {
     })
   }
 
+  
+
 
   render() {
     return (
@@ -39,7 +44,7 @@ class NavBar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink tag={Link} onClick={this.close} to="/">Home</NavLink>
+                <NavLink  tag={Link} onClick={this.close} to="/">Home</NavLink >
               </NavItem>
               <NavItem>
                 <NavLink tag={Link} onClick={this.close} to="/about">About</NavLink>
