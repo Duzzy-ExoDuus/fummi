@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 import {
   Collapse,
@@ -12,6 +13,17 @@ import {
   Container
 } from 'reactstrap'
 
+
+const StyledLink = styled(Link)`
+color: gray;
+text-decoration: none;
+font-size:20px;
+padding: 10px;
+  :hover{
+    color:#51C768;
+    text-decoration: none;
+  }
+  `;
 
 
 
@@ -39,24 +51,24 @@ class NavBar extends Component {
     return (
       <Navbar color="light" light expand="md" className="mb-5">
         <Container>
-          <NavbarBrand>SeedBox</NavbarBrand>
+          <NavbarBrand> Seedbox</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink  tag={Link} onClick={this.close} to="/">Home</NavLink >
+                <StyledLink  tag={Link} onClick={this.close} to="/">Home</StyledLink >
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} onClick={this.close} to="/about">About</NavLink>
+                <StyledLink tag={Link} onClick={this.close} to="/about">About</StyledLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} onClick={this.close} to="/profile">My profile</NavLink>
+                <StyledLink tag={Link} onClick={this.close} to="/profile">My profile</StyledLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={Link} onClick={this.close} to="/create">Create playlist</NavLink>
+                <StyledLink tag={Link} onClick={this.close} to="/create">Create playlist</StyledLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Log out</NavLink>
+                <StyledLink href="/">Log out</StyledLink>
               </NavItem>
             </Nav>
           </Collapse>

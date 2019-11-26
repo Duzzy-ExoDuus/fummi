@@ -8,7 +8,25 @@ import { fetchPlaylists } from '../../../actions/playlistActions'
 import { Container, Row, Col } from 'reactstrap';
 import PlaylistList from './PlaylistList';
 import UserProfile from './userProfile'
+import styled from 'styled-components'
 
+
+
+const Div1 = styled.div`
+float:left; /* add this */
+width:40%;
+@media screen and (max-width: 800px) {
+  width:100%
+}
+
+`
+const Div2 = styled.div`
+overflow: hidden; /* if you don't want #second to wrap below #first */
+@media screen and (max-width: 800px) {
+  width:100%
+}
+}
+`
 class UserProfilePage extends Component {
 
   componentDidMount() {
@@ -16,18 +34,17 @@ class UserProfilePage extends Component {
     this.props.fetchPlaylists(this.props.token)
   }
 
+
   render() {
     console.log(this.props.user)
     return (
       <Container fluid>
-        <Row>
-          <Col>
+          <Div1>
             <UserProfile user={this.props.user} />
-          </Col>
-          <Col>
+          </Div1>
+          <Div2>
             <PlaylistList playlists={this.props.playlists} />
-          </Col>
-        </Row>
+          </Div2>
       </Container>
     );
   }
