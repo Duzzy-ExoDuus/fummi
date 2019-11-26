@@ -9,15 +9,19 @@ import styled from 'styled-components'
 const H1 = styled.h1`
 margin-top: 50px;
 text-align: center;
-font-size:12vw;
+font-size:8vw;
 color: #8B9358;
 font-family: 'Courier New', Courier, monospace;
+  
+@media (max-width: 800px) {
+  font-size:12vw;
+}
 `
 const LogoImage = styled.img`
   display: block;
 	margin-left: auto;
 	margin-right: auto;
-  width: 30%;
+  width: 25%;
   
   @media (max-width: 800px) {
     width: 50%;
