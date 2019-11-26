@@ -21,11 +21,22 @@ display: block;
 	font-size: 30px;
 	line-height: 22px;
     text-align: center;
-  
-    @media (max-width: 800px) {
-      padding: 10px;
-    font-size: 20px;
+
+
+    @media screen and (max-width: 400px) {
+      padding: 8px;
+      width:75%;
+      font-size: 15px;
   }
+    @media screen  and (min-width: 400px) and (max-width: 800px)  {
+      padding: 13px;
+      width:75%;
+      font-size: 20px;
+  }
+    
+   
+
+ 
     &::before {
         background: url(${spotifyLogo}) no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
         content: "";
@@ -37,6 +48,8 @@ display: block;
         top: -2px;
         vertical-align: middle;
         width: 30px;
+    }
+
 `
 
 

@@ -14,7 +14,7 @@ color: #8B9358;
 font-family: 'Courier New', Courier, monospace;
   
 @media (max-width: 800px) {
-  font-size:12vw;
+  font-size:18vw;
 }
 `
 const LogoImage = styled.img`
@@ -24,7 +24,7 @@ const LogoImage = styled.img`
   width: 25%;
   
   @media (max-width: 800px) {
-    width: 50%;
+    width: 80%;
   }
 `
 
