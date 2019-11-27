@@ -4,38 +4,139 @@ import PropTypes from 'prop-types'
 import { Container, Row, Col, ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
-import playListLogo from '../../../images/playListLogo.png'
+import option from '../../../images/option.png'
 
 
 const StyledListGroupItem = styled(ListGroupItem)`
-    margin-top:10px;
-    
+border-style: solid;
+border-color: black;
+border-width: 1px;
+font-family: 'Montserrat', sans-serif;
+font-size: 18px;
+:hover{
+  background-color: #F8F8F8; 
+  color: black;
+  border-width: 1px ; 
+  border-color: #8B9358 ;
+
+}
+
+@media screen and (max-width: 400px) {
+  border-style: normal ;
+    border-color: #8B9358 ;
+    border-width: 1px 0px 0px 0px; 
+  }
+@media screen  and (min-width: 400px) and (max-width: 850px)  {
+  border-style: normal ;
+  border-color: #8B9358 ;
+  border-width: 1px 0px 0px 0px; 
+
+}
+  
 `
 
 const LogoImage = styled.img`
-  display: block;
+display: block;
 	margin-left: auto;
 	margin-right: auto;
-  width: 35%;
+  padding:10px;
+  width: 50px;
 
   @media screen and (max-width: 400px) {
-    width:50%
-}
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+    padding:0px;
+    width: 25px;
+  }
   @media screen  and (min-width: 400px) and (max-width: 800px)  {
-    width:50%
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+      padding:0px;
+    width: 25px;
+
+}
+`
+
+const StyledDiv = styled.div`
+@media screen and (max-width: 400px) {
+  
+  width: 100%;
+  height: 59px;
+  
+  background-color: #8B9358;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #FFFFFF;
+
+  }
+  @media screen  and (min-width: 400px) and (max-width: 800px)  {
+  width: 100%;
+  height: 59px;
+  
+  background-color: #8B9358;
+  font-family: 'Montserrat', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  color: #FFFFFF;
 
 }
 `
 
 const H1 = styled.h1`
-@media screen and (max-width: 800px) {
-  margin-top: 20px;
+@media screen and (max-width: 400px) {
+  margin-left: 20px;
 }
+@media screen  and (min-width: 400px) and (max-width: 800px)  {
+  margin-left: 20px;
+}
+`
+const StyledTitle = styled.p`
+font-size 23px;
+font-weight:bold;
+font-family: 'Montserrat', italic;
+
 `
 
 const StyledListGroup = styled(ListGroup)`
+@media screen and (max-width: 400px) {
+  width:100%;
+  position: absolute;
+  left: 0;
+  rigth:0;
+  margin-top:10px;
+}
+@media screen  and (min-width: 400px) and (max-width: 800px)  {
+  width:100%;
+  position: absolute;
+left: 0;
+rigth:0;
+margin-top:10px;
 
+
+}
 `
+
+/*<Row>
+<Col>
+<strong>Owner:</strong> {item.owner.display_name}
+</Col>
+<Col>
+<strong>{item.public ? 'Public' : 'Private'}</strong>
+</Col>
+<Col>
+<strong>Songs:</strong> {item.tracks.total}
+</Col>
+<Col><LogoImage id="logo" src={option} alt="fireSpot" /></Col>
+
+</Row>
+*/
 class PlaylistList extends Component {
 
   render() {
@@ -45,39 +146,25 @@ class PlaylistList extends Component {
         <StyledListGroupItem key={item.name}>
          
          <Row>
-         <Col></Col>
-         <Col>
-
-          <ListGroupItemHeading>
-            {item.name}
+         <Col> <ListGroupItemHeading>
+            <StyledTitle>{item.name}</StyledTitle>
           </ListGroupItemHeading>
           </Col>
-          <Col></Col>
-          <Col></Col>
+
 
           </Row>
           <Row>
-            <Col> <LogoImage id="logo" src={playListLogo} alt="fireSpot" />
-</Col>
           <Col>
-          <Link to={{pathname:`/playlist/${item.name}`, playlist:item}}>Edit</Link>
-          </Col>
-          <Col></Col>
-          <Col></Col>
+          Songs: {item.tracks.total}
+            </Col>
+            <Col>
+            {item.public ? 'Public' : 'Private'}
+            </Col>
+          
+          <Col><LogoImage id="logo" src={option} alt="fireSpot" /></Col>
 
           </Row>
-          <Row>
-          <Col></Col>
-            <Col>
-              Owner: {item.owner.display_name}
-            </Col>
-            <Col>
-              {item.public ? 'Public' : 'Private'}
-            </Col>
-            <Col>
-              Songs: {item.tracks.total}
-            </Col>
-          </Row>
+          
         </StyledListGroupItem>)
       : []
 
@@ -89,7 +176,9 @@ class PlaylistList extends Component {
             <></> 
             :
             <>
+            <StyledDiv>
               <H1>Your playlists</H1>
+            </StyledDiv>
               <StyledListGroup>
                 {playlistsToRender}
               </StyledListGroup>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 
-import Button from '../../general/LoginButton'
+import Button from './LoginButton'
 import logo from "../../../images/logo.png"
 import styled from 'styled-components'
 

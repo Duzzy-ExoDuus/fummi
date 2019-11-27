@@ -44,6 +44,7 @@ class UserProfilePage extends Component {
           <Div2>
             <PlaylistList playlists={this.props.playlists} />
           </Div2>
+          <hr />
       </Container>
     );
   }

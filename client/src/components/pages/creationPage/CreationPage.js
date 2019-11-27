@@ -5,12 +5,13 @@ import PropTypes from 'prop-types'
 
 import { connect } from 'react-redux'
 
-import { Container, Button } from 'reactstrap'
+import { Container } from 'reactstrap'
 import AttributeSelector from './SliderAttributeContainer'
 import SeedSelector from './SeedSelector'
 import DurationPicker from './DurationPicker'
 
 import { attributes } from '../../../assets/attributes'
+import Button from './GrowButton'
 
 const DEFAULT_PLAYLIST_DURATION = "00:20"
 class CreationPage extends Component {
@@ -71,6 +72,9 @@ class CreationPage extends Component {
         <DurationPicker updateDuration={this.handleDurationUpdate} />
         <hr />
         <Button color="success" onClick={this.saveClickToDB}>Grow playlist</Button >
+        <hr />
+        <hr />
+
       </Container>
     );
   }
