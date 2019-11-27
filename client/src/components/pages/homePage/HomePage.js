@@ -20,7 +20,7 @@ float:left; /* add this */
 width:40%;
 font-family: 'Montserrat', sans-serif;
 margin-top:10px;
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   margin-left: 10px;
   width:100%
 }
@@ -53,7 +53,7 @@ margin-top:10px;
 	line-height: 22px;
     text-align: center;
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   margin-top:10px;
   display: block;
 	margin-left: auto;

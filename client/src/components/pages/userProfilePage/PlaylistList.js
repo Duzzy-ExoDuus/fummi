@@ -5,6 +5,7 @@ import { Container, Row, Col, ListGroup, ListGroupItem, ListGroupItemHeading } f
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import option from '../../../images/option.png'
+import playIcon from '../../../images/playList.png'
 
 
 const StyledListGroupItem = styled(ListGroupItem)`
@@ -16,23 +17,14 @@ font-size: 18px;
 :hover{
   background-color: #F8F8F8; 
   color: black;
-  border-width: 1px ; 
-  border-color: #8B9358 ;
 
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 800px) {
   border-style: normal ;
     border-color: #8B9358 ;
     border-width: 1px 0px 0px 0px; 
   }
-@media screen  and (min-width: 400px) and (max-width: 850px)  {
-  border-style: normal ;
-  border-color: #8B9358 ;
-  border-width: 1px 0px 0px 0px; 
-
-}
-  
 `
 
 const LogoImage = styled.img`
@@ -42,60 +34,55 @@ display: block;
   padding:10px;
   width: 50px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 800px) {
     display: block;
     margin-left: auto;
     margin-right: auto;    
     padding:0px;
     width: 25px;
   }
-  @media screen  and (min-width: 400px) and (max-width: 800px)  {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-      padding:0px;
-    width: 25px;
-
-}
+ 
 `
 
 const StyledDiv = styled.div`
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 800px) {
   
   width: 100%;
   height: 59px;
-  
-  background-color: #8B9358;
+  box-shadow: 0px 4px 4px  #51C768;
+  background-color: #51C768;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   line-height: 23px;
   color: #FFFFFF;
-
   }
-  @media screen  and (min-width: 400px) and (max-width: 800px)  {
-  width: 100%;
-  height: 59px;
-  
-  background-color: #8B9358;
+
+`
+const H1 = styled.h1`
+@media screen and (max-width: 800px) {
+  margin-left: 18px;
+  margin-top: 25px;
+  text-align:left;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 23px;
-  color: #FFFFFF;
+  font-weight: 100;
+  font-size: 30px;
+  padding: 10px;
+  &::before {
+    background: url(${playIcon}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
+    filter: brightness(0) invert(1);
+    content: "";
+    display: inline-block;
+    height: 30px;
+    margin-right: 13px;
+    position: relative;
+    top: -4px;
+    vertical-align: middle;
+    width: 30px;
+}
 
-}
-`
-
-const H1 = styled.h1`
-@media screen and (max-width: 400px) {
-  margin-left: 20px;
-}
-@media screen  and (min-width: 400px) and (max-width: 800px)  {
-  margin-left: 20px;
-}
 `
 const StyledTitle = styled.p`
 font-size 23px;
@@ -105,21 +92,10 @@ font-family: 'Montserrat', italic;
 `
 
 const StyledListGroup = styled(ListGroup)`
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 800px) {
   width:100%;
-  position: absolute;
-  left: 0;
-  rigth:0;
+
   margin-top:10px;
-}
-@media screen  and (min-width: 400px) and (max-width: 800px)  {
-  width:100%;
-  position: absolute;
-left: 0;
-rigth:0;
-margin-top:10px;
-
-
 }
 `
 

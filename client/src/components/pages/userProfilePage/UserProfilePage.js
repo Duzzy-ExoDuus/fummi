@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 
 const Div1 = styled.div`
-float:left; /* add this */
+float:left; 
 width:40%;
 @media screen and (max-width: 800px) {
   width:100%
@@ -21,7 +21,7 @@ width:40%;
 
 `
 const Div2 = styled.div`
-overflow: hidden; /* if you don't want #second to wrap below #first */
+overflow: hidden; 
 @media screen and (max-width: 800px) {
   width:100%
 }
