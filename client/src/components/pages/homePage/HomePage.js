@@ -7,11 +7,30 @@ import styled from 'styled-components'
 
 const H1 = styled.h1`
 font-size:8vw;
-
 @media (max-width: 800px) {
   margin-left: 10px;
   font-size:12vw;
 }
+`
+
+
+const Div1 = styled.div`
+float:left; /* add this */
+width:40%;
+@media screen and (max-width: 1000px) {
+  margin-left: 10px;
+  width:100%
+}
+`
+const Div2 = styled.div`
+overflow: hidden; 
+@media screen and (max-width: 1000px) {
+  margin-left: 10px;
+  width:100%
+
+}
+`
+const Div3 = styled.div`
 
 `
 
@@ -27,18 +46,16 @@ class HomePage extends Component {
           <H1>Welcome!</H1>
         </Row>
 
-        <Row >
-          <Col   >
+          <Div1   >
             <h3 >What is the SeedBox?</h3>
             <p>Read <Link to="/about">about</Link> it here! </p>
-          </Col>
-          <Col >
+          </Div1>
+          <Div2 >
             <h3><Link to="/create">Get started</Link> with the SeedBox</h3>
-          </Col>
-          <Col>
+          </Div2>
+          <Div3>
             <Button onClick={() => alert('Thanks! Come back later, when we have implemented this ;)')}>Rate our app!</Button>
-          </Col>
-        </Row>
+          </Div3>
       </Container>
     );
   }

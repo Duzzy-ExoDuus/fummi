@@ -24,9 +24,9 @@ display: block;
 
 
     @media screen and (max-width: 400px) {
-      padding: 8px;
-      width:75%;
-      font-size: 15px;
+      padding: 13px;
+      width:90%;
+      font-size: 25px;
   }
     @media screen  and (min-width: 400px) and (max-width: 800px)  {
       padding: 13px;

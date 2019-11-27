@@ -25,7 +25,6 @@ overflow: hidden; /* if you don't want #second to wrap below #first */
 @media screen and (max-width: 800px) {
   width:100%
 }
-}
 `
 class UserProfilePage extends Component {
 

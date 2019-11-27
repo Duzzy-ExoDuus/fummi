@@ -1,10 +1,22 @@
 import React from 'react';
-import { Jumbotron } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 import Button from '../../general/LoginButton'
 import logo from "../../../images/logo.png"
 import styled from 'styled-components'
 
+
+const LogoImage = styled.img`
+margin-top: 50px;
+  display: block;
+	margin-left: auto;
+	margin-right: auto;
+  width: 25%;
+  
+  @media (max-width: 800px) {
+    width: 80%;
+  }
+`
 
 const H1 = styled.h1`
 margin-top: 50px;
@@ -17,20 +29,11 @@ font-family: 'Courier New', Courier, monospace;
   font-size:18vw;
 }
 `
-const LogoImage = styled.img`
-  display: block;
-	margin-left: auto;
-	margin-right: auto;
-  width: 25%;
-  
-  @media (max-width: 800px) {
-    width: 80%;
-  }
-`
+
 
 
 const LoginPage = () =>
-  <Jumbotron>
+  <Container>
       <LogoImage id="logo" src={logo} alt="fireSpot" />
        <H1>SeedBox</H1>    <hr />
  
@@ -42,6 +45,6 @@ const LoginPage = () =>
       }}>
       Login to spotify
       </Button>
-  </Jumbotron>
+  </Container>
 
 export default LoginPage;
