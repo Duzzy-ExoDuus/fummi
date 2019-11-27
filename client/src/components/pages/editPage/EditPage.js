@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-import {Container} from 'reactstrap'
+import { Container } from 'reactstrap'
 
 import { connect } from 'react-redux'
+import Playlist from '../../general/Playlist';
+
+/* TOOD
+Display a playlist
+Delete option
+Save option
+Display information button
+*/
+
+
 
 class EditPage extends Component {
-  state = {}
-  render() {
+
+  state = { playlist: {} }
+
+  componentDidMount() {
+    this.getTracks()
+  }
+
+  getTracks = () => {
+    const { location, token } = this.props
+    let headers = { headers: { 'Authorization': 'Bearer ' + token } }
     
-    console.log(this.props.location)
+    fetch(location.playlist.href, headers)
+      .then(tracks => tracks.json())
+      .then(playlist => this.setState({ playlist }))
+  }
+
+  render() {
     return (
       <Container>
-        EditPage
+        <Playlist playlist={this.state.playlist} />
       </Container>
     );
   }

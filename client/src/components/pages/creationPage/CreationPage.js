@@ -1,18 +1,17 @@
 import axios from 'axios'
 
 import React, { Component } from 'react';
-import PropTypes from 'prop-types'
-
-import { connect } from 'react-redux'
 
 import { Container, Button } from 'reactstrap'
-import AttributeSelector from './SliderAttributeContainer'
-import SeedSelector from './SeedSelector'
-import DurationPicker from './DurationPicker'
+import SeedSelector from './SeedSelector/SeedSelector'
+import AttributeSelector from './AttributeSelector'
+import DurationSelector from './DurationSelector'
+
 
 import { attributes } from '../../../assets/attributes'
 
 const DEFAULT_PLAYLIST_DURATION = "00:20"
+
 class CreationPage extends Component {
 
   constructor() {
@@ -37,8 +36,6 @@ class CreationPage extends Component {
         sliders: sliders
       }
     })
-    setTimeout(() => console.log(this.state), 500)
-
   }
 
   handleDurationUpdate = newDuration => {
@@ -64,24 +61,16 @@ class CreationPage extends Component {
   render() {
     return (
       <Container>
-        <SeedSelector />
+        <SeedSelector updateSeeds={seeds => this.setState({seeds})} />
         <hr />
         <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
         <hr />
-        <DurationPicker updateDuration={this.handleDurationUpdate} />
+        <DurationSelector updateDuration={this.handleDurationUpdate} />
         <hr />
-        <Button color="success" onClick={this.saveClickToDB}>Grow playlist</Button >
+        <Button color="success" onClick={() => console.log(this.state)}>Grow playlist</Button >
       </Container>
     );
   }
 }
 
-CreationPage.propTypes = {
-  token: PropTypes.string.isRequired,
-}
-
-const mapStateToProps = (state) => {
-  return { token: state.token.token }
-}
-
-export default connect(mapStateToProps)(CreationPage);
+export default CreationPage;
