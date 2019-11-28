@@ -21,8 +21,7 @@ font-size: 15px;
   border-width: 1px;
 }
 @media screen and (max-width: 500px) {
-  font-family:"Comic Sans MS", Comic Sans, cursive;
-
+  font-family:"Gill Sans", sans-serif;
   margin-top:1px;
   border-style: solid;
   border-color: gray ;
@@ -71,7 +70,7 @@ const StyledDiv = styled.div`
 const H1 = styled.h1`
 @media screen and (max-width: 500px) {
   margin-left: 18px;
-  font-family:"Comic Sans MS", Comic Sans, cursive;
+  font-family:"Gill Sans", sans-serif;
   font-style: normal;
   font-weight: 800	
  font-size: 30px;

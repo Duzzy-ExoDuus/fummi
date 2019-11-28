@@ -15,11 +15,10 @@ const StyledCard= styled(Card)`
 border-style: solid;
 border-color: black;
 border-width: 1px;
-font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 font-size: 18px; 
 margin-top:5px;
 @media screen and (max-width: 500px) {
-  font-family:"Comic Sans MS", Comic Sans, cursive;
+  font-family:"Gill Sans", sans-serif;
   font-size: 15px; 
   width: 100%;
   border-style: normal ;
@@ -36,8 +35,7 @@ const H1 = styled.h1`
   visibility: hidden;
   margin-left: 18px;
   text-align:left;
-  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
-  font-style: normal;
+  font-family:"Gill Sans", sans-serif;
   font-weight: 100;
   font-size: 30px;
   padding:10px;
