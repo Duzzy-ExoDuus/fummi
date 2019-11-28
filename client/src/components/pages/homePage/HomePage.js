@@ -22,6 +22,13 @@ font-family: 'Montserrat', sans-serif;
 }
 `
 
+const H3 = styled.h3`
+
+@media (max-width: 500px) {
+  font-size:7vw;
+}
+`
+
 
 const Div1 = styled.div`
 float:left; /* add this */
@@ -32,9 +39,7 @@ margin-top:10px;
   margin-top:10px;
   margin-left: 10px;
   width:100%
-  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
-
-
+  font-family:"Comic Sans MS", Comic Sans, cursive;
 }
 `
 const Div2 = styled.div`
@@ -47,7 +52,7 @@ margin-top:10px;
   width:100%
   padding-top: 25px;
   padding-right: 20px;
-  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+  font-family:"Comic Sans MS", Comic Sans, cursive;
 
 }
 `
@@ -138,12 +143,12 @@ class HomePage extends Component {
 
           <Div1  >
           <DivImage1 id="logo"  />
-            <h3 >What is the SeedBox?</h3>
+            <H3 >What is the SeedBox?</H3>
             <p>Read <Link to="/about">about</Link> it here! </p>
           </Div1>
           <Div2 >
           <DivImage2 id="logo"/>
-            <h3><Link to="/create">Get started</Link> with the SeedBox</h3>
+            <H3><Link to="/create">Get started</Link> with the SeedBox</H3>
           </Div2>
           <Div3>
           <DivImage3  onClick={() => alert('Thanks! Come back later, when we have implemented this ;)')} id="logo"/>
