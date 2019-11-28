@@ -16,9 +16,10 @@ border-style: solid;
 border-color: black;
 border-width: 1px;
 font-family: 'Montserrat', sans-serif;
-font-size: 15px; 
+font-size: 18px; 
 margin-top:5px;
 @media screen and (max-width: 800px) {
+  font-size: 15px; 
   width: 100%;
   border-style: normal ;
   border-color: white ;
@@ -104,9 +105,9 @@ class UserProfile extends Component {
                 images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />:
                 <DefaultProfileImage/>
               }
-                <CardTitle>{display_name}</CardTitle>
-                <CardText>Country: {country}</CardText>
-                <CardText>Email: {email}</CardText> 
+                <CardTitle><strong>{display_name}</strong></CardTitle>
+                <CardText><strong>Country: </strong> {country}</CardText>
+                <CardText><strong>Email: </strong>{email}</CardText> 
             </StyledCard>
 
             </div>
