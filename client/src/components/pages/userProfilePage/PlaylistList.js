@@ -21,6 +21,8 @@ font-size: 15px;
   border-width: 1px;
 }
 @media screen and (max-width: 450px) {
+  font-family:"Comic Sans MS", Comic Sans, cursive;
+
   margin-top:1px;
   border-style: solid;
   border-color: gray ;
@@ -69,10 +71,10 @@ const StyledDiv = styled.div`
 const H1 = styled.h1`
 @media screen and (max-width: 450px) {
   margin-left: 18px;
-  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+  font-family:"Comic Sans MS", Comic Sans, cursive;
   font-style: normal;
-  font-weight: 100;
-  font-size: 30px;
+  font-weight: 800	
+ font-size: 30px;
   padding-top: 10px;
   margin-left: 50px;
   &::after {
@@ -91,13 +93,11 @@ const H1 = styled.h1`
 const StyledTitle = styled.p`
 font-size 20px;
 font-weight:bold;
-font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 `
 
 const StyledListGroup = styled(ListGroup)`
 @media screen and (max-width: 450px) {
   margin-top:110px;
-
   width:100%;
   position:absolute;
   left:0;

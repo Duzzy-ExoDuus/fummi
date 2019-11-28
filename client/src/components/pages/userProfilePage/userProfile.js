@@ -19,6 +19,7 @@ font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 font-size: 18px; 
 margin-top:5px;
 @media screen and (max-width: 450px) {
+  font-family:"Comic Sans MS", Comic Sans, cursive;
   font-size: 15px; 
   width: 100%;
   border-style: normal ;
@@ -74,7 +75,6 @@ const DefaultProfileImage = styled.div`
     display: block;
     margin-left: auto;
     margin-right: auto;
-   
     width: 130px;
     margin-top:-80px
     content: url(${me});
