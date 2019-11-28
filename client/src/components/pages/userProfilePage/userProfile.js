@@ -18,7 +18,7 @@ border-width: 1px;
 font-family: 'Montserrat', sans-serif;
 font-size: 18px; 
 margin-top:5px;
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 450px) {
   font-size: 15px; 
   width: 100%;
   border-style: normal ;
@@ -31,7 +31,7 @@ margin-top:5px;
 
 
 const H1 = styled.h1`
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 450px) {
   visibility: hidden;
   margin-left: 18px;
   text-align:left;
@@ -54,7 +54,7 @@ const H1 = styled.h1`
 }
 `
 const StyledDivH1 = styled.div`
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 450px) {
   width: 100%;
   color: black;
   }
@@ -62,7 +62,7 @@ const StyledDivH1 = styled.div`
 
 
 const ProfileImage = styled(CardImg)`
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 450px) {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -70,7 +70,7 @@ const ProfileImage = styled(CardImg)`
   }
 `
 const DefaultProfileImage = styled.div`
-  @media screen and (max-width: 700px) {
+  @media screen and (max-width: 450px) {
     display: block;
     margin-left: auto;
     margin-right: auto;
