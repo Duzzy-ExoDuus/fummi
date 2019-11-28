@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Container, Col, Row, Button } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import thinking from '../../../images/thinking.png'
+import pointing from '../../../images/pointing.png'
+import rateUs from '../../../images/rateUs.png'
 
 
 
@@ -9,7 +12,9 @@ const H1 = styled.h1`
 font-size:8vw;
 font-family: 'Montserrat', sans-serif;
 @media (max-width: 800px) {
-  margin-left: 20px;
+  display: block;
+	margin-left: auto;
+  margin-right: auto;
   font-size:12vw;
 }
 `
@@ -21,20 +26,27 @@ width:40%;
 font-family: 'Montserrat', sans-serif;
 margin-top:10px;
 @media screen and (max-width: 800px) {
+  margin-top:40px;
   margin-left: 10px;
   width:100%
+  
+
 }
 `
 const Div2 = styled.div`
 font-family: 'Montserrat', sans-serif;
 overflow: hidden; 
 margin-top:10px;
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
+  margin-top:160px;
   margin-left: 10px;
   width:100%
+  padding-top: 25px;
+  padding-right: 20px;
 
 }
 `
+
 const Div3 = styled.div`
 
 `
@@ -54,15 +66,48 @@ margin-top:10px;
     text-align: center;
 
 @media screen and (max-width: 800px) {
-  margin-top:10px;
+  margin-top:50px;
   display: block;
 	margin-left: auto;
   margin-right: auto;
 
-}
+  visibility: hidden;
 
+}
 `
 
+
+const DivImage1 = styled.div`
+  @media screen and (max-width: 800px) {
+    float: left;
+    padding:5px;
+    width: 60px;
+    content: url(${thinking});
+  }
+`
+const DivImage2 = styled.div`
+  @media screen and (max-width: 800px) {
+    float:right;
+    padding:5px;
+    margin-left:-10px;
+    margin-top:-30px;
+    width: 70px;
+    content: url(${pointing});
+  }
+`
+
+const DivImage3 = styled.div`
+  @media screen and (max-width: 800px) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:30px;
+
+    padding:5px;
+    width: 250px;
+    content: url(${rateUs});
+  }
+`
 class HomePage extends Component {
   state = {}
   render() {
@@ -74,14 +119,17 @@ class HomePage extends Component {
         </Row>
 
           <Div1   >
+          <DivImage1 id="logo"  />
             <h3 >What is the SeedBox?</h3>
             <p>Read <Link to="/about">about</Link> it here! </p>
           </Div1>
           <Div2 >
+          <DivImage2 id="logo"/>
             <h3><Link to="/create">Get started</Link> with the SeedBox</h3>
           </Div2>
           <Div3>
-            <StyledButton onClick={() => alert('Thanks! Come back later, when we have implemented this ;)')}>Rate our app!</StyledButton>
+          <DivImage3  onClick={() => alert('Thanks! Come back later, when we have implemented this ;)')} id="logo"/>
+            <StyledButton>Rate our app!</StyledButton>
           </Div3>
       </Container>
     );
