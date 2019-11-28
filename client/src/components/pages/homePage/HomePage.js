@@ -19,7 +19,6 @@ font-family: 'Montserrat', sans-serif;
   margin-right: auto;
   font-size:12vw;
   font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
-
 }
 `
 
@@ -76,7 +75,6 @@ margin-top:10px;
   display: block;
 	margin-left: auto;
   margin-right: auto;
-
   visibility: hidden;
 
 }
@@ -135,9 +133,10 @@ class HomePage extends Component {
       <Container>
         <Row className='md'>
           <H1>Welcome!</H1>
-          <DivImage4 />
         </Row>
-          <Div1   >
+        <DivImage4 />
+
+          <Div1  >
           <DivImage1 id="logo"  />
             <h3 >What is the SeedBox?</h3>
             <p>Read <Link to="/about">about</Link> it here! </p>
