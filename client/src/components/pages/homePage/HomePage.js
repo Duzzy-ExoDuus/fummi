@@ -18,6 +18,8 @@ font-family: 'Montserrat', sans-serif;
 	margin-left: auto;
   margin-right: auto;
   font-size:12vw;
+  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+
 }
 `
 
@@ -31,7 +33,8 @@ margin-top:10px;
   margin-top:10px;
   margin-left: 10px;
   width:100%
-  
+  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
+
 
 }
 `
@@ -45,6 +48,7 @@ margin-top:10px;
   width:100%
   padding-top: 25px;
   padding-right: 20px;
+  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 
 }
 `

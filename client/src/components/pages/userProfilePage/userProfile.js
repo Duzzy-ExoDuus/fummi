@@ -15,7 +15,7 @@ const StyledCard= styled(Card)`
 border-style: solid;
 border-color: black;
 border-width: 1px;
-font-family: 'Montserrat', sans-serif;
+font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
 font-size: 18px; 
 margin-top:5px;
 @media screen and (max-width: 450px) {
@@ -35,7 +35,7 @@ const H1 = styled.h1`
   visibility: hidden;
   margin-left: 18px;
   text-align:left;
-  font-family: 'Montserrat', sans-serif;
+  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 100;
   font-size: 30px;

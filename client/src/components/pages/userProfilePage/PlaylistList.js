@@ -13,7 +13,7 @@ const StyledListGroupItem = styled(ListGroupItem)`
 border-style: solid;
 border-color: black;
 border-width: 1px;
-font-family: 'Montserrat', sans-serif;
+font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 font-size: 15px;
 :hover{
   background-color: #F8F8F8; 
@@ -69,7 +69,7 @@ const StyledDiv = styled.div`
 const H1 = styled.h1`
 @media screen and (max-width: 450px) {
   margin-left: 18px;
-  font-family: 'Montserrat', sans-serif;
+  font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 100;
   font-size: 30px;
@@ -91,8 +91,7 @@ const H1 = styled.h1`
 const StyledTitle = styled.p`
 font-size 20px;
 font-weight:bold;
-font-family: 'Montserrat', italic;
-
+font-family:"Arial Rounded MT Bold", Arial, Helvetica, sans-serif;
 `
 
 const StyledListGroup = styled(ListGroup)`
