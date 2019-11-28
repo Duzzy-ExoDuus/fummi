@@ -20,7 +20,7 @@ font-size: 15px;
   color: black;
   border-width: 1px;
 }
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   font-family:"Comic Sans MS", Comic Sans, cursive;
 
   margin-top:1px;
@@ -37,7 +37,7 @@ display: block;
   padding:10px;
   width: 50px;
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     float:right   
     padding:0px;
     width: 25px;
@@ -51,7 +51,7 @@ display: block;
   padding:10px;
   width: 50px;
 
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     float:left;   
     padding:0px;
     width: 25px;
@@ -59,7 +59,7 @@ display: block;
   }
 `
 const StyledDiv = styled.div`
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   position:absolute;
   left:0;
   right:0;
@@ -69,7 +69,7 @@ const StyledDiv = styled.div`
 
 `
 const H1 = styled.h1`
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   margin-left: 18px;
   font-family:"Comic Sans MS", Comic Sans, cursive;
   font-style: normal;
@@ -77,6 +77,7 @@ const H1 = styled.h1`
  font-size: 30px;
   padding-top: 10px;
   margin-left: 50px;
+  
   &::after {
     background: url(${playListStick}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
     content: "";
@@ -96,7 +97,7 @@ font-weight:bold;
 `
 
 const StyledListGroup = styled(ListGroup)`
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   margin-top:110px;
   width:100%;
   position:absolute;

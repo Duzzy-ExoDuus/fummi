@@ -12,7 +12,7 @@ import welcomeImage from '../../../images/welcome.png'
 const H1 = styled.h1`
 font-size:8vw;
 font-family: 'Montserrat', sans-serif;
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   visibility: hidden;
   display: block;
 	margin-left: auto;
@@ -29,7 +29,7 @@ float:left; /* add this */
 width:40%;
 font-family: 'Montserrat', sans-serif;
 margin-top:10px;
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   margin-top:10px;
   margin-left: 10px;
   width:100%
@@ -42,7 +42,7 @@ const Div2 = styled.div`
 font-family: 'Montserrat', sans-serif;
 overflow: hidden; 
 margin-top:10px;
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   margin-top:100px;
   margin-left: 10px;
   width:100%
@@ -71,7 +71,7 @@ margin-top:10px;
 	line-height: 22px;
     text-align: center;
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   margin-top:50px;
   display: block;
 	margin-left: auto;
@@ -84,7 +84,7 @@ margin-top:10px;
 
 
 const DivImage1 = styled.div`
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     float: left;
     padding:5px;
     width: 60px;
@@ -92,7 +92,7 @@ const DivImage1 = styled.div`
   }
 `
 const DivImage2 = styled.div`
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     float:right;
     padding:5px;
     margin-left:-10px;
@@ -103,7 +103,7 @@ const DivImage2 = styled.div`
 `
 
 const DivImage3 = styled.div`
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -117,7 +117,7 @@ const DivImage3 = styled.div`
 
 
 const DivImage4 = styled.div`
-  @media screen and (max-width: 450px) {
+  @media screen and (max-width: 500px) {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -136,9 +136,7 @@ class HomePage extends Component {
         <Row className='md'>
           <H1>Welcome!</H1>
           <DivImage4 />
-
         </Row>
-
           <Div1   >
           <DivImage1 id="logo"  />
             <h3 >What is the SeedBox?</h3>
