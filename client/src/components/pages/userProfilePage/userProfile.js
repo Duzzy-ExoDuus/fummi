@@ -15,7 +15,7 @@ border-style: solid;
 border-color: black;
 border-width: 1px;
 font-family: 'Montserrat', sans-serif;
-font-size: 18px; 
+font-size: 15px; 
 margin-top:5px;
 @media screen and (max-width: 800px) {
   width: 100%;
@@ -31,7 +31,6 @@ margin-top:5px;
 const H1 = styled.h1`
 @media screen and (max-width: 800px) {
   margin-left: 18px;
-  margin-top: 25px;
   text-align:left;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -55,7 +54,7 @@ const H1 = styled.h1`
 
 const StyledDiv = styled.div`
 @media screen and (max-width: 800px) {
-  box-shadow: 0px 4px 4px  #51C768;
+  border-radius:65px;
   width: 100%;
   height: 59px;
   background-color: #51C768;

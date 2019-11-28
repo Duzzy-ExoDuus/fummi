@@ -13,13 +13,11 @@ border-style: solid;
 border-color: black;
 border-width: 1px;
 font-family: 'Montserrat', sans-serif;
-font-size: 18px;
+font-size: 15px;
 :hover{
   background-color: #F8F8F8; 
   color: black;
-
 }
-
 @media screen and (max-width: 800px) {
   border-style: normal ;
     border-color: #8B9358 ;
@@ -46,16 +44,10 @@ display: block;
 
 const StyledDiv = styled.div`
 @media screen and (max-width: 800px) {
-  
+  border-radius:65px;
   width: 100%;
   height: 59px;
-  box-shadow: 0px 4px 4px  #51C768;
   background-color: #51C768;
-  font-family: 'Montserrat', sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 23px;
   color: #FFFFFF;
   }
 
@@ -85,7 +77,7 @@ const H1 = styled.h1`
 
 `
 const StyledTitle = styled.p`
-font-size 23px;
+font-size 20px;
 font-weight:bold;
 font-family: 'Montserrat', italic;
 
@@ -93,9 +85,12 @@ font-family: 'Montserrat', italic;
 
 const StyledListGroup = styled(ListGroup)`
 @media screen and (max-width: 800px) {
-  width:100%;
+  margin-top:17px;
 
-  margin-top:10px;
+  width:100%;
+position:absolute;
+left:0;
+right:0;
 }
 `
 
@@ -138,7 +133,6 @@ class PlaylistList extends Component {
             </Col>
           
           <Col><LogoImage id="logo" src={option} alt="fireSpot" /></Col>
-
           </Row>
           
         </StyledListGroupItem>)
