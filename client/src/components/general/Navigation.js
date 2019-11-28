@@ -15,15 +15,17 @@ import {
 
 
 const StyledLink = styled(Link)`
-color: gray;
+color: white;
 text-decoration: none;
 font-size:20px;
 padding: 10px;
   :hover{
-    color:#51C768;
+    color:gray;
     text-decoration: none;
   }
   `;
+
+  
 
 
 
@@ -49,11 +51,11 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar color="light" light expand="md" className="mb-5">
+      <Navbar style={{backgroundColor: 'black'}} light expand="md" className="mb-5">
         <Container>
-          <NavbarBrand> Seedbox</NavbarBrand>
-          <NavbarToggler onClick={this.toggle} />
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <NavbarBrand style={{color: 'white'}}> Seedbox</NavbarBrand>
+          <NavbarToggler style={{backgroundColor: 'white'}} onClick={this.toggle} />
+          <Collapse  isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <StyledLink  tag={Link} onClick={this.close} to="/">Home</StyledLink >

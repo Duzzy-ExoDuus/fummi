@@ -35,7 +35,7 @@ font-family: 'Courier New', Courier, monospace;
 const LoginPage = () =>
   <Container>
       <LogoImage id="logo" src={logo} alt="fireSpot" />
-       <H1>SeedBox</H1>    <hr />
+       <H1>SeedBox</H1>    
  
     <Button
       onClick={() => {

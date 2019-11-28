@@ -22,8 +22,8 @@ font-size: 15px;
 }
 @media screen and (max-width: 800px) {
   margin-top:1px;
-  border-style: normal ;
-    border-color: gray ;
+  border-style: solid;
+  border-color: gray ;
     border-width: 0px 0px 0px 0px; 
   }
 `
@@ -53,7 +53,7 @@ display: block;
     float:left;   
     padding:0px;
     width: 25px;
-    margin-top:-20px;
+    margin-top:-30px;
   }
 `
 const StyledDiv = styled.div`
