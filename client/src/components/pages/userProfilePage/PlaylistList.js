@@ -5,7 +5,8 @@ import { Container, Row, Col, ListGroup, ListGroupItem, ListGroupItemHeading } f
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import option from '../../../images/option.png'
-import playIcon from '../../../images/playList.png'
+import note from '../../../images/musicNote.png'
+import playListStick from '../../../images/playListStick.png'
 
 
 const StyledListGroupItem = styled(ListGroupItem)`
@@ -17,15 +18,17 @@ font-size: 15px;
 :hover{
   background-color: #F8F8F8; 
   color: black;
+  border-width: 1px;
 }
 @media screen and (max-width: 800px) {
+  margin-top:1px;
   border-style: normal ;
-    border-color: #8B9358 ;
-    border-width: 1px 0px 0px 0px; 
+    border-color: gray ;
+    border-width: 0px 0px 0px 0px; 
   }
 `
 
-const LogoImage = styled.img`
+const LogoImageEdit = styled.img`
 display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -33,46 +36,55 @@ display: block;
   width: 50px;
 
   @media screen and (max-width: 800px) {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;    
+    float:right   
     padding:0px;
     width: 25px;
+    margin-top:-20px;
   }
- 
 `
+const LogoImageNote = styled.img`
+display: block;
+	margin-left: auto;
+	margin-right: auto;
+  padding:10px;
+  width: 50px;
 
+  @media screen and (max-width: 800px) {
+    float:left;   
+    padding:0px;
+    width: 25px;
+    margin-top:-20px;
+  }
+`
 const StyledDiv = styled.div`
 @media screen and (max-width: 800px) {
-  border-radius:65px;
+  position:absolute;
+  left:0;
+  right:0;
   width: 100%;
-  height: 59px;
-  background-color: #51C768;
-  color: #FFFFFF;
+  color: black;
   }
 
 `
 const H1 = styled.h1`
 @media screen and (max-width: 800px) {
   margin-left: 18px;
-  margin-top: 25px;
-  text-align:left;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 100;
   font-size: 30px;
-  padding: 10px;
-  &::before {
-    background: url(${playIcon}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
-    filter: brightness(0) invert(1);
+  padding-top: 10px;
+  margin-left: 50px;
+  &::after {
+    background: url(${playListStick}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
     content: "";
     display: inline-block;
-    height: 30px;
-    margin-right: 13px;
+    height: 100px;
+    margin-left: 8px;
     position: relative;
-    top: -4px;
+    top: -10px;
     vertical-align: middle;
-    width: 30px;
+    width: 120px;
 }
 
 `
@@ -85,12 +97,12 @@ font-family: 'Montserrat', italic;
 
 const StyledListGroup = styled(ListGroup)`
 @media screen and (max-width: 800px) {
-  margin-top:17px;
+  margin-top:110px;
 
   width:100%;
-position:absolute;
-left:0;
-right:0;
+  position:absolute;
+  left:0;
+  right:0;
 }
 `
 
@@ -117,22 +129,19 @@ class PlaylistList extends Component {
         <StyledListGroupItem key={item.name}>
          
          <Row>
-         <Col> <ListGroupItemHeading>
+         <Col> </Col>
+          <ListGroupItemHeading>
             <StyledTitle>{item.name}</StyledTitle>
           </ListGroupItemHeading>
-          </Col>
-
+          <Col> </Col>
 
           </Row>
           <Row>
-          <Col>
-          Songs: {item.tracks.total}
-            </Col>
+          <Col><LogoImageNote id="logo" src={note} alt="fireSpot" /></Col>
             <Col>
-            {item.public ? 'Public' : 'Private'}
+            Songs: {item.tracks.total}
             </Col>
-          
-          <Col><LogoImage id="logo" src={option} alt="fireSpot" /></Col>
+          <Col><LogoImageEdit id="logo" src={option} alt="fireSpot" /></Col>
           </Row>
           
         </StyledListGroupItem>)
@@ -147,7 +156,7 @@ class PlaylistList extends Component {
             :
             <>
             <StyledDiv>
-              <H1>Your playlists</H1>
+              <H1>Playlists</H1>
             </StyledDiv>
               <StyledListGroup>
                 {playlistsToRender}

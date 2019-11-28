@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import profile from '../../../images/profile.png'
+import me from '../../../images/defaultProfile.png'
 
 import {
   Container,
@@ -22,7 +23,6 @@ margin-top:5px;
   border-style: normal ;
   border-color: white ;
   border-width: 0px; 
-  
   }
 
 `
@@ -30,13 +30,14 @@ margin-top:5px;
 
 const H1 = styled.h1`
 @media screen and (max-width: 800px) {
+  visibility: hidden;
   margin-left: 18px;
   text-align:left;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
   font-weight: 100;
   font-size: 30px;
-  padding: 10px;
+  padding:10px;
   &::before {
     background: url(${profile}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
     filter: brightness(0) invert(1);
@@ -49,20 +50,36 @@ const H1 = styled.h1`
     vertical-align: middle;
     width: 30px;
 }
-
+`
+const StyledDivH1 = styled.div`
+@media screen and (max-width: 800px) {
+  width: 100%;
+  color: black;
+  }
 `
 
-const StyledDiv = styled.div`
-@media screen and (max-width: 800px) {
-  border-radius:65px;
-  width: 100%;
-  height: 59px;
-  background-color: #51C768;
-  color: #FFFFFF;
+
+const ProfileImage = styled(CardImg)`
+  @media screen and (max-width: 800px) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+  }
+`
+const DefaultProfileImage = styled.div`
+  @media screen and (max-width: 800px) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+   
+    width: 130px;
+    margin-top:-80px
+    content: url(${me});
 
   }
- 
 `
+
 
 class UserProfile extends Component {
   render() {
@@ -76,17 +93,21 @@ class UserProfile extends Component {
             <></>
             :
             <div>
-              <StyledDiv>
+              <StyledDivH1>
               <H1>Profile</H1>
-              </StyledDiv>
+              </StyledDivH1>
+
             <StyledCard body>
               {
-                images && images[0] && <CardImg top width='20%' src={images[0].url} alt={display_name} />
+                images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />?
+                images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />:
+                <DefaultProfileImage/>
               }
                 <CardTitle>{display_name}</CardTitle>
                 <CardText>Country: {country}</CardText>
-                <CardText>Email: {email}</CardText>                
+                <CardText>Email: {email}</CardText> 
             </StyledCard>
+
             </div>
         }
       </Container>
