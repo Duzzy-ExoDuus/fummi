@@ -23,7 +23,7 @@ display: block;
     text-align: center;
 
 
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 700px) {
       padding: 13px;
       width:90%;
       font-size: 25px;

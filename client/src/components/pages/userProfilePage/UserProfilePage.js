@@ -15,14 +15,14 @@ import styled from 'styled-components'
 const Div1 = styled.div`
 float:left; 
 width:40%;
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   width:100%
 }
 
 `
 const Div2 = styled.div`
 overflow: hidden; 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   width:100%
 }
 `

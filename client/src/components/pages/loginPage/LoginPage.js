@@ -13,7 +13,7 @@ margin-top: 50px;
 	margin-right: auto;
   width: 25%;
   
-  @media (max-width: 800px) {
+  @media (max-width: 700px) {
     width: 80%;
   }
 `
@@ -25,7 +25,7 @@ font-size:8vw;
 color: #8B9358;
 font-family: 'Courier New', Courier, monospace;
   
-@media (max-width: 800px) {
+@media (max-width: 700px) {
   font-size:18vw;
 }
 `

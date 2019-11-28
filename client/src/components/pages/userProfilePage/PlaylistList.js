@@ -20,7 +20,7 @@ font-size: 15px;
   color: black;
   border-width: 1px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   margin-top:1px;
   border-style: solid;
   border-color: gray ;
@@ -35,7 +35,7 @@ display: block;
   padding:10px;
   width: 50px;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 700px) {
     float:right   
     padding:0px;
     width: 25px;
@@ -49,7 +49,7 @@ display: block;
   padding:10px;
   width: 50px;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 700px) {
     float:left;   
     padding:0px;
     width: 25px;
@@ -57,7 +57,7 @@ display: block;
   }
 `
 const StyledDiv = styled.div`
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   position:absolute;
   left:0;
   right:0;
@@ -67,7 +67,7 @@ const StyledDiv = styled.div`
 
 `
 const H1 = styled.h1`
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   margin-left: 18px;
   font-family: 'Montserrat', sans-serif;
   font-style: normal;
@@ -96,7 +96,7 @@ font-family: 'Montserrat', italic;
 `
 
 const StyledListGroup = styled(ListGroup)`
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   margin-top:110px;
 
   width:100%;
