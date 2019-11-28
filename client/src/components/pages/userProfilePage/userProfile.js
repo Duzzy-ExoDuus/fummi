@@ -68,6 +68,8 @@ const ProfileImage = styled(CardImg)`
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
+    margin-top:-80px
+    width: 130px;
   }
 `
 const DefaultProfileImage = styled.div`

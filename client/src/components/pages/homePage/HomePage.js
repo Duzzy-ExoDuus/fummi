@@ -53,7 +53,6 @@ margin-top:10px;
   padding-top: 25px;
   padding-right: 20px;
   font-family:"Comic Sans MS", Comic Sans, cursive;
-
 }
 `
 
