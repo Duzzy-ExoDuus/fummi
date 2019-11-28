@@ -17,7 +17,7 @@ display: block;
 	text-decoration: none;
 	cursor: pointer;
 	border-radius: 65px;
-	font-family:'Courier New', Courier, monospace;
+  font-family:"Gill Sans", sans-serif;
 	font-size: 30px;
 	line-height: 22px;
     text-align: center;
