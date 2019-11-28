@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import thinking from '../../../images/thinking.png'
 import pointing from '../../../images/pointing.png'
 import rateUs from '../../../images/rateUs.png'
+import welcomeImage from '../../../images/welcome.png'
 
 
 
@@ -12,6 +13,7 @@ const H1 = styled.h1`
 font-size:8vw;
 font-family: 'Montserrat', sans-serif;
 @media (max-width: 800px) {
+  visibility: hidden;
   display: block;
 	margin-left: auto;
   margin-right: auto;
@@ -26,7 +28,7 @@ width:40%;
 font-family: 'Montserrat', sans-serif;
 margin-top:10px;
 @media screen and (max-width: 800px) {
-  margin-top:40px;
+  margin-top:0px;
   margin-left: 10px;
   width:100%
   
@@ -38,7 +40,7 @@ font-family: 'Montserrat', sans-serif;
 overflow: hidden; 
 margin-top:10px;
 @media screen and (max-width: 800px) {
-  margin-top:160px;
+  margin-top:100px;
   margin-left: 10px;
   width:100%
   padding-top: 25px;
@@ -79,6 +81,7 @@ margin-top:10px;
 
 const DivImage1 = styled.div`
   @media screen and (max-width: 800px) {
+    
     float: left;
     padding:5px;
     width: 60px;
@@ -108,6 +111,19 @@ const DivImage3 = styled.div`
     content: url(${rateUs});
   }
 `
+
+
+const DivImage4 = styled.div`
+  @media screen and (max-width: 800px) {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:-70px;
+    padding:5px;
+    width: 200px;
+    content: url(${welcomeImage});
+  }
+`
 class HomePage extends Component {
   state = {}
   render() {
@@ -116,6 +132,8 @@ class HomePage extends Component {
       <Container>
         <Row className='md'>
           <H1>Welcome!</H1>
+          <DivImage4 />
+
         </Row>
 
           <Div1   >
