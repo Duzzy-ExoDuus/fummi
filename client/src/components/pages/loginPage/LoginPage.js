@@ -23,7 +23,8 @@ margin-top: 50px;
 text-align: center;
 font-size:8vw;
 color: #8B9358;
-font-family: 'Courier New', Courier, monospace;
+font-family: "Montserrat";
+font-weight: lighter;
   
 @media (max-width: 500px) {
   font-size:18vw;
@@ -43,7 +44,7 @@ const LoginPage = () =>
           ? 'http://localhost:5000/login'
           : 'https://fummi-backend.herokuapp.com/login'
       }}>
-      Login to spotify
+        CONNECT WITH SPOTIFY
       </Button>
   </Container>
 

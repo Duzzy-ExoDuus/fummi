@@ -11,14 +11,14 @@ import welcomeImage from '../../../images/welcome.png'
 
 const H1 = styled.h1`
 font-size:8vw;
-font-family: 'Montserrat', sans-serif;
+font-family: "Montserrat", sans-serif;
 @media (max-width: 500px) {
   visibility: hidden;
   display: block;
 	margin-left: auto;
   margin-right: auto;
   font-size:12vw;
-  font-family:"Gill Sans", sans-serif;
+  font-family:"Montserrat", sans-serif;
 }
 `
 
@@ -33,17 +33,17 @@ const H3 = styled.h3`
 const Div1 = styled.div`
 float:left; /* add this */
 width:40%;
-font-family: 'Montserrat', sans-serif;
+font-family: "Montserrat", sans-serif;
 margin-top:10px;
 @media screen and (max-width: 500px) {
   margin-top:10px;
   margin-left: 10px;
   width:100%
-  font-family:"Gill Sans", sans-serif;
+  font-family:"Montserrat", sans-serif;
 }
 `
 const Div2 = styled.div`
-font-family: 'Montserrat', sans-serif;
+font-family: "Montserrat", sans-serif;
 overflow: hidden; 
 margin-top:10px;
 @media screen and (max-width: 500px) {
@@ -52,7 +52,7 @@ margin-top:10px;
   width:100%
   padding-top: 25px;
   padding-right: 20px;
-  font-family:"Gill Sans", sans-serif;
+  font-family:"Montserrat", sans-serif;
 }
 `
 
@@ -69,7 +69,7 @@ margin-top:10px;
 	text-decoration: none;
 	cursor: pointer;
   border-radius: 10px;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 	font-size: 20px;
 	line-height: 22px;
     text-align: center;

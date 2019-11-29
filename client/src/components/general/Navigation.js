@@ -51,9 +51,9 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar style={{backgroundColor: 'black'}} light expand="md" className="mb-5">
+      <Navbar style={{backgroundColor: "#E0E0E0"}} light expand="md" className="mb-5">
         <Container>
-          <NavbarBrand style={{color: 'white'}}> Seedbox</NavbarBrand>
+          <NavbarBrand style={{fontFamily:"Montserrat", fontWeight :"lighter", color: 'black'}}> SeedBox</NavbarBrand>
           <NavbarToggler style={{backgroundColor: 'white'}} onClick={this.toggle} />
           <Collapse  isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

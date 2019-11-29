@@ -17,8 +17,9 @@ display: block;
 	text-decoration: none;
 	cursor: pointer;
 	border-radius: 65px;
-	font-family:'Courier New', Courier, monospace;
+	font-family:"Montserrat";
 	font-size: 30px;
+	font-weight: normal;
 	line-height: 22px;
     text-align: center;
 
@@ -26,7 +27,7 @@ display: block;
     @media screen and (max-width: 500px) {
       padding: 13px;
       width:90%;
-      font-size: 25px;
+      font-size: 20px;
   }
     
   
@@ -36,11 +37,13 @@ display: block;
         display: inline-block;
         color: #fff;
         height: 30px;
-        margin-right: 13px;
+        margin-right: 18px;
+        margin-left: -15px;
         position: relative;
         top: -2px;
         vertical-align: middle;
-        width: 30px;
+        width: 36px;
+        height: 36px;
     }
 
 `

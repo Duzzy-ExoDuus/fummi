@@ -17,8 +17,8 @@ display: block;
 	text-decoration: none;
 	cursor: pointer;
 	border-radius: 65px;
-  font-family:"Gill Sans", sans-serif;
-	font-size: 30px;
+  font-family:"Montserrat", sans-serif;
+	font-size: 25px;
 	line-height: 22px;
     text-align: center;
 

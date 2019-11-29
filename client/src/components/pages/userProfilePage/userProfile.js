@@ -18,7 +18,7 @@ border-width: 1px;
 font-size: 18px; 
 margin-top:5px;
 @media screen and (max-width: 500px) {
-  font-family:"Gill Sans", sans-serif;
+  font-family:"Montserrat", sans-serif;
   font-size: 15px; 
   width: 100%;
   border-style: normal ;
@@ -35,7 +35,7 @@ const H1 = styled.h1`
   visibility: hidden;
   margin-left: 18px;
   text-align:left;
-  font-family:"Gill Sans", sans-serif;
+  font-family:"Montserrat", sans-serif;
   font-weight: 100;
   font-size: 30px;
   padding:10px;
