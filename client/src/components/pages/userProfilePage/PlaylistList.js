@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 import { Container, Row, Col, ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
-import {Link} from 'react-router-dom'
 
 class PlaylistList extends Component {
 
@@ -14,7 +13,6 @@ class PlaylistList extends Component {
           <ListGroupItemHeading>
             {item.name}
           </ListGroupItemHeading>
-          <Link to={{pathname:`/playlist/${item.name}`, playlist:item}}>Edit</Link>
           <Row>
             <Col>
               Owner: {item.owner.display_name}

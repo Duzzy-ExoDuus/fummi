@@ -1,16 +1,20 @@
 import axios from 'axios'
 
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
-import { Container, Button } from 'reactstrap'
+import { Container, Col, Row, Button } from 'reactstrap'
 import SeedSelector from './SeedSelector/SeedSelector'
 import AttributeSelector from './AttributeSelector'
 import DurationSelector from './DurationSelector'
 
 
+import { buildUrl } from '../../../util/queryBuilder'
 import { attributes } from '../../../assets/attributes'
 
-const DEFAULT_PLAYLIST_DURATION = "00:20"
+
 
 class CreationPage extends Component {
 
@@ -19,9 +23,10 @@ class CreationPage extends Component {
     const sliders = {}
     attributes.forEach(attribute => sliders[attribute.name] = 50)
     this.state = {
-      sliders,
-      duration: DEFAULT_PLAYLIST_DURATION,
-      seeds: []
+      sliders: [],
+      seeds: [],
+      limit: 100,
+      grownPlaylist: null
     }
   }
 
@@ -30,7 +35,8 @@ class CreationPage extends Component {
     let value = e.target.value
     this.setState(prevState => {
       const sliders = prevState.sliders
-      sliders[name] = value
+      const newSlider = { name: name, value: value }
+      sliders.push(newSlider)
       return {
         ...prevState,
         sliders: sliders
@@ -38,13 +44,40 @@ class CreationPage extends Component {
     })
   }
 
-  handleDurationUpdate = newDuration => {
-    this.setState(
-      prevState => ({
-        ...prevState,
-        duration: newDuration
-      }))
-    setTimeout(() => console.log(this.state), 500)
+  parseParamsFromState = () => {
+    const seed_artists = []
+    const seed_tracks = []
+    this.state.seeds.forEach(
+      seed => {
+        switch (seed.type) {
+          case 'artist':
+            seed_artists.push(seed.id)
+            break
+          case 'track':
+            seed_tracks.push(seed.id)
+            break
+          default: return
+        }
+      }
+    )
+    let params = {
+      limit: this.state.limit,
+      seed_artists,
+      seed_tracks
+    }
+    this.state.sliders.forEach(
+      attribute => {
+        params[`target_${attribute.name.toLowerCase()}`] = attribute.value
+      }
+    )
+    return params
+  }
+
+  getPlaylist = () => {
+    const headers = { headers: { 'Authorization': 'Bearer ' + this.props.token } }
+    fetch(buildUrl('https://api.spotify.com/v1/recommendations', this.parseParamsFromState()), headers)
+      .then(response => response.json())
+      .then(res => this.setState({ grownPlaylist: res }))
   }
 
   saveClickToDB = () => {
@@ -61,16 +94,39 @@ class CreationPage extends Component {
   render() {
     return (
       <Container>
-        <SeedSelector updateSeeds={seeds => this.setState({seeds})} />
+        <Row>
+          <SeedSelector updateSeeds={seeds => this.setState({ seeds })} />
+        </Row>
         <hr />
-        <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
-        <hr />
-        <DurationSelector updateDuration={this.handleDurationUpdate} />
-        <hr />
-        <Button color="success" onClick={() => console.log(this.state)}>Grow playlist</Button >
+        <Row>
+          <Col>
+            <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
+          </Col>
+          <Col>
+            <hr />
+            {
+              this.state.grownPlaylist && <Link to={{ pathname: `/playlist/new}`, playlist: this.state.grownPlaylist }}>Edit</Link>
+            }
+            <DurationSelector /><hr />
+            <Button color="success" onClick={
+              () => {
+                this.getPlaylist()
+              }}>Grow playlist</Button >
+            <Button onClick={() => console.log(this.state)}>state</Button>
+            
+          </Col>
+        </Row>
       </Container>
     );
   }
 }
 
-export default CreationPage;
+CreationPage.propTypes = {
+  token: PropTypes.string.isRequired
+}
+
+const mapStateToProps = (state) => {
+  return { token: state.token.token }
+}
+
+export default connect(mapStateToProps)(CreationPage);

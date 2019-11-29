@@ -20,8 +20,8 @@ class SearchBar extends Component {
       this.setState({ searchResult: null })
       return
     }
-    let headers = { headers: { 'Authorization': 'Bearer ' + this.props.token } }
-    let params = { q: searchString, type: 'artist,track', limit: 5 }
+    const headers = { headers: { 'Authorization': 'Bearer ' + this.props.token } }
+    const params = { q: searchString, type: 'artist,track', limit: 5 }
     fetch(buildUrl('https://api.spotify.com/v1/search', params), headers)
       .then(response => response.json())
       .then(searchResult => this.setState({ searchResult })
@@ -31,6 +31,7 @@ class SearchBar extends Component {
   render() {
     return (
       <Container>
+        <h2>Get started by finding some seeds!</h2>
         <InputGroup>
           <Input onChange={e => this.getSearchResults(e.target.value)} />
           <InputGroupAddon addonType="prepend">

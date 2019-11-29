@@ -1,41 +1,45 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
-import { Container } from 'reactstrap'
+import { Container, Button } from 'reactstrap'
 
 import { connect } from 'react-redux'
-import Playlist from '../../general/Playlist';
+import Playlist from '../../general/Playlist'
 
-/* TOOD
-Display a playlist
-Delete option
-Save option
-Display information button
-*/
-
-
+import { buildUrl, buildHeader } from '../../../util/queryBuilder'
 
 class EditPage extends Component {
 
-  state = { playlist: {} }
-
-  componentDidMount() {
-    this.getTracks()
+  state = {
+    playlist: {},
+    tracks: [],
+    audioFeatures: []
   }
 
-  getTracks = () => {
+  componentDidMount() {
+    this.initializeState()
+  }
+
+  initializeState = () => {
     const { location, token } = this.props
-    let headers = { headers: { 'Authorization': 'Bearer ' + token } }
-    
-    fetch(location.playlist.href, headers)
-      .then(tracks => tracks.json())
-      .then(playlist => this.setState({ playlist }))
+
+    const params = []
+    location.playlist.tracks.forEach(track => params.push(track.id))
+    fetch(buildUrl('https://api.spotify.com/v1/audio-features', { ids: params }), buildHeader(token))
+      .then(response => response.json())
+      .then(res => this.setState({
+        playlist: location.playlist,
+        tracks: location.playlist.tracks,
+        audioFeatures: res.audio_features
+      }))
   }
 
   render() {
     return (
       <Container>
-        <Playlist playlist={this.state.playlist} />
+        <Button color='success'>Save playlist to spotify</Button>
+        <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures} />
+        <button onClick={() => console.log(this.state)}>debugton</button>
       </Container>
     );
   }

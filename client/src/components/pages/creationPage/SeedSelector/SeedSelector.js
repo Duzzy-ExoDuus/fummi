@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Container } from 'reactstrap'
+import { Container, Col, Row } from 'reactstrap'
 import SearchBar from './SeedSearchBar';
 import SeedDisplay from './SeedDisplay';
 
@@ -9,16 +9,16 @@ class SeedSelector extends Component {
   state = {
     seeds: []
   }
-  
+
   addSeed = addSeed => {
-    if (this.state.seeds.length < 5 && !this.state.seeds.find(seed => seed.id === addSeed.id )) {
-        const newSeeds = this.state.seeds
-        newSeeds.push(addSeed)
-        this.setState(prevState => ({
-          ...prevState,
-          seeds: newSeeds
-        }))
-        this.props.updateSeeds(newSeeds)
+    if (this.state.seeds.length < 5 && !this.state.seeds.find(seed => seed.id === addSeed.id)) {
+      const newSeeds = this.state.seeds
+      newSeeds.push(addSeed)
+      this.setState(prevState => ({
+        ...prevState,
+        seeds: newSeeds
+      }))
+      this.props.updateSeeds(newSeeds)
     }
   }
 
@@ -34,8 +34,14 @@ class SeedSelector extends Component {
   render() {
     return (
       <Container>
-        <SeedDisplay seeds={this.state.seeds} removeSeed={this.removeSeed} />
-        <SearchBar addSeed={this.addSeed} />
+        <Row>
+          <Col>
+            <SearchBar addSeed={this.addSeed} />
+          </Col>
+          <Col xs='2'>
+            <SeedDisplay seeds={this.state.seeds} removeSeed={this.removeSeed} />
+          </Col>
+        </Row>
       </Container>
     );
   }
