@@ -4,10 +4,7 @@ import styled from 'styled-components'
 import profile from '../../../images/profile.png'
 import me from '../../../images/defaultProfile.png'
 
-import {
-  Container,
-  Card, CardImg, CardTitle, CardText
-} from 'reactstrap'
+import { Container } from 'reactstrap'
 
 
 const StyledCard= styled(Card)`
@@ -87,28 +84,20 @@ class UserProfile extends Component {
   render() {
     const { country, display_name, email, images } = this.props.user.user
     const { loading } = this.props.user.loading
-    console.log(images)
     return (
-      <Container fluid height='40%'>
+      <Container fluid>
         {
           loading ?
             <></>
             :
             <div>
-              <StyledDivH1>
-              <H1>Profile</H1>
-              </StyledDivH1>
 
-            <StyledCard body>
               {
-                images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />?
-                images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />:
-                <DefaultProfileImage/>
+                images && images[0] && <img src={images[0].url} alt={display_name} />
               }
-                <CardTitle><strong>{display_name}</strong></CardTitle>
-                <CardText><strong>Country: </strong> {country}</CardText>
-                <CardText><strong>Email: </strong>{email}</CardText> 
-            </StyledCard>
+              {display_name}
+              {country}
+              {email}
 
             </div>
         }

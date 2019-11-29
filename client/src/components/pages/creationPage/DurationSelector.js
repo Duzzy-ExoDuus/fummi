@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Container, Input, InputGroupAddon, InputGroup, Badge, Button, UncontrolledCollapse } from 'reactstrap'
 
 
-class DurationPicker extends Component {
+class DurationSelector extends Component {
 
   state = { duration: "00:20" }
 
@@ -42,4 +42,4 @@ class DurationPicker extends Component {
   }
 }
 
-export default DurationPicker;
+export default DurationSelector;

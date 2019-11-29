@@ -35,7 +35,6 @@ class UserProfilePage extends Component {
 
 
   render() {
-    console.log(this.props.user)
     return (
       <Container fluid>
           <Div1>

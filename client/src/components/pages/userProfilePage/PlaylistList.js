@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types'
 
 import { Container, Row, Col, ListGroup, ListGroupItem, ListGroupItemHeading } from 'reactstrap';
+
 import {Link} from 'react-router-dom'
 import styled from 'styled-components'
 import option from '../../../images/option.png'
 import note from '../../../images/musicNote.png'
 import playListStick from '../../../images/playListStick.png'
+
 
 
 const StyledListGroupItem = styled(ListGroupItem)`
@@ -132,9 +134,7 @@ class PlaylistList extends Component {
           <ListGroupItemHeading>
             <StyledTitle>{item.name}</StyledTitle>
           </ListGroupItemHeading>
-          <Col> </Col>
 
-          </Row>
           <Row>
           <Col><LogoImageNote id="logo" src={note} alt="fireSpot" /></Col>
             <Col>
