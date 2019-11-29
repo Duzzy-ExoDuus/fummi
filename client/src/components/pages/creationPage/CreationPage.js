@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Container, Col, Row, Button } from 'reactstrap'
+import { Container, Col, Row } from 'reactstrap'
 import SeedSelector from './SeedSelector/SeedSelector'
 import AttributeSelector from './AttributeSelector'
 import DurationSelector from './DurationSelector'

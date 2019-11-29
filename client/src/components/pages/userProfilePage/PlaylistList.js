@@ -134,6 +134,7 @@ class PlaylistList extends Component {
           <ListGroupItemHeading>
             <StyledTitle>{item.name}</StyledTitle>
           </ListGroupItemHeading>
+         </Row>
 
           <Row>
           <Col><LogoImageNote id="logo" src={note} alt="fireSpot" /></Col>

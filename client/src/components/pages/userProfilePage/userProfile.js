@@ -5,6 +5,8 @@ import profile from '../../../images/profile.png'
 import me from '../../../images/defaultProfile.png'
 
 import { Container } from 'reactstrap'
+import Card from "reactstrap/es/Card";
+import CardImg from "reactstrap/es/CardImg";
 
 
 const StyledCard= styled(Card)`
