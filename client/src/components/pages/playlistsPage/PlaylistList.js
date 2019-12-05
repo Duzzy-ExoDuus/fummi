@@ -24,6 +24,7 @@ font-size: 15px;
 }
 @media screen and (max-width: 500px) {
   font-family:"Montserrat", sans-serif;
+  font-weight:lighter;
   margin-top:1px;
   border-style: solid;
   border-color: gray ;
@@ -61,45 +62,45 @@ display: block;
 `
 const StyledDiv = styled.div`
 @media screen and (max-width: 500px) {
-  position:absolute;
-  left:0;
-  right:0;
-  width: 100%;
-  color: black;
+  // position:absolute;
+  // left:0;
+  // right:0;
+  // width: 100%;
+  // color: black;
   }
 
 `
 const H1 = styled.h1`
 @media screen and (max-width: 500px) {
-  margin-left: 18px;
+  text-align:center;
   font-family:"Montserrat", sans-serif;
   font-style: normal;
   font-weight: 800	
  font-size: 30px;
   padding-top: 10px;
-  margin-left: 50px;
   
-  &::after {
-    background: url(${playListStick}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
-    content: "";
-    display: inline-block;
-    height: 100px;
-    margin-left: 8px;
-    position: relative;
-    top: -10px;
-    vertical-align: middle;
-    width: 120px;
-}
+//   &::after {
+//     background: url(${playListStick}) no-repeat scroll center center / 100% auto rgba(255, 255, 255, 0);
+//     content: "";
+//     display: inline-block;
+//     height: 100px;
+//     margin-left: 8px;
+//     position: relative;
+//     top: -10px;
+//     vertical-align: middle;
+//     width: 120px;
+// }
 
 `
 const StyledTitle = styled.p`
 font-size 20px;
-font-weight:bold;
+font-weight:normal;
+text-align:center;
 `
 
 const StyledListGroup = styled(ListGroup)`
 @media screen and (max-width: 500px) {
-  margin-top:110px;
+   margin-top:10px;
   width:100%;
   position:absolute;
   left:0;
@@ -130,10 +131,10 @@ class PlaylistList extends Component {
         <StyledListGroupItem key={item.name}>
          
          <Row>
-         <Col> </Col>
-          <ListGroupItemHeading>
-            <StyledTitle>{item.name}</StyledTitle>
-          </ListGroupItemHeading>
+         <Col><ListGroupItemHeading>
+             <StyledTitle>{item.name}</StyledTitle>
+         </ListGroupItemHeading> </Col>
+
          </Row>
 
           <Row>
@@ -155,9 +156,9 @@ class PlaylistList extends Component {
             <></> 
             :
             <>
-            <StyledDiv>
-              <H1>Playlists</H1>
-            </StyledDiv>
+            {/*<StyledDiv>*/}
+            {/*  <H1>Playlists</H1>*/}
+            {/*</StyledDiv>*/}
               <StyledListGroup>
                 {playlistsToRender}
               </StyledListGroup>

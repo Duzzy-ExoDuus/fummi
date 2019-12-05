@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import logo from '../../images/logo.png'
 
 import {
   Collapse,
@@ -15,17 +16,26 @@ import {
 
 
 const StyledLink = styled(Link)`
-color: white;
+color: black;
+font-family: Montserrat;
+display:block;
+margin-left:auto;
+margin-right:auto;
 text-decoration: none;
-font-size:20px;
-padding: 10px;
+font-size:15px;
+text-align:center;
+padding: 5px;
   :hover{
     color:gray;
     text-decoration: none;
   }
   `;
 
-  
+const ImageStyled = styled.img`
+float: left;
+width:10%;
+marginTop: -7;
+  `;
 
 
 
@@ -51,9 +61,11 @@ class NavBar extends Component {
 
   render() {
     return (
-      <Navbar style={{backgroundColor: "#E0E0E0"}} light expand="md" className="mb-5">
+      <Navbar style={{backgroundColor: "#E0E0E0", marginBottom:0}} light expand="md" className="mb-5">
         <Container>
-          <NavbarBrand style={{fontFamily:"Montserrat", fontWeight :"lighter", color: 'black'}}> SeedBox</NavbarBrand>
+          <NavbarBrand style={{fontFamily:"Montserrat", fontWeight :"lighter", color: 'black'}}>
+              <img src={logo} style={{width:50, marginTop: -7}} /> SeedBox
+          </NavbarBrand>
           <NavbarToggler style={{backgroundColor: 'white'}} onClick={this.toggle} />
           <Collapse  isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
@@ -65,6 +77,9 @@ class NavBar extends Component {
               </NavItem>
               <NavItem>
                 <StyledLink tag={Link} onClick={this.close} to="/profile">My profile</StyledLink>
+              </NavItem>
+              <NavItem>
+                <StyledLink tag={Link} onClick={this.close} to="/playlists">My playlists</StyledLink>
               </NavItem>
               <NavItem>
                 <StyledLink tag={Link} onClick={this.close} to="/create">Create playlist</StyledLink>

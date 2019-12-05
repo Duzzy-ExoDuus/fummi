@@ -6,7 +6,6 @@ import { getUser } from '../../../actions/userActions'
 import { fetchPlaylists } from '../../../actions/playlistActions'
 
 import { Container, Row, Col } from 'reactstrap';
-import PlaylistList from './PlaylistList';
 import UserProfile from './userProfile'
 import styled from 'styled-components'
 
@@ -40,9 +39,7 @@ class UserProfilePage extends Component {
           <Div1>
             <UserProfile user={this.props.user} />
           </Div1>
-          <Div2>
-            <PlaylistList playlists={this.props.playlists} />
-          </Div2>
+
          
 
       </Container>

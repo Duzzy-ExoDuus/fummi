@@ -7,6 +7,8 @@ import me from '../../../images/defaultProfile.png'
 import { Container } from 'reactstrap'
 import Card from "reactstrap/es/Card";
 import CardImg from "reactstrap/es/CardImg";
+import CardTitle from "reactstrap/es/CardTitle";
+import CardText from "reactstrap/es/CardText";
 
 
 const StyledCard= styled(Card)`
@@ -93,13 +95,19 @@ class UserProfile extends Component {
             <></>
             :
             <div>
+                <StyledDivH1>
+                  <H1>Profile</H1>
+                </StyledDivH1>
 
-              {
-                images && images[0] && <img src={images[0].url} alt={display_name} />
-              }
-              {display_name}
-              {country}
-              {email}
+                <StyledCard body>
+                  {
+                    images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />? images && images[0] && <ProfileImage top width='20%' src={images[0].url} alt={display_name} />:
+                        <DefaultProfileImage/>
+                  }
+                  <CardTitle><strong>{display_name}</strong></CardTitle>
+                  <CardText><strong>Country: </strong> {country}</CardText>
+                  <CardText><strong>Email: </strong>{email}</CardText>
+                </StyledCard>
 
             </div>
         }

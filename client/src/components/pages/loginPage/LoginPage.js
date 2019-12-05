@@ -24,7 +24,7 @@ text-align: center;
 font-size:8vw;
 color: #8B9358;
 font-family: "Montserrat";
-font-weight: lighter;
+font-weight: 100;
   
 @media (max-width: 500px) {
   font-size:18vw;

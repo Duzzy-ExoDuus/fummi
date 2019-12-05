@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import { UserProfilePage, CreationPage, Navigation, AboutPage, LoginPage, HomePage } from './components'
 import EditPage from './components/pages/editPage/EditPage';
+import PlaylistsPage from "./components/pages/playlistsPage/PlaylistsPage";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/about" component={AboutPage} />
               <Route path="/create" component={CreationPage} />
               <Route path="/profile" component={UserProfilePage} />
+              <Route path="/playlists" component={PlaylistsPage} />
               <Route path="/playlist" component={EditPage} />} />
             </Switch>
           </>

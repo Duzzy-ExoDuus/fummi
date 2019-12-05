@@ -13,7 +13,7 @@ const H1 = styled.h1`
 font-size:8vw;
 font-family: "Montserrat", sans-serif;
 @media (max-width: 500px) {
-  visibility: hidden;
+  visibility: visible;
   display: block;
 	margin-left: auto;
   margin-right: auto;
@@ -79,56 +79,13 @@ margin-top:10px;
   display: block;
 	margin-left: auto;
   margin-right: auto;
-  visibility: hidden;
+  visibility: visible;
 
 }
 `
 
 
-const DivImage1 = styled.div`
-  @media screen and (max-width: 500px) {
-    float: left;
-    padding:5px;
-    width: 60px;
-    content: url(${thinking});
-  }
-`
-const DivImage2 = styled.div`
-  @media screen and (max-width: 500px) {
-    float:right;
-    padding:5px;
-    margin-left:-10px;
-    margin-top:-30px;
-    width: 70px;
-    content: url(${pointing});
-  }
-`
 
-const DivImage3 = styled.div`
-  @media screen and (max-width: 500px) {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:30px;
-
-    padding:5px;
-    width: 250px;
-    content: url(${rateUs});
-  }
-`
-
-
-const DivImage4 = styled.div`
-  @media screen and (max-width: 500px) {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top:-70px;
-    padding:5px;
-    width: 200px;
-    content: url(${welcomeImage});
-  }
-`
 class HomePage extends Component {
   state = {}
   render() {
@@ -138,19 +95,15 @@ class HomePage extends Component {
         <Row className='md'>
           <H1>Welcome!</H1>
         </Row>
-        <DivImage4 />
 
           <Div1  >
-          <DivImage1 id="logo"  />
             <H3 >What is the SeedBox?</H3>
             <p>Read <Link to="/about">about</Link> it here! </p>
           </Div1>
           <Div2 >
-          <DivImage2 id="logo"/>
             <H3><Link to="/create">Get started</Link> with the SeedBox</H3>
           </Div2>
           <Div3>
-          <DivImage3  onClick={() => alert('Thanks! Come back later, when we have implemented this ;)')} id="logo"/>
             <StyledButton>Rate our app!</StyledButton>
           </Div3>
       </Container>
