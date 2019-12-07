@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import spotifyLogo from '../../../images/spotifyLogo.png'
+import seed from '../../../images/zaadje.png'
 
 
 
@@ -13,14 +13,14 @@ display: block;
 	background-color: #9C9C9C; 
 	border: none;
 	color: white;
-  padding: 15px; 
+    //padding: 30px; 
 	text-decoration: none;
 	cursor: pointer;
 	border-radius: 65px;
+	text-align:center;
   font-family:"Montserrat", sans-serif;
 	font-size: 25px;
 	line-height: 22px;
-    text-align: center;
 
 
     @media screen and (max-width: 400px) {
@@ -38,16 +38,17 @@ display: block;
 
  
     &::before {
-        background: url(${spotifyLogo}) no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+        background: url(${seed}) no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
         content: "";
         display: inline-block;
         color: #fff;
-        height: 30px;
-        margin-right: 13px;
+        height: 60px;
         position: relative;
         top: -2px;
         vertical-align: middle;
-        width: 30px;
+        width: 34px;
+        padding:20px;
+        // margin-left:14px;
     }
 
 `

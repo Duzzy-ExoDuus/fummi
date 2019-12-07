@@ -26,7 +26,7 @@ function App() {
           <>
             <Navigation />
             <Switch>
-              <Route path="/" exact component={HomePage}/>
+              <Route path="/" exact component={PlaylistsPage}/>
               <Route path="/about" component={AboutPage} />
               <Route path="/create" component={CreationPage} />
               <Route path="/profile" component={UserProfilePage} />

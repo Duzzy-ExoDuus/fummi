@@ -57,7 +57,6 @@ display: block;
     float:left;   
     padding:0px;
     width: 25px;
-    margin-top:-30px;
   }
 `
 const StyledDiv = styled.div`
@@ -67,6 +66,17 @@ const StyledDiv = styled.div`
   // right:0;
   // width: 100%;
   // color: black;
+  }
+
+`
+const ThreeDotsDiv = styled.div`
+@media screen and (max-width: 500px) {
+      display:block;
+      float:right;
+      // margin-left:auto;
+      // margin-right:auto;
+      margin-top:-20px;
+      cursor:pointer;
   }
 
 `
@@ -100,11 +110,8 @@ text-align:center;
 
 const StyledListGroup = styled(ListGroup)`
 @media screen and (max-width: 500px) {
-   margin-top:10px;
+  margin-top:-100px;
   width:100%;
-  position:absolute;
-  left:0;
-  right:0;
 }
 `
 
@@ -129,7 +136,7 @@ class PlaylistList extends Component {
     let playlistsToRender = items ?
       items.map(item =>
         <StyledListGroupItem key={item.name}>
-         
+            <Col><LogoImageNote id="logo" src={note} alt="fireSpot" /></Col>
          <Row>
          <Col><ListGroupItemHeading>
              <StyledTitle>{item.name}</StyledTitle>
@@ -138,11 +145,17 @@ class PlaylistList extends Component {
          </Row>
 
           <Row>
-          <Col><LogoImageNote id="logo" src={note} alt="fireSpot" /></Col>
+              <Col></Col>
             <Col>
             Songs: {item.tracks.total}
             </Col>
-          <Col><LogoImageEdit id="logo" src={option} alt="fireSpot" /></Col>
+          <Col>
+              <ThreeDotsDiv>
+              <svg width="12" height="24" viewBox="0 0 12 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd" d="M6 8C7.1 8 8 7.1 8 6C8 4.9 7.1 4 6 4C4.9 4 4 4.9 4 6C4 7.1 4.9 8 6 8ZM6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM6 16C4.9 16 4 16.9 4 18C4 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16Z" fill="black"/>
+              </svg>
+             </ThreeDotsDiv>
+          </Col>
           </Row>
           
         </StyledListGroupItem>)
