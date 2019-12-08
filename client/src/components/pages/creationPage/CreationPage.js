@@ -101,10 +101,12 @@ class CreationPage extends Component {
                 <hr/>
 
                 <Row>
-                    <Col>
+                    <Col xs="12">
                         <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate}/>
                     </Col>
-                    <Col>
+                </Row>
+                <Row>
+                    <Col xs="12">
                         <hr/>
                         {
                             this.state.grownPlaylist &&
@@ -117,13 +119,12 @@ class CreationPage extends Component {
                                 () => {
                                     this.getPlaylist()
                                 }}>
-                                Grow playlist
+                                GROW YOUR PLAYLIST
                             </Button>
                         </div>
-
-
                     </Col>
                 </Row>
+
 
             </Container>
         );
