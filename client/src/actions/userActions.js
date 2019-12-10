@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_USER, LOADING_USER } from './types';
+import { GET_USER, LOADING_USER, LOGOUT_USER } from './types';
 
 export const getUser = accessToken => dispatch => {
   dispatch(setUserLoading());
@@ -18,5 +18,11 @@ export const getUser = accessToken => dispatch => {
 export const setUserLoading = () => {
   return {
     type: LOADING_USER
+  }
+};
+
+export const logOutUser = () => {
+  return {
+    type: LOGOUT_USER
   }
 };

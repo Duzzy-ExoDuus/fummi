@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import {Col, Container, Row} from 'reactstrap'
 import SearchBar from './SeedSearchBar';
-import SeedDisplay from './SeedDisplay';
+import SeedDisplay from '../SeedDisplay';
 
 class SeedSelector extends Component {
 
@@ -36,12 +36,12 @@ class SeedSelector extends Component {
             <Container>
                 <Row>
                     <Col>
-                        <SearchBar addSeed={this.addSeed}/>
+                        <SeedDisplay seeds={this.state.seeds} removeSeed={this.removeSeed}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <SeedDisplay seeds={this.state.seeds} removeSeed={this.removeSeed}/>
+                        <SearchBar addSeed={this.addSeed}/>
                     </Col>
                 </Row>
             </Container>

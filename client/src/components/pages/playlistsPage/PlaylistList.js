@@ -69,7 +69,7 @@ class PlaylistList extends Component {
         const {items, loading} = this.props.playlists;
         let playlistsToRender = items ?
             items.map(item =>
-                <ListItem>
+                <ListItem key={item.name}>
                     <CoverImageDiv><CoverImage src={item.images[0].url}/></CoverImageDiv>
                     <NameDiv><NameHeader>{item.name}</NameHeader></NameDiv>
                     <InfoDiv>{item.tracks.total} tracks</InfoDiv>
@@ -77,7 +77,7 @@ class PlaylistList extends Component {
                         <svg style={{marginTop: "100%", cursor: "pointer"}} width="18" height="36" viewBox="0 0 12 24"
                              fill="none"
                              xmlns="http://www.w3.org/2000/svg">
-                            <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd"
+                            <path opacity="0.54" fillRule="evenodd" clipRule="evenodd"
                                   d="M6 8C7.1 8 8 7.1 8 6C8 4.9 7.1 4 6 4C4.9 4 4 4.9 4 6C4 7.1 4.9 8 6 8ZM6 10C4.9 10 4 10.9 4 12C4 13.1 4.9 14 6 14C7.1 14 8 13.1 8 12C8 10.9 7.1 10 6 10ZM6 16C4.9 16 4 16.9 4 18C4 19.1 4.9 20 6 20C7.1 20 8 19.1 8 18C8 16.9 7.1 16 6 16Z"
                                   fill="black"/>
                         </svg>

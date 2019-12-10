@@ -27,31 +27,30 @@ border-width: 1px;
 &::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
+  height: 20px;
+  width: 20px;
+  border-radius: 30px;
+  background: #FDAB9F;
   cursor: pointer;
-  margin-top: -8px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
 }
 &::-moz-range-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
+  height: 20px;
+  width: 20px;
+  border-radius: 30px;
+  background: #191414;
   cursor: pointer;
 }
 
 ::-ms-thumb {
   box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
   border: 1px solid #000000;
-  height: 36px;
-  width: 16px;
-  border-radius: 3px;
-  background: #ffffff;
+  height: 20px;
+  width: 20px;
+  border-radius: 30px;
+  background: #191414;
   cursor: pointer;
 }
 /*

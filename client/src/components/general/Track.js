@@ -12,13 +12,13 @@ class Track extends Component {
     };
 
     render() {
-        console.log(this.props);
-        const {artists, name, preview_url} = this.props.track;
+        const {artists, name, preview_url, album} = this.props.track;
         let artistList = artists.map(artist => artist.name + ', ');
         artistList[artistList.length - 1] = artistList[artistList.length - 1].substring(0, artistList[artistList.length - 1].length - 2);
         return (
             <>
                 <Row>
+                    <img src={album.images[0].url} width="10%" height="auto" alt="" />
                     <Col xs="4">
                         {name}
                     </Col>

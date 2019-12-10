@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../../images/logo.png'
 
+import { logOutUser } from '../../actions/userActions'
+
 import {
   Collapse,
   Navbar,
@@ -10,7 +12,6 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
   Container
 } from 'reactstrap'
 
@@ -31,14 +32,6 @@ padding: 5px;
   }
   `;
 
-const ImageStyled = styled.img`
-float: left;
-width:10%;
-marginTop: -7;
-  `;
-
-
-
 class NavBar extends Component {
   state = {
     isOpen: false
@@ -56,15 +49,12 @@ class NavBar extends Component {
     })
   }
 
-  
-
-
   render() {
     return (
       <Navbar style={{backgroundColor: "#E0E0E0", marginBottom:0}} light expand="md" className="mb-5">
         <Container>
           <NavbarBrand style={{fontFamily:"Montserrat", fontWeight :"lighter", color: 'black'}}>
-              <img src={logo} style={{width:50, marginTop: -7}} /> SeedBox
+              <img src={logo} style={{width:50, marginTop: -7}} alt="seedbox" /> SeedBox
           </NavbarBrand>
           <NavbarToggler style={{backgroundColor: 'white'}} onClick={this.toggle} />
           <Collapse  isOpen={this.state.isOpen} navbar>
@@ -76,16 +66,16 @@ class NavBar extends Component {
                 <StyledLink tag={Link} onClick={this.close} to="/about">About</StyledLink>
               </NavItem>
               <NavItem>
-                <StyledLink tag={Link} onClick={this.close} to="/profile">My profile</StyledLink>
-              </NavItem>
-              <NavItem>
                 <StyledLink tag={Link} onClick={this.close} to="/playlists">My playlists</StyledLink>
               </NavItem>
               <NavItem>
                 <StyledLink tag={Link} onClick={this.close} to="/create">Create playlist</StyledLink>
               </NavItem>
               <NavItem>
-                <StyledLink href="/">Log out</StyledLink>
+                <StyledLink onClick={() => {
+                  console.log("clicked")
+                  logOutUser()
+                }}>LogOut</StyledLink>
               </NavItem>
             </Nav>
           </Collapse>

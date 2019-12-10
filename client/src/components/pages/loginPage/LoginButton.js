@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import spotifyLogo from '../../../images/spotifyLogo.png'
-import seed from "../../../images/zaadje.png";
 
 
 

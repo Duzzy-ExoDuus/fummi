@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getUser } from '../../../actions/userActions'
 import { fetchPlaylists } from '../../../actions/playlistActions'
 
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import UserProfile from './userProfile'
 import styled from 'styled-components'
 
@@ -19,12 +19,7 @@ width:40%;
 }
 
 `
-const Div2 = styled.div`
-overflow: hidden; 
-@media screen and (max-width: 500px) {
-  width:100%
-}
-`
+
 class UserProfilePage extends Component {
 
   componentDidMount() {

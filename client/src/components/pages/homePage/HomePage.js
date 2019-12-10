@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { Container, Col, Row, Button } from 'reactstrap'
+import { Container, Row } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import thinking from '../../../images/thinking.png'
-import pointing from '../../../images/pointing.png'
-import rateUs from '../../../images/rateUs.png'
-import welcomeImage from '../../../images/welcome.png'
-
-
 
 const H1 = styled.h1`
 font-size:8vw;
