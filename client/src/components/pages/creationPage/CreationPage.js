@@ -119,15 +119,16 @@ class CreationPage extends Component {
     render() {
         return (
             <Container>
-                <button onClick={() => console.log(this.state)}>debug</button>
                 {
                     this.state.seedSelection ?
-                        <SeedSelectorPage updateSeeds={seeds => {
-                            console.log(seeds)
-                            this.setState({seeds})}} close={() => this.setState({ seedSelection: false })} />
+                        <SeedSelectorPage seeds={this.state.seeds}
+                            updateSeeds={seeds => {
+                                this.setState({ seeds })
+                            }} close={() => this.setState({ seedSelection: false })}
+                        />
                         :
                         <>
-                            <Button onClick={() => this.setState({ seedSelection: true })} />
+                            <Button onClick={() => this.setState({ seedSelection: true })}>Pick some seeds</Button>
                             <SeedDisplay seeds={this.state.seeds} removeSeed={seed => this.removeSeed(seed)} />
                             <hr />
                             <Row>
@@ -148,9 +149,8 @@ class CreationPage extends Component {
                                         <Button color="success" onClick={
                                             () => {
                                                 this.getPlaylist()
-                                            }}>
-                                            GROW YOUR PLAYLIST
-                            </Button>
+                                            }}>GROW YOUR PLAYLIST
+                                            </Button>
                                     </div>
                                 </Col>
                             </Row>

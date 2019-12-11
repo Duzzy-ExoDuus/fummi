@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../../images/logo.png'
 
-import { logOutUser } from '../../actions/userActions'
-
 import {
   Collapse,
   Navbar,
@@ -72,10 +70,7 @@ class NavBar extends Component {
                 <StyledLink tag={Link} onClick={this.close} to="/create">Create playlist</StyledLink>
               </NavItem>
               <NavItem>
-                <StyledLink onClick={() => {
-                  console.log("clicked")
-                  logOutUser()
-                }}>LogOut</StyledLink>
+                <StyledLink href="/" to="/">LogOut</StyledLink>
               </NavItem>
             </Nav>
           </Collapse>

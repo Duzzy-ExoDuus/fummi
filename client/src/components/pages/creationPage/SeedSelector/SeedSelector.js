@@ -7,7 +7,7 @@ import SeedDisplay from '../SeedDisplay';
 class SeedSelector extends Component {
 
     state = {
-        seeds: []
+        seeds: this.props.seeds
     };
 
     addSeed = addSeed => {

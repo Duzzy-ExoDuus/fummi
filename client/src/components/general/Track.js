@@ -58,7 +58,7 @@ class Track extends Component {
                             instrumentalness: <Progress color='info'
                                                         value={this.props.audioFeatures.instrumentalness * 100}/>
                             speechiness: <Progress color='success' value={this.props.audioFeatures.speechiness * 100}/>
-                            Tempo: <Progress color='warning' value={this.props.audioFeatures.tempo}/>
+                            Tempo: <Progress color='warning' value={(this.props.audioFeatures.tempo-50)/1.7}/>
                             Valence: <Progress color='danger' value={this.props.audioFeatures.valence * 100}/>
                         </div>
                     </Collapse>

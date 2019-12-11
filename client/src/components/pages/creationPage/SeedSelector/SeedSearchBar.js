@@ -39,7 +39,6 @@ class SearchBar extends Component {
     render() {
         return (
             <>
-                <h2>Get started by finding some seeds!</h2>
                 <input
                     onChange={e => {
                         this.getSearchResults(e.target.value)

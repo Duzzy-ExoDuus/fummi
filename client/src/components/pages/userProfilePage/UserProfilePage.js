@@ -34,9 +34,6 @@ class UserProfilePage extends Component {
           <Div1>
             <UserProfile user={this.props.user} />
           </Div1>
-
-         
-
       </Container>
     );
   }
@@ -55,4 +52,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { getUser, fetchPlaylists })(UserProfilePage);
-

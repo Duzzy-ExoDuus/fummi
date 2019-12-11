@@ -8,13 +8,12 @@ import Track from './Track';
 class Playlist extends Component {
 
   render() {
-    const { tracks, audioFeatures } = this.props
-    console.log(tracks, audioFeatures)
+    const { tracks, audioFeatures, removeTrack } = this.props
     return (
       <Container>
         {
           tracks.map(function(track, index) {
-            return <> <div key={track.id}>{index+1}<Track track={track} audioFeatures={audioFeatures[index]} /></div><hr /></>
+            return <div key={track.id}>{index+1}<Track track={track} audioFeatures={audioFeatures[index]} /><button onClick={() => removeTrack(track.id)}>-</button><hr /></div>
           })
         }
       </Container>

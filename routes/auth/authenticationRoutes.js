@@ -20,9 +20,8 @@ module.exports = (app) => {
       querystring.stringify({
         response_type: 'code',
         client_id: client_id,
-        scope: 'user-read-private user-read-email',
-        redirect_uri,
-        // show_dialog: true
+        scope: 'user-read-private user-read-email playlist-modify',
+        redirect_uri
       }))
   })
 
