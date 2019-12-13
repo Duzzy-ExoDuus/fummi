@@ -4,24 +4,13 @@ import SeedRecommender from './SeedRecommender';
 import styled from "styled-components";
 
 const ConfirmButton = styled.button`
-    margin-top: 10px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: rgba(90,90,90,0.98); 
-    border: none;
-    color: white;
-    //padding: 30px; 
-    cursor: pointer;
-    border-radius: 65px;
-    text-align:center;
-    font-family:"Roboto";
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 22px;
-    padding: 1%;
-    width:60vw;  
-   
+    color:#009688;
+    font-family: Roboto;
+    font-weight: bolder;
+    font-size:1rem;
+    float:right;
+    margin-right: 10%;
+    margin-bottom:1%;
 `;
 
 const HeaderDiv = styled.div`
@@ -55,11 +44,11 @@ class SeedSelectorPage extends Component {
         return (
             <div>
                 <HeaderDiv>
-                    Pick your seeds
+                    Search for seeds
                 </HeaderDiv>
                 <br/>
                 <SeedSelector seeds={this.props.seeds} updateSeeds={this.props.updateSeeds} close={this.props.close}/>
-                <ConfirmButton onClick={this.props.close}>Confirm seeds</ConfirmButton>
+                <ConfirmButton onClick={this.props.close}>Confirm</ConfirmButton>
                 <br/>
                 <HeaderDiv2>
                     Recommended seeds

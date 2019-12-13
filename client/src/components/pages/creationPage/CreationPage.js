@@ -340,7 +340,7 @@ class CreationPage extends Component {
                                                 () => {
                                                     this.getPlaylist();
 
-                                                }}>GROW YOUR PLAYLIST
+                                                }}>Grow your playlist
                                             </Button>
                                             {
                                                 this.state.grownPlaylist &&
