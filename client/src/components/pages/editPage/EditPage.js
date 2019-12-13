@@ -10,10 +10,53 @@ import Playlist from '../../general/Playlist'
 
 import { buildUrl, buildHeader } from '../../../util/queryBuilder'
 
+import styled from "styled-components";
+
+const SaveButton = styled.button`
+   margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(90,90,90,0.98); 
+  border: none;
+  color: white;
+  //padding: 30px; 
+  cursor: pointer;
+  border-radius: 65px;
+  text-align:center;
+  font-family:"Roboto";
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 22px;
+  padding: 1%;
+  width:80%;  
+`;
+
+const CreateLink = styled(Link)`
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(90,90,90,0.98); 
+  border: none;
+  color: white;
+  //padding: 30px; 
+  cursor: pointer;
+  border-radius: 65px;
+  text-align:center;
+  font-family:"Roboto";
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 22px;
+  padding: 1%;
+  width:80%;  
+`;
+
 class EditPage extends Component {
 
   state = {
-    playlistName: "Playlist created with SeedBox",
+    playlistName: "",
+    tryToSave:false,
     playlist: {},
     tracks: [],
     audioFeatures: []
@@ -70,8 +113,23 @@ class EditPage extends Component {
   render() {
     return (
       <>
-        <button onClick={() => this.savePlayListToSpotify()}>Save playlist to spotify</button>
-        <Link to="/create">Create another playlist</Link>
+        <SaveButton onClick={() => this.setState({tryToSave: !this.state.tryToSave})}>Save playlist to spotify</SaveButton>
+        {this.state.tryToSave
+            ?
+            <>
+              <br/>
+              <input onChange={
+                e => this.setState({playListName:e.target.value})
+              }
+                     value={this.state.playlistName}
+                     placeholder="Playlist created with SeedBox"/>
+              <button onClick={()=> this.savePlayListToSpotify()}>Save</button>
+            </>
+            :
+            <></>
+        }
+        <br/>
+        <CreateLink to="/create">Create another playlist</CreateLink>
         <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures} removeTrack={this.removeTrack} />
       </>
     );

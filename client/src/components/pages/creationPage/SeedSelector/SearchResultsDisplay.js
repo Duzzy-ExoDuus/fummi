@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 import Track from '../../../general/Track';
+import SeedTrack from "../../../general/SeedTrack";
+import styled from "styled-components"
+
+const AddSVG = styled.svg`
+  float:left;
+  width: 10vw;
+`
+
+const ArtistDiv = styled.div`
+  width:100%;
+  overflow: hidden;
+`
 
 class SearchResultDisplay extends Component {
 
@@ -7,40 +19,45 @@ class SearchResultDisplay extends Component {
         const { searchResult, addSeed } = this.props;
         return (
             <>
-                <div style={{ display: 'flex' }}>
+
+                <div style={{  width: "100%"}}>
                     {
                         searchResult && searchResult.tracks &&
                         <>
-                            <div style={{ overflow: 'hidden', margin: '5px' }}>
-                                <h3>Track</h3>
-                                <hr />
-                                {
-                                    searchResult.tracks.items.map(
-                                        track =>
-                                            <div style={{ padding: "1%" }} key={track.id}>
-                                                <Track track={track} />
-                                                <button onClick={() => addSeed(track)}>+</button>
-                                            </div>
-                                    )
-                                }
-                            </div>
+                            <h3>Track</h3>
+                            <hr />
+                            {
+                                searchResult.tracks.items.map(
+                                    track =>
+                                        <div>
+                                            <SeedTrack track={track}/>
+                                            <AddSVG
+                                                onClick={() => addSeed(track)}
+                                                width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd" d="M11 5V11H5V13H11V19H13V13H19V11H13V5H11Z" fill="black"/>
+                                            </AddSVG>
+
+
+                                        </div>
+                                )
+                            }
                         </>
                     }
                     {
                         searchResult && searchResult.artists &&
-                        <>
+                        <ArtistDiv>
                             <h3>Artist</h3>
                             <hr />
-                            <div style={{ overflow: 'hidden', margin: '5px' }}>
-                                {
-                                    searchResult.artists.items.map(artist =>
-                                        <div key={artist.id} style={{ padding: "1%" }}>
-                                            {artist.name}
-                                            <button onClick={() => addSeed(artist)}>+</button>
-                                        </div>)
-                                }
-                            </div>
-                        </>
+                            {
+                                searchResult.artists.items.map(
+                                    artist =>
+                                    <>
+                                        {artist.name}
+                                        <button onClick={() => addSeed(artist)}>+</button>
+                                    </>
+                                )
+                            }
+                        </ArtistDiv>
                     }
                 </div>
             </>

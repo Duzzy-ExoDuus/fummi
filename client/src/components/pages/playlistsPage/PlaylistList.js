@@ -41,7 +41,10 @@ const NameHeader = styled.h1`
     font-weight:medium;
     margin:auto;
     vertical-align:middle;
-    line-height:300%;
+    //line-height:100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 `;
 
 const NameDiv = styled.div`

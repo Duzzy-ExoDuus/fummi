@@ -8,7 +8,7 @@ class SeedRecommender extends Component {
   render() {
     return (
       <>
-      <div>recommended seeds</div>
+
       </>
     );
   }

@@ -9,13 +9,13 @@ class SeedDisplay extends Component {
         const {seeds, removeSeed} = this.props
         return (
             <Container>
-                <div style={{display: 'flex'}}>
+                <div style={{display: 'block', width:"100%"}}>
                     {
                         seeds.map(
                             seed =>
                                 <div key={seed.id} style={{margin: '10px'}}>
-                                    {seed.name}
                                     <Button color='danger' onClick={() => removeSeed(seed)}>-</Button>
+                                    {seed.name}
                                 </div>
                         )
                     }

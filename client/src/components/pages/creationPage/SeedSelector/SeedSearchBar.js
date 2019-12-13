@@ -5,6 +5,22 @@ import PropTypes from 'prop-types'
 import SearchResultDisplay from './SearchResultsDisplay'
 
 import { buildUrl } from '../../../../util'
+import styled from "styled-components"
+
+const SearchInput = styled.input`
+  width:80vw;
+  padding-left: 5%;
+  display: block;
+  margin:auto;
+  border : 1px solid black;
+  border-radius: 2000px;
+  ::placeholder{
+    
+  };
+  :focus::placeholder{
+  color:transparent;
+  }
+`;
 
 class SearchBar extends Component {
     state = {
@@ -39,13 +55,15 @@ class SearchBar extends Component {
     render() {
         return (
             <>
-                <input
+                <SearchInput
                     onChange={e => {
                         this.getSearchResults(e.target.value)
                     }}
-                    value={this.state.searchString} />
+                    value={this.state.searchString}
+
+                placeholder = "Search an artist/track"/>
                 
-                <button onClick={() => console.log(this.state)}>debvug</button>
+                {/*<button onClick={() => console.log(this.state)}>debvug</button>*/}
                 
                 <SearchResultDisplay searchResult={this.state.searchResult} addSeed={this.addAndClear} />
             </>

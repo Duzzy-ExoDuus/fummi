@@ -34,14 +34,15 @@ class SeedSelector extends Component {
     render() {
         return (
             <Container>
+
                 <Row>
                     <Col>
-                        <SeedDisplay seeds={this.state.seeds} removeSeed={this.removeSeed}/>
+                        <SearchBar addSeed={this.addSeed}/>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <SearchBar addSeed={this.addSeed}/>
+                        <SeedDisplay seeds={this.state.seeds} removeSeed={this.removeSeed}/>
                     </Col>
                 </Row>
             </Container>

@@ -34,6 +34,31 @@ const GrowPlaylistDiv = styled.div`
     justify-content: flex-start;
 `;
 
+const HeaderDiv = styled.div`
+  background-color: rgb(0, 150, 136);
+  color: white;
+  width:100vw;
+  float: left;
+  margin-top: -50px;
+  font-family: Roboto;
+  font-size:large;
+  padding:5%;
+  padding-bottom: 15px;
+`
+
+const HeaderDiv2 = styled.div`
+  background-color: rgb(0, 150, 136);
+  color: white;
+  width:100vw;
+  float: left;
+  //margin-top: -50px;
+  font-family: Roboto;
+  font-size:large;
+  padding:5%;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+ 
+`
 class CreationPage extends Component {
 
     constructor() {
@@ -135,7 +160,7 @@ class CreationPage extends Component {
 
     render() {
         return (
-            <Container>
+            <div style-={{width:"100vw"}}>
                 {
                     this.state.seedSelection ?
                         <SeedSelectorPage seeds={this.state.seeds}
@@ -145,7 +170,8 @@ class CreationPage extends Component {
                         />
                         :
                         <>
-                            <h1>Pick up to 5 seeds</h1>
+                            <HeaderDiv>Pick up to 5 seeds</HeaderDiv>
+                            <br/><br/>
                             <GrowPlaylistDiv>
                                 <Row>
                                     <svg onClick={() => this.setState({ seedSelection: true })}
@@ -211,35 +237,34 @@ class CreationPage extends Component {
                                     <></>
                                     :
                                     <>
+                                        <br/>
+                                        <HeaderDiv2>Adapt your desired features</HeaderDiv2>
+                                        <br/>
+                                        <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
+
                                         <hr />
-                                        <Row>
-                                            <Col xs="12">
-                                                <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
-                                            </Col>
-                                        </Row>
-                                        <Row>
-                                            <Col xs="12">
-                                                <hr />
-                                                {
-                                                    this.state.grownPlaylist &&
-                                                    <Link to={{ pathname: `/playlist/new}`, playlist: this.state.grownPlaylist }}>Edit</Link>
-                                                }
-                                                <DurationSelector />
-                                                <hr />
-                                                <div style={{ padding: "20px" }}>
-                                                    <Button color="success" onClick={
-                                                        () => {
-                                                            this.getPlaylist()
-                                                        }}>GROW YOUR PLAYLIST
-                                                    </Button>
-                                                </div>
-                                            </Col>
-                                        </Row>
+
+                                        <DurationSelector />
+                                        <hr />
+                                        <div style={{ padding: "20px" }}>
+                                            <Button color="success" onClick={
+                                                () => {
+                                                    this.getPlaylist();
+
+                                                }}>GROW YOUR PLAYLIST
+                                            </Button>
+                                            {
+                                                this.state.grownPlaylist &&
+                                                <Link to={{ pathname: `/playlist/new}`, playlist: this.state.grownPlaylist }}>View your playlist</Link>
+                                            }
+                                        </div>
+
+
                                     </>
                             }
                             </>
                 }
-            </Container>
+            </div>
         );
     }
 }
