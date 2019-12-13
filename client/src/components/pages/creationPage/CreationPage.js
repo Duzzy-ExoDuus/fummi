@@ -58,6 +58,10 @@ const HeaderDiv2 = styled.div`
   padding-bottom: 15px;
   margin-bottom: 15px;
  
+`;
+
+const InfoSVG = styled.svg`
+  cursor: pointer;
 `
 class CreationPage extends Component {
 
@@ -227,6 +231,11 @@ class CreationPage extends Component {
                                         </defs>
                                     </svg>
                                     <p style={{fontFamily:"Roboto",fontWeight:"semibold", fontSize:"120%"}}>Add some seeds</p>
+                                    <InfoSVG onclick={() => this.props.history.push("/create")}
+                                                 width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.16666 14.1667H10.8333V9.16667H9.16666V14.1667ZM9.99999 1.66667C5.39999 1.66667 1.66666 5.40001 1.66666 10C1.66666 14.6 5.39999 18.3333 9.99999 18.3333C14.6 18.3333 18.3333 14.6 18.3333 10C18.3333 5.40001 14.6 1.66667 9.99999 1.66667ZM9.99999 16.6667C6.32499 16.6667 3.33332 13.675 3.33332 10C3.33332 6.32501 6.32499 3.33334 9.99999 3.33334C13.675 3.33334 16.6667 6.32501 16.6667 10C16.6667 13.675 13.675 16.6667 9.99999 16.6667ZM9.16666 7.50001H10.8333V5.83334H9.16666V7.50001Z" fill="#979797"/>
+                                    </InfoSVG>
+
                                 </Row>
                             </GrowPlaylistDiv>
 

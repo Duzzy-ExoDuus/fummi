@@ -52,10 +52,37 @@ const CreateLink = styled(Link)`
   width:80%;  
 `;
 
+const PlaylistNameInput = styled.input`
+  width: 60vw;
+  display: block;
+  margin: auto;
+  border-radius: 10px;
+`
+
+const ConfirmSaveButton = styled.button`
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #1DB954; 
+  border: none;
+  color: white;
+  //padding: 30px; 
+  cursor: pointer;
+  border-radius: 65px;
+  text-align:center;
+  font-family:"Roboto";
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 22px;
+  padding: 1%;
+  width:20vw;  
+`
+
 class EditPage extends Component {
 
   state = {
-    playlistName: "",
+    playlistName: "Seedbox Playlist",
     tryToSave:false,
     playlist: {},
     tracks: [],
@@ -118,12 +145,13 @@ class EditPage extends Component {
             ?
             <>
               <br/>
-              <input onChange={
+              <PlaylistNameInput type="text"
+                     onChange={
                 e => this.setState({playListName:e.target.value})
               }
-                     value={this.state.playlistName}
-                     placeholder="Playlist created with SeedBox"/>
-              <button onClick={()=> this.savePlayListToSpotify()}>Save</button>
+                     placeholder="SeedBox Playlist"
+              />
+              <ConfirmSaveButton onClick={()=> this.savePlayListToSpotify()}>Save</ConfirmSaveButton>
             </>
             :
             <></>

@@ -6,12 +6,13 @@ import styled from "styled-components"
 const AddSVG = styled.svg`
   float:left;
   width: 10vw;
-`
+  margin-top: 5%;
+`;
 
 const ArtistDiv = styled.div`
   width:100%;
   overflow: hidden;
-`
+`;
 
 class SearchResultDisplay extends Component {
 

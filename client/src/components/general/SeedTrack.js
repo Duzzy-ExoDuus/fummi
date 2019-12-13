@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 
 const ListItem = styled.div`
-    width:70vw;
+    width:60vw;
     height:24vw;
     float:left;
     

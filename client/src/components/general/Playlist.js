@@ -10,6 +10,7 @@ const DeleteSVG = styled.svg`
   border-radius: 10px;
   width:5vw;
   height:5vw;
+ 
   
 `
 
