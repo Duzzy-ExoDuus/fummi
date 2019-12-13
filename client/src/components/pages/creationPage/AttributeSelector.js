@@ -20,7 +20,7 @@ class AttributeSelector extends Component {
 
         return (
             <Container>
-                <h1>Track attributes</h1>
+                <h1>Adapt your desired features</h1>
                 {
                     slidersToRender
                 }

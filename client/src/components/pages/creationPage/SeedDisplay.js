@@ -20,7 +20,13 @@ class SeedDisplay extends Component {
                         )
                     }
                 </div>
-                <Progress value={20 * seeds.length}/>
+                {
+                    seeds.length > 0
+                        ?
+                        <Progress value={20 * seeds.length}/>
+                        :
+                        "You haven't picked any seeds yet"
+                }
             </Container>
         );
     }

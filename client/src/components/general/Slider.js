@@ -54,6 +54,18 @@ border-width: 1px;
 }
 `;
 
+const SliderButton = styled.button`
+  border-radius: 30px;
+  border: 1px solid  ;
+  background-color: #c9c9c9;
+  box-shadow: transparent;
+  font-family: Roboto;
+  color:white;
+  padding:1%;
+  padding-left: 3%;
+  padding-right: 3%;
+`;
+
 class Slider extends Component {
     state = {value: 50}
 
@@ -71,8 +83,7 @@ class Slider extends Component {
         return (
             <>
                 <div style={nameStyle}>
-                    <Button id={`${this.props.name}-toggler`}>{this.props.name} <Badge
-                        color='info'>{this.state.value}</Badge></Button>
+                    <SliderButton id={`${this.props.name}-toggler`}>{this.props.name}: {this.state.value}</SliderButton>
                 </div>
                 <UncontrolledCollapse toggler={`${this.props.name}-toggler`}>
                     {this.props.description}
