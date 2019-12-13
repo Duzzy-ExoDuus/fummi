@@ -1,18 +1,18 @@
 import axios from 'axios'
 
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
+import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
-import { Container, Col, Row } from 'reactstrap'
+import {Row} from 'reactstrap'
 import SeedSelectorPage from './SeedSelector/SeedSelectorPage'
 import AttributeSelector from './AttributeSelector'
 import DurationSelector from './DurationSelector'
 
 
-import { buildUrl } from '../../../util/queryBuilder'
-import { attributes } from '../../../assets/attributes'
+import {buildUrl} from '../../../util/queryBuilder'
+import {attributes} from '../../../assets/attributes'
 import Button from './GrowButton'
 import SeedDisplay from './SeedDisplay'
 import styled from "styled-components";
@@ -44,7 +44,7 @@ const HeaderDiv = styled.div`
   font-size:large;
   padding:5%;
   padding-bottom: 15px;
-`
+`;
 
 const HeaderDiv2 = styled.div`
   background-color: rgb(0, 150, 136);
@@ -62,86 +62,137 @@ const HeaderDiv2 = styled.div`
 
 const InfoSVG = styled.svg`
   cursor: pointer;
-`
+`;
+
+
+/* The Modal (background) */
+const ModalDiv = styled.div`
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+`;
+
+/* Modal Content */
+const ModalContent = styled.div`{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+`;
+
+/* The Close Button */
+const CloseSpan = styled.span`
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    :hover{color: #000;
+    text-decoration: none;
+    cursor: pointer;}
+    :focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
+`;
+
+const H2 = styled.h2`
+  font-family: Roboto;
+`;
+
+const P = styled.p`
+  font-family: Roboto;
+`;
+
 class CreationPage extends Component {
 
     constructor() {
-        super()
-        const sliders = {}
-        attributes.forEach(attribute => sliders[attribute.name] = 50)
+        super();
+        const sliders = {};
+        attributes.forEach(attribute => sliders[attribute.name] = 50);
         this.state = {
             seeds: [],
             sliders: [],
             limit: 100,
             grownPlaylist: null,
-            seedSelection: false
+            seedSelection: false,
+            infoPopUp: false
         }
     }
 
     handleSliderUpdate = e => {
-        let name = e.target.name
-        let value = e.target.value
+        let name = e.target.name;
+        let value = e.target.value;
         this.setState(prevState => {
-            const sliders = prevState.sliders
-            const newSlider = { name: name, value: value }
-            sliders.push(newSlider)
+            const sliders = prevState.sliders;
+            const newSlider = {name: name, value: value};
+            sliders.push(newSlider);
             return {
                 ...prevState,
                 sliders: sliders
             }
         })
-    }
+    };
 
     parseParamsFromState = () => {
-        const seed_artists = []
-        const seed_tracks = []
+        const seed_artists = [];
+        const seed_tracks = [];
         this.state.seeds.forEach(
             seed => {
                 switch (seed.type) {
                     case 'artist':
-                        seed_artists.push(seed.id)
-                        break
+                        seed_artists.push(seed.id);
+                        break;
                     case 'track':
-                        seed_tracks.push(seed.id)
-                        break
+                        seed_tracks.push(seed.id);
+                        break;
                     default:
                         return
                 }
             }
-        )
+        );
         let params = {
             limit: this.state.limit,
             seed_artists,
             seed_tracks
-        }
+        };
         this.state.sliders.forEach(
             attribute => {
                 params[`target_${attribute.name.toLowerCase()}`] = attribute.value
             }
-        )
+        );
         return params
-    }
+    };
 
     getPlaylist = () => {
-        const headers = { headers: { 'Authorization': 'Bearer ' + this.props.token } }
+        const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
         fetch(buildUrl('https://api.spotify.com/v1/recommendations', this.parseParamsFromState()), headers)
             .then(response => response.json())
             .then(res => {
                 res.tracks &&
-                    this.setState({ grownPlaylist: res })
+                this.setState({grownPlaylist: res})
             })
-    }
+    };
 
     getSeedFeatures = seeds => {
-        const headers = { headers: { 'Authorization': 'Bearer ' + this.props.token } }
-        fetch(buildUrl('https://api.spotify.com/v1/audio-features/', { ids: seeds.map(seed => seed.id) }), headers)
+        const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
+        fetch(buildUrl('https://api.spotify.com/v1/audio-features/', {ids: seeds.map(seed => seed.id)}), headers)
             .then(response => response.json())
             .then(res => {
-                console.log(res)
+                console.log(res);
                 console.log(this.state.sliders)
-            })
-        this.setState({ seeds })
-    }
+            });
+        this.setState({seeds})
+    };
 
     saveClickToDB = () => {
         const data = {
@@ -150,9 +201,9 @@ class CreationPage extends Component {
                 "attribute": "test",
                 "value": 50
             }]
-        }
+        };
         axios.post('/api/data', data).then(res => console.log(res))
-    }
+    };
 
     removeSeed = removeSeed => {
         const newSeeds = this.state.seeds.filter(seed => seed !== removeSeed);
@@ -164,13 +215,34 @@ class CreationPage extends Component {
 
     render() {
         return (
-            <div style-={{width:"100vw"}}>
+            <div style-={{width: "100vw"}}>
+                {
+                    this.state.infoPopUp
+                        ?
+                        <ModalDiv>
+                            <ModalContent>
+
+                                <H2>What are seeds?</H2>
+                                <P>Seeds are either tracks or artists. You can choose up to 5 seeds which will be used as a base upon which to grow your playlist.</P>
+
+                                <div style = {{width:"100%",height:"20px"}}>
+                                    <svg style = {{float:"right", marginRight:"20px"}} onClick = {() => this.setState({infoPopUp:false})} width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8.95508 8.2832C8.95508 9.25846 8.78646 10.1152 8.44922 10.8535C8.11198 11.5872 7.62891 12.1523 7 12.5488C6.37565 12.9408 5.6556 13.1367 4.83984 13.1367C4.0332 13.1367 3.31315 12.9408 2.67969 12.5488C2.05078 12.1523 1.56315 11.5895 1.2168 10.8604C0.875 10.1312 0.701823 9.29036 0.697266 8.33789V7.77734C0.697266 6.80664 0.868164 5.94987 1.20996 5.20703C1.55632 4.46419 2.04167 3.89681 2.66602 3.50488C3.29492 3.1084 4.01497 2.91016 4.82617 2.91016C5.63737 2.91016 6.35514 3.10612 6.97949 3.49805C7.6084 3.88542 8.09375 4.44596 8.43555 5.17969C8.77734 5.90885 8.95052 6.75879 8.95508 7.72949V8.2832ZM7.22559 7.76367C7.22559 6.66081 7.01595 5.81543 6.59668 5.22754C6.18197 4.63965 5.5918 4.3457 4.82617 4.3457C4.07878 4.3457 3.49316 4.63965 3.06934 5.22754C2.65007 5.81087 2.43587 6.63802 2.42676 7.70898V8.2832C2.42676 9.37695 2.63867 10.2223 3.0625 10.8193C3.49089 11.4163 4.08333 11.7148 4.83984 11.7148C5.60547 11.7148 6.19336 11.4232 6.60352 10.8398C7.01823 10.2565 7.22559 9.4043 7.22559 8.2832V7.76367ZM14.0352 8.7002L12.9072 9.89648V13H11.1777V3.04688H12.9072V7.71582L13.8643 6.5332L16.7764 3.04688H18.8682L15.1699 7.45605L19.0801 13H17.0293L14.0352 8.7002Z" fill="#009688"/>
+                                    </svg>
+                                </div>
+
+
+                            </ModalContent>
+                        </ModalDiv>
+                        :
+                        <></>
+                }
                 {
                     this.state.seedSelection ?
                         <SeedSelectorPage seeds={this.state.seeds}
-                            updateSeeds={seeds => {
-                                this.setState({ seeds })
-                            }} close={() => this.setState({ seedSelection: false })}
+                                          updateSeeds={seeds => {
+                                              this.setState({seeds})
+                                          }} close={() => this.setState({seedSelection: false})}
                         />
                         :
                         <>
@@ -178,7 +250,7 @@ class CreationPage extends Component {
                             <br/><br/>
                             <GrowPlaylistDiv>
                                 <Row>
-                                    <svg onClick={() => this.setState({ seedSelection: true })}
+                                    <svg onClick={() => this.setState({seedSelection: true})}
                                          style={{marginTop: "-22px", cursor: "pointer"}}
                                          width="72" height="80" viewBox="0 0 72 80" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -205,18 +277,21 @@ class CreationPage extends Component {
                                                 <feGaussianBlur stdDeviation="4"/>
                                                 <feColorMatrix type="matrix"
                                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.24 0"/>
-                                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+                                                <feBlend mode="normal" in2="BackgroundImageFix"
+                                                         result="effect1_dropShadow"/>
                                                 <feColorMatrix in="SourceAlpha" type="matrix"
                                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
                                                 <feOffset/>
                                                 <feGaussianBlur stdDeviation="4"/>
                                                 <feColorMatrix type="matrix"
                                                                values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"/>
-                                                <feBlend mode="normal" in2="effect1_dropShadow" result="effect2_dropShadow"/>
+                                                <feBlend mode="normal" in2="effect1_dropShadow"
+                                                         result="effect2_dropShadow"/>
                                                 <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow"
                                                          result="shape"/>
                                             </filter>
-                                            <linearGradient id="paint0_linear" x1="8.27399" y1="8" x2="8.27399" y2="63.452"
+                                            <linearGradient id="paint0_linear" x1="8.27399" y1="8" x2="8.27399"
+                                                            y2="63.452"
                                                             gradientUnits="userSpaceOnUse">
                                                 <stop stopOpacity="0"/>
                                                 <stop offset="0.8" stopOpacity="0.02"/>
@@ -230,16 +305,21 @@ class CreationPage extends Component {
                                             </linearGradient>
                                         </defs>
                                     </svg>
-                                    <p style={{fontFamily:"Roboto",fontWeight:"semibold", fontSize:"120%"}}>Add some seeds</p>
-                                    <InfoSVG onclick={() => this.props.history.push("/create")}
-                                                 width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M9.16666 14.1667H10.8333V9.16667H9.16666V14.1667ZM9.99999 1.66667C5.39999 1.66667 1.66666 5.40001 1.66666 10C1.66666 14.6 5.39999 18.3333 9.99999 18.3333C14.6 18.3333 18.3333 14.6 18.3333 10C18.3333 5.40001 14.6 1.66667 9.99999 1.66667ZM9.99999 16.6667C6.32499 16.6667 3.33332 13.675 3.33332 10C3.33332 6.32501 6.32499 3.33334 9.99999 3.33334C13.675 3.33334 16.6667 6.32501 16.6667 10C16.6667 13.675 13.675 16.6667 9.99999 16.6667ZM9.16666 7.50001H10.8333V5.83334H9.16666V7.50001Z" fill="#979797"/>
+                                    <p style={{fontFamily: "Roboto", fontWeight: "semibold", fontSize: "120%"}}>Add
+                                        some seeds</p>
+                                    <InfoSVG onClick={() => this.setState({infoPopUp: true})}
+                                             width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M9.16666 14.1667H10.8333V9.16667H9.16666V14.1667ZM9.99999 1.66667C5.39999 1.66667 1.66666 5.40001 1.66666 10C1.66666 14.6 5.39999 18.3333 9.99999 18.3333C14.6 18.3333 18.3333 14.6 18.3333 10C18.3333 5.40001 14.6 1.66667 9.99999 1.66667ZM9.99999 16.6667C6.32499 16.6667 3.33332 13.675 3.33332 10C3.33332 6.32501 6.32499 3.33334 9.99999 3.33334C13.675 3.33334 16.6667 6.32501 16.6667 10C16.6667 13.675 13.675 16.6667 9.99999 16.6667ZM9.16666 7.50001H10.8333V5.83334H9.16666V7.50001Z"
+                                            fill="#979797"/>
                                     </InfoSVG>
+
 
                                 </Row>
                             </GrowPlaylistDiv>
 
-                            <SeedDisplay seeds={this.state.seeds} removeSeed={seed => this.removeSeed(seed)} />
+                            <SeedDisplay seeds={this.state.seeds} removeSeed={seed => this.removeSeed(seed)}/>
                             {
                                 this.state.seeds.length == 0
                                     ?
@@ -249,13 +329,14 @@ class CreationPage extends Component {
                                         <br/>
                                         <HeaderDiv2>Adapt your desired features</HeaderDiv2>
                                         <br/>
-                                        <AttributeSelector attributes={attributes} handleSliderUpdate={this.handleSliderUpdate} />
+                                        <AttributeSelector attributes={attributes}
+                                                           handleSliderUpdate={this.handleSliderUpdate}/>
 
-                                        <hr />
+                                        <hr/>
 
-                                        <DurationSelector />
-                                        <hr />
-                                        <div style={{ padding: "20px" }}>
+                                        <DurationSelector/>
+                                        <hr/>
+                                        <div style={{padding: "20px"}}>
                                             <Button color="success" onClick={
                                                 () => {
                                                     this.getPlaylist();
@@ -264,14 +345,17 @@ class CreationPage extends Component {
                                             </Button>
                                             {
                                                 this.state.grownPlaylist &&
-                                                <Link to={{ pathname: `/playlist/new}`, playlist: this.state.grownPlaylist }}>View your playlist</Link>
+                                                <Link to={{
+                                                    pathname: `/playlist/new}`,
+                                                    playlist: this.state.grownPlaylist
+                                                }}>View your playlist</Link>
                                             }
                                         </div>
 
 
                                     </>
                             }
-                            </>
+                        </>
                 }
             </div>
         );
@@ -280,10 +364,10 @@ class CreationPage extends Component {
 
 CreationPage.propTypes = {
     token: PropTypes.string.isRequired
-}
+};
 
 const mapStateToProps = (state) => {
-    return { token: state.token.token }
-}
+    return {token: state.token.token}
+};
 
 export default connect(mapStateToProps)(CreationPage);
