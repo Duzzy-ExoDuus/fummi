@@ -23,7 +23,7 @@ const SearchInput = styled.input`
 `;
 
 const TracksVsArtistDiv = styled.div`
-  width: 20vw;
+  width: 80vw;
   display:block;
   margin: 3% 10px auto;
 `;
