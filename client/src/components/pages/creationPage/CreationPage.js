@@ -342,10 +342,10 @@ class CreationPage extends Component {
                                             </Button>
                                             {
                                                 this.state.grownPlaylist &&
-                                                <Link to={{
-                                                    pathname: `/playlist/new}`,
+                                                this.props.history.push({
+                                                    pathname: "/playlist/new",
                                                     playlist: this.state.grownPlaylist
-                                                }}>View your playlist</Link>
+                                                })
                                             }
                                         </div>
 
