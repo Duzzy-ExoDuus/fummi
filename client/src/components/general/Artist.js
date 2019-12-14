@@ -6,9 +6,10 @@ import styled from "styled-components";
 
 
 const ListItem = styled.div`
-    width:60vw;
-    height:24vw;
+    width:80vw;
+    height:12vw;
     float:left;
+    
     
     display: -webkit-box;
     display: -moz-box;
@@ -18,8 +19,7 @@ const ListItem = styled.div`
     flex: 0 0 100%;
     flex-wrap: wrap;
     flex-direction: column;
-    margin-left:auto;
-    margin-right:auto;
+    margin: 3% auto;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -41,8 +41,7 @@ const PreviewSVG = styled.svg`
 const CoverImage = styled.img`
     width: 80%;
     padding:10%;
-    overflow: hidden;
-    
+    overflow: hidden;  
 `;
 
 const CoverImageDiv = styled.div`

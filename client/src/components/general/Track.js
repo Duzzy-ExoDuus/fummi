@@ -7,7 +7,7 @@ import styled from "styled-components";
 
 const ListItem = styled.div`
     width:80vw;
-    height:24vw;
+    height:12vw;
     
     display: -webkit-box;
     display: -moz-box;
@@ -40,8 +40,7 @@ const PreviewSVG = styled.svg`
 const CoverImage = styled.img`
     width: 80%;
     padding:10%;
-    overflow: hidden;
-    
+    overflow: hidden;  
 `;
 
 const CoverImageDiv = styled.div`
@@ -53,7 +52,7 @@ const CoverImageDiv = styled.div`
 
 const NameHeader = styled.h1`
     font-size:16px;
-    font-weight:medium;
+    font-weight:normal;
     margin:auto;
     vertical-align:middle;
     //line-height:100%;
@@ -124,7 +123,7 @@ class Track extends Component {
                     <NameDiv><NameHeader>{name}</NameHeader></NameDiv>
                     <InfoDiv>{artistList[0]}</InfoDiv>
                     <OptionDiv>
-                        <svg style={{marginTop: "100%", cursor: "pointer"}} width="18" height="36" viewBox="0 0 12 24"
+                        <svg style={{marginTop: "30%", cursor: "pointer"}} width="18" height="36" viewBox="0 0 12 24"
                              fill="none"
                              xmlns="http://www.w3.org/2000/svg"
                              onClick={() => this.setState({featuresDisplayed: !this.state.featuresDisplayed})}>

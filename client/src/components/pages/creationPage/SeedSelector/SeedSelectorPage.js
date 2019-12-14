@@ -39,7 +39,7 @@ const HeaderDiv2 = styled.div`
   padding: 5% 5% 15px;
 
   margin-bottom: 15px;
-`
+`;
 class SeedSelectorPage extends Component {
 
     render() {
@@ -51,7 +51,6 @@ class SeedSelectorPage extends Component {
                 <br/>
                 <SeedSelector seeds={this.props.seeds} updateSeeds={this.props.updateSeeds} close={this.props.close}/>
                 <ConfirmButton onClick={this.props.close}>Confirm</ConfirmButton>
-
                 <br/>
                 <HeaderDiv2>
                     Recommended seeds

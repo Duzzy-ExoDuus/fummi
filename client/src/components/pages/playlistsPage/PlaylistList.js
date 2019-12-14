@@ -7,7 +7,7 @@ import styled from 'styled-components'
 
 const ListItem = styled.div`
     width:80vw;
-    height:24vw;
+    height:12vw;
     
     display: -webkit-box;
     display: -moz-box;
@@ -72,6 +72,7 @@ class PlaylistList extends Component {
         const {items, loading} = this.props.playlists;
         let playlistsToRender = items ?
             items.map(item =>
+                item.images[0] !=null &&
                 <ListItem key={item.name}>
                     <CoverImageDiv><CoverImage src={item.images[0].url}/></CoverImageDiv>
                     <NameDiv><NameHeader>{item.name}</NameHeader></NameDiv>
