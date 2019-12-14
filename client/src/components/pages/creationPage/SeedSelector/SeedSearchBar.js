@@ -22,11 +22,29 @@ const SearchInput = styled.input`
   }
 `;
 
+const TracksVsArtistDiv = styled.div`
+  width: 20vw;
+  display:block;
+  margin: 3% 10px auto;
+`;
+
+const TracksVsArtistButton = styled.button`
+  border-radius: 20px;
+  border:none;
+  background-color: #949494;
+  color: white; 
+  font-family: Montserrat;
+  font-weight: lighter;
+  margin: 2% 1% 2%;
+`;
+
+
 class SearchBar extends Component {
     state = {
         modal: false,
         searchResult: {},
-        searchString: ""
+        searchString: "",
+        trackDisplayed: true,
     };
 
     toggle = () => {
@@ -64,8 +82,12 @@ class SearchBar extends Component {
                     placeholder="Search an artist/track"/>
 
                 {/*<button onClick={() => console.log(this.state)}>debvug</button>*/}
+                <TracksVsArtistDiv>
+                    <TracksVsArtistButton onClick={() => this.setState({trackDisplayed:true})}>tracks</TracksVsArtistButton>
+                    <TracksVsArtistButton onClick={() => this.setState({trackDisplayed:false})}>artists</TracksVsArtistButton>
+                </TracksVsArtistDiv>
 
-                <SearchResultDisplay searchResult={this.state.searchResult} addSeed={this.addAndClear}/>
+                <SearchResultDisplay searchResult={this.state.searchResult} addSeed={this.addAndClear} trackDisplayed = {this.state.trackDisplayed}/>
             </>
         );
     }

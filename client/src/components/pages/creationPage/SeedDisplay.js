@@ -9,7 +9,7 @@ class SeedDisplay extends Component {
         const {seeds, removeSeed} = this.props
         return (
             <Container>
-                <div style={{display: 'block', width: "100%"}}>
+                <div style={{display: 'block', width: "80%"}}>
                     {
                         seeds.map(
                             seed =>
@@ -54,7 +54,7 @@ class SeedDisplay extends Component {
                         ?
                         <Progress color="gray" value={20 * seeds.length}/>
                         :
-                        "You haven't picked any seeds yet"
+                        <p style={{fontFamily:"Roboto",marginTop:"4%",marginLeft:"0%"}}>You haven't picked any seeds yet</p>
                 }
             </Container>
         );

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Track from '../../../general/Track';
 import SeedTrack from "../../../general/SeedTrack";
 import styled from "styled-components"
+import Artist from "../../../general/Artist"
+import defaultArtistImg from "../../../../images/defaultProfile.png"
 
 const AddSVG = styled.svg`
   float:left;
@@ -17,16 +19,13 @@ const ArtistDiv = styled.div`
 class SearchResultDisplay extends Component {
 
     render() {
-        const { searchResult, addSeed } = this.props;
+        const { searchResult, addSeed, trackDisplayed} = this.props;
         return (
             <>
-
                 <div style={{  width: "100%"}}>
                     {
-                        searchResult && searchResult.tracks &&
+                        trackDisplayed && searchResult && searchResult.tracks &&
                         <>
-                            <h3>Track</h3>
-                            <hr />
                             {
                                 searchResult.tracks.items.map(
                                     track =>
@@ -45,17 +44,19 @@ class SearchResultDisplay extends Component {
                         </>
                     }
                     {
-                        searchResult && searchResult.artists &&
+                        (!trackDisplayed) && searchResult && searchResult.artists &&
                         <ArtistDiv>
-                            <h3>Artist</h3>
-                            <hr />
                             {
                                 searchResult.artists.items.map(
                                     artist =>
-                                    <>
-                                        {artist.name}
-                                        <button onClick={() => addSeed(artist)}>+</button>
-                                    </>
+                                    <div>
+                                        <Artist imgUrl={(artist.images[0] == null) ? defaultArtistImg : artist.images[0].url} name={artist.name}/>
+                                        <AddSVG
+                                            onClick={() => addSeed(artist)}
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd" d="M11 5V11H5V13H11V19H13V13H19V11H13V5H11Z" fill="black"/>
+                                        </AddSVG>
+                                    </div>
                                 )
                             }
                         </ArtistDiv>

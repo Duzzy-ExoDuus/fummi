@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import SeedSelector from './SeedSelector';
 import SeedRecommender from './SeedRecommender';
 import styled from "styled-components";
+import {Col} from "reactstrap";
 
 const ConfirmButton = styled.button`
     color:#009688;
@@ -11,6 +12,8 @@ const ConfirmButton = styled.button`
     float:right;
     margin-right: 10%;
     margin-bottom:1%;
+    border: none;
+    background-color: transparent;
 `;
 
 const HeaderDiv = styled.div`
@@ -21,8 +24,7 @@ const HeaderDiv = styled.div`
   margin-top: -50px;
   font-family: Roboto;
   font-size:large;
-  padding:5%;
-  padding-bottom: 10px;
+  padding: 5% 5% 15px;
   margin-bottom: 15px;
 `
 
@@ -34,8 +36,8 @@ const HeaderDiv2 = styled.div`
 
   font-family: Roboto;
   font-size:large;
-  padding:5%;
-  padding-bottom: 10px;
+  padding: 5% 5% 15px;
+
   margin-bottom: 15px;
 `
 class SeedSelectorPage extends Component {
@@ -49,6 +51,7 @@ class SeedSelectorPage extends Component {
                 <br/>
                 <SeedSelector seeds={this.props.seeds} updateSeeds={this.props.updateSeeds} close={this.props.close}/>
                 <ConfirmButton onClick={this.props.close}>Confirm</ConfirmButton>
+
                 <br/>
                 <HeaderDiv2>
                     Recommended seeds

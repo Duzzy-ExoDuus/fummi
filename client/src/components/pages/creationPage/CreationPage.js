@@ -42,8 +42,7 @@ const HeaderDiv = styled.div`
   margin-top: -50px;
   font-family: Roboto;
   font-size:large;
-  padding:5%;
-  padding-bottom: 15px;
+  padding: 5% 5% 15px;
 `;
 
 const HeaderDiv2 = styled.div`
@@ -54,8 +53,7 @@ const HeaderDiv2 = styled.div`
   //margin-top: -50px;
   font-family: Roboto;
   font-size:large;
-  padding:5%;
-  padding-bottom: 15px;
+  padding: 5% 5% 15px;
   margin-bottom: 15px;
  
 `;
