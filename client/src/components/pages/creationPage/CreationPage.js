@@ -120,7 +120,7 @@ class CreationPage extends Component {
             seeds: [],
             sliders: [],
             limit: 100,
-            features: [],
+            features: [50,50,50,50,50,50,50],
             grownPlaylist: null,
             previewPlaylist: null,
             seedSelection: false,
@@ -212,6 +212,7 @@ class CreationPage extends Component {
     getSeedFeatures = (seeds) => {
         const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
         seeds = seeds.filter(s => this.isTrack(s));
+        if (seeds.length === 0) return;
         fetch(buildUrl('https://api.spotify.com/v1/audio-features/', {ids: seeds.map(seed => seed.id)}), headers)
             .then(response => response.json())
             .then(resp => {
