@@ -86,8 +86,9 @@ class EditPage extends Component {
         tryToSave: false,
         playlist: {},
         tracks: [],
-        audioFeatures: []
-    }
+        audioFeatures: [],
+        desiredFeatures: [],
+    };
 
     componentDidMount() {
         this.initializeState()
@@ -96,6 +97,7 @@ class EditPage extends Component {
 
     initializeState = () => {
         const {location, token} = this.props
+        this.setState({desiredFeatures:location.desiredFeatures})
         const params = []
         location.playlist.tracks.forEach(track => params.push(track.id))
         fetch(buildUrl('https://api.spotify.com/v1/audio-features', {ids: params}), buildHeader(token))
@@ -159,8 +161,9 @@ class EditPage extends Component {
                 }
                 <br/>
                 <CreateLink to="/create">Create another playlist</CreateLink>
+
                 <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures}
-                          removeTrack={this.removeTrack}/>
+                          removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures}/>
             </>
         );
     }
@@ -170,6 +173,7 @@ EditPage.propTypes = {
     token: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired
+
 }
 
 const mapStateToProps = (state) => {

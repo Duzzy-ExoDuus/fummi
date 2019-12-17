@@ -92,7 +92,6 @@ class SeedTrack extends Component {
 
     render() {
         const {artists, name, preview_url, album} = this.props.track;
-        console.log(preview_url);
         let artistList = artists.map(artist => artist.name + ', ');
         artistList[artistList.length - 1] = artistList[artistList.length - 1].substring(0, artistList[artistList.length - 1].length - 2);
         return (
@@ -159,7 +158,8 @@ class SeedTrack extends Component {
 
 SeedTrack.propTypes = {
     track: PropTypes.object.isRequired,
-    audioFeatures: PropTypes.object
+    audioFeatures: PropTypes.object,
+    desiredFeatures: PropTypes.array
 };
 
 

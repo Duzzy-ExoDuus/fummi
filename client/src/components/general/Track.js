@@ -104,14 +104,17 @@ class Track extends Component {
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"></path>
+                                        <path
+                                            d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"></path>
                                     </PreviewSVG>
                                     :
-                                    <PreviewSVG fill =  {preview_url ? "black":"none"}
-                                        onClick={() => this.setState({playingPreview: !this.state.playingPreview})}
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                    <PreviewSVG fill={preview_url ? "black" : "none"}
+                                                onClick={() => this.setState({playingPreview: !this.state.playingPreview})}
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
-                                        <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                                        <path
+                                            d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
                                     </PreviewSVG>
 
                             }
@@ -142,16 +145,25 @@ class Track extends Component {
                     this.props.audioFeatures &&
                     <Collapse isOpen={this.state.featuresDisplayed}>
                         <div>
-                            Acousticness: <Progress color='success'
-                                                    value={this.props.audioFeatures.acousticness * 100}/>
+                            Acousticness:
+                            <Progress color='success'
+                                      value={this.props.audioFeatures.acousticness * 100}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[0]}/>
+
                             Danceability: <Progress color='success'
                                                     value={this.props.audioFeatures.danceability * 100}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[1]}/>
                             Energy: <Progress color='success' value={this.props.audioFeatures.energy * 100}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[2]}/>
                             instrumentalness: <Progress color='success'
                                                         value={this.props.audioFeatures.instrumentalness * 100}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[3]}/>
                             speechiness: <Progress color='success' value={this.props.audioFeatures.speechiness * 100}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[4]}/>
                             Tempo: <Progress color='success' value={(this.props.audioFeatures.tempo - 50) / 1.7}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[5]}/>
                             Valence: <Progress color='success' value={this.props.audioFeatures.valence * 100}/>
+                            <Progress color="normal" value={this.props.desiredFeatures[6]}/>
                         </div>
                     </Collapse>
                 }
@@ -163,7 +175,8 @@ class Track extends Component {
 
 Track.propTypes = {
     track: PropTypes.object.isRequired,
-    audioFeatures: PropTypes.object
+    audioFeatures: PropTypes.object,
+    desiredFeatures: PropTypes.array,
 };
 
 

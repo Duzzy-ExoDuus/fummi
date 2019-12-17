@@ -314,7 +314,7 @@ class CreationPage extends Component {
                         <>
                             <HeaderDiv>Pick up to 5 seeds</HeaderDiv>
                             <br/><br/>
-                            {console.log(this.state.features)}
+                            {/*{console.log(this.state.features)}*/}
                             <GrowPlaylistDiv>
                                 <Row>
                                     <svg onClick={() => this.setState({seedSelection: true})}
@@ -415,7 +415,8 @@ class CreationPage extends Component {
                                                 this.state.grownPlaylist &&
                                                 this.props.history.push({
                                                     pathname: "/playlist/new",
-                                                    playlist: this.state.grownPlaylist
+                                                    playlist: this.state.grownPlaylist,
+                                                    desiredFeatures: this.state.features
                                                 })
                                             }
                                         </div>
