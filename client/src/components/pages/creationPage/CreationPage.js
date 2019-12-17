@@ -151,12 +151,13 @@ class CreationPage extends Component {
             const sliders = prevState.sliders;
             const newSlider = {name: name, value: value};
             sliders.push(newSlider);
+            this.getPreview(3);
             return {
                 ...prevState,
                 sliders: sliders
             }
         });
-        this.getPreview(3)
+
     };
 
     parseParamsFromState = (limit) => {
