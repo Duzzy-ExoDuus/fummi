@@ -72,7 +72,7 @@ const InfoSVG = styled.svg`
 `
 
 class Slider extends Component {
-    state = {value: 50}
+    state = {value: this.props.initialValue}
 
     render() {
         const pixelAdjustment = -0.15 * this.state.value + 8;
@@ -105,7 +105,7 @@ class Slider extends Component {
                     style={sliderStyle}
                     id={this.props.name}
                     name={this.props.name}
-                    className='slider' type='range' min={0} max={100}
+                    className='slider' type='range' min={0} max={100} value={this.state.value}
                     onChange={e => this.setState({value: e.target.value})}
                     onMouseUp={e => this.props.handleSliderUpdate(e)}
                     onTouchEnd={e => this.props.handleSliderUpdate(e)}

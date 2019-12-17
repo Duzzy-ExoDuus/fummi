@@ -140,14 +140,14 @@ class Track extends Component {
                             <div>
                                 Acousticness: <Progress color='success'
                                                         value={this.props.audioFeatures.acousticness * 100}/>
-                                Danceability: <Progress color='warning'
+                                Danceability: <Progress color='success'
                                                         value={this.props.audioFeatures.danceability * 100}/>
-                                Energy: <Progress color='danger' value={this.props.audioFeatures.energy * 100}/>
-                                instrumentalness: <Progress color='info'
+                                Energy: <Progress color='success' value={this.props.audioFeatures.energy * 100}/>
+                                instrumentalness: <Progress color='success'
                                                             value={this.props.audioFeatures.instrumentalness * 100}/>
                                 speechiness: <Progress color='success' value={this.props.audioFeatures.speechiness * 100}/>
-                                Tempo: <Progress color='warning' value={(this.props.audioFeatures.tempo-50)/1.7}/>
-                                Valence: <Progress color='danger' value={this.props.audioFeatures.valence * 100}/>
+                                Tempo: <Progress color='success' value={(this.props.audioFeatures.tempo-50)/1.7}/>
+                                Valence: <Progress color='success' value={this.props.audioFeatures.valence * 100}/>
                             </div>
                         </Collapse>
                     }

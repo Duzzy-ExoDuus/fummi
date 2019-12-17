@@ -21,14 +21,11 @@ margin-top: 50px;
 const H1 = styled.h1`
 margin-top: 50px;
 text-align: center;
-font-size:8vw;
+font-size:14vw;
 color: #8B9358;
 font-family: "Montserrat";
-font-weight: 100;
-  
-@media (max-width: 500px) {
-  font-size:18vw;
-}
+font-weight: lighter;
+ 
 `
 
 

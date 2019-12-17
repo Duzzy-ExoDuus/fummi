@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import {Container, Progress} from 'reactstrap'
 import defaultArtistImg from "../../../images/defaultProfile.png";
+import defaultAlbumImg from "../../../images/defaultAlbum.jpg"
 
 
 class SeedDisplay extends Component {
@@ -43,7 +44,7 @@ class SeedDisplay extends Component {
                                                 <stop offset="1" stop-color="#575757" stop-opacity="0"/>
                                             </linearGradient>
                                             <image id={"image"+seed.id} width="720" height="720"
-                                                   href={(seed.images == null) ? seed.album.images[0].url : (seed.images[0] == null ? defaultArtistImg : seed.images[0].url)}/>
+                                                   href={(seed.images == null) ? (seed.album.images[0] == null ? defaultAlbumImg : seed.album.images[0].url) : (seed.images[0] == null ? defaultArtistImg : seed.images[0].url)}/>
                                         </defs>
                                     </svg>
                                 </div>

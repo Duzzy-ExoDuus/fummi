@@ -27,6 +27,18 @@ const GrowPlaylistDiv = styled.div`
     justify-content: flex-start;
 `;
 
+const HeaderDiv = styled.div`
+  background-color: rgb(0, 150, 136);
+  color: white;
+  width:100vw;
+  float: left;
+  margin-top: -50px;
+  font-family: Roboto;
+  font-size:large;
+  padding: 5% 5% 15px;
+`;
+
+
 class UserProfilePage extends Component {
 
     componentDidMount() {
@@ -37,7 +49,11 @@ class UserProfilePage extends Component {
 
     render() {
         return (
-            <Container fluid>
+            <>
+                <HeaderDiv>
+                    Your playlists
+                </HeaderDiv>
+                <br/><br/>
                 <GrowPlaylistDiv>
                     <Row>
                         <svg onClick={() => this.props.history.push("/create")}
@@ -96,7 +112,7 @@ class UserProfilePage extends Component {
                     </Row>
                 </GrowPlaylistDiv>
                 <PlaylistList playlists={this.props.playlists}/>
-            </Container>
+            </>
         );
     }
 }

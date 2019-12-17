@@ -111,20 +111,48 @@ const P = styled.p`
   font-family: Roboto;
 `;
 
+
+
 class CreationPage extends Component {
 
     constructor() {
         super();
-        const sliders = {};
-        attributes.forEach(attribute => sliders[attribute.name] = 50);
+        // const sliders = {};
+        // attributes.forEach(attribute => sliders[attribute.name] = 50);
         this.state = {
             seeds: [],
             sliders: [],
             limit: 100,
+            features:[],
             grownPlaylist: null,
             seedSelection: false,
             infoPopUp: false
         }
+    }
+
+
+
+    isTrack = seed => {
+        console.log(seed);
+        return seed.album != null;
+    };
+
+    getFeatures = track => {
+        return [track.acousticness,track.danceability,track.energy,track.instrumentalness,track.speechiness,track.tempo,track.valence];
+    };
+
+
+
+    getInitialFeatures = () => {
+        const features =this.state.seeds.filter(seed => this.isTrack(seed)).map(track => this.getFeatures(track));
+        const transposedFeatures = features.map((col, i) => features.map(row => row[i]));
+        return transposedFeatures.map(featureVals => this.arrAvg(featureVals))
+    };
+
+    arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+
+    transposeArr = a => {
+        return a[0].map(function (_, c) { return a.map(function (r) { return r[c]; }); });
     }
 
     handleSliderUpdate = e => {
@@ -181,15 +209,20 @@ class CreationPage extends Component {
             })
     };
 
-    getSeedFeatures = seeds => {
+    getSeedFeatures = (seeds) => {
         const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
+        seeds = seeds.filter(s => this.isTrack(s));
         fetch(buildUrl('https://api.spotify.com/v1/audio-features/', {ids: seeds.map(seed => seed.id)}), headers)
             .then(response => response.json())
-            .then(res => {
-                console.log(res);
-                console.log(this.state.sliders)
+            .then(resp => {
+                const audioFeatures = resp.audio_features;
+                const allFeatures = audioFeatures.map(featureVals => {return [featureVals.acousticness*100,featureVals.danceability*100,featureVals.energy*100,featureVals.instrumentalness*100,featureVals.speechiness*100,(featureVals.tempo-50)/1.7,featureVals.valence*100]});
+
+                const avgFeatures = this.transposeArr(allFeatures).map(featureVals => Math.round(this.arrAvg(featureVals)));
+                this.setState({features:avgFeatures});
+
             });
-        this.setState({seeds})
+
     };
 
     saveClickToDB = () => {
@@ -213,7 +246,7 @@ class CreationPage extends Component {
 
     render() {
         return (
-            <div style-={{width: "100vw"}}>
+            <div style={{width: "100vw"}}>
                 {
                     this.state.infoPopUp
                         ?
@@ -238,13 +271,15 @@ class CreationPage extends Component {
                     this.state.seedSelection ?
                         <SeedSelectorPage seeds={this.state.seeds}
                                           updateSeeds={seeds => {
-                                              this.setState({seeds})
+                                              this.setState({seeds});
+                                              this.getSeedFeatures(seeds)
                                           }} close={() => this.setState({seedSelection: false})}
                         />
                         :
                         <>
                             <HeaderDiv>Pick up to 5 seeds</HeaderDiv>
                             <br/><br/>
+                            {console.log(this.state.features)}
                             <GrowPlaylistDiv>
                                 <Row>
                                     <svg onClick={() => this.setState({seedSelection: true})}
@@ -318,7 +353,7 @@ class CreationPage extends Component {
 
                             <SeedDisplay seeds={this.state.seeds} removeSeed={seed => this.removeSeed(seed)}/>
                             {
-                                this.state.seeds.length == 0
+                                this.state.seeds.length === 0
                                     ?
                                     <></>
                                     :
@@ -327,7 +362,8 @@ class CreationPage extends Component {
                                         <HeaderDiv2>Adapt your desired features</HeaderDiv2>
                                         <br/>
                                         <AttributeSelector attributes={attributes}
-                                                           handleSliderUpdate={this.handleSliderUpdate}/>
+                                                           handleSliderUpdate={this.handleSliderUpdate}
+                                        features = {this.state.features}/>
 
                                         {/*<hr/>*/}
 

@@ -22,10 +22,9 @@ const TracksVsArtistDiv = styled.div`
 `;
 
 const TracksVsArtistButton = styled.button`
-  border-radius: 20px;
+  border-radius: 4px;
   border:none;
-  background-color: #949494;
-  color: white; 
+  color: black; 
   font-family: Montserrat;
   font-weight: lighter;
   margin: 2% 1% 2%;
@@ -37,14 +36,16 @@ class SearchResultDisplay extends Component {
     };
 
     render() {
-        const {searchResult, addSeed, trackDisplayed} = this.props;
+        const {trackDisplayed} = this.state;
+        const {searchResult, addSeed} = this.props;
         return (
             <>
                 {(searchResult.artists || searchResult.tracks) &&
-                <TracksVsArtistDiv>
-                    <TracksVsArtistButton
+
+                    <TracksVsArtistDiv>
+                    <TracksVsArtistButton style={{backgroundColor: trackDisplayed ? "#EDEDED" : "transparent"}}
                         onClick={() => this.setState({trackDisplayed: true})}>tracks</TracksVsArtistButton>
-                    <TracksVsArtistButton
+                    <TracksVsArtistButton style={{backgroundColor: trackDisplayed ? "transparent" : "#EDEDED"}}
                         onClick={() => this.setState({trackDisplayed: false})}>artists</TracksVsArtistButton>
                 </TracksVsArtistDiv>
                 }

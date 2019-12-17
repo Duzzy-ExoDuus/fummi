@@ -20,7 +20,7 @@ display: block;
 	text-align:center;
     font-family:"Roboto";
 	font-size: 14px;
-	font-weight: medium;
+	font-weight: normal;
 	line-height: 22px;
 	width:70%;
 
@@ -41,12 +41,10 @@ display: block;
         content: "";
         display: inline-block;
         color: #fff;
-        position: relative;
-        //top: -1%;
-        left: -10%;
         vertical-align: middle;
         width: 34px;
         height: 50px;
+        margin-right:2vw;
         //padding:20px;
         // margin-left:14px;
     }

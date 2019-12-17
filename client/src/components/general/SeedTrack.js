@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import {Button, Col, Collapse, Progress, Row} from 'reactstrap'
 import styled from "styled-components";
+import defaultAlbumImage from "../../images/defaultAlbum.jpg"
 
 
 const ListItem = styled.div`
@@ -54,7 +55,7 @@ const CoverImageDiv = styled.div`
 
 const NameHeader = styled.h1`
     font-size:16px;
-    font-weight:medium;
+    font-weight:normal;
     margin:auto;
     vertical-align:middle;
     //line-height:100%;
@@ -119,7 +120,7 @@ class Track extends Component {
                                     allow="encrypted-media"/>
                         }
                         </PreviewDiv>
-                        <CoverImage src={album.images[0].url} width="10%" height="auto" alt="" />
+                        <CoverImage src={album.images[0] == null?defaultAlbumImage:album.images[0].url} width="10%" height="auto" alt="" />
                     </CoverImageDiv>
 
                     <NameDiv><NameHeader>{name}</NameHeader></NameDiv>
