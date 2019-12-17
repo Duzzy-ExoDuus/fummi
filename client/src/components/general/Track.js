@@ -80,6 +80,12 @@ const OptionDiv = styled.div`
     width:10%;
 `;
 
+export const StyledProgressBar = styled(Progress)`
+  & > .bar {
+    background-color: ${props => props.color || 'green'} !important;
+  }
+`;
+
 class Track extends Component {
 
     state = {
@@ -148,22 +154,22 @@ class Track extends Component {
                             Acousticness:
                             <Progress color='success'
                                       value={this.props.audioFeatures.acousticness * 100}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[0]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[0]}/>
 
                             Danceability: <Progress color='success'
                                                     value={this.props.audioFeatures.danceability * 100}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[1]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[1]}/>
                             Energy: <Progress color='success' value={this.props.audioFeatures.energy * 100}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[2]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[2]}/>
                             instrumentalness: <Progress color='success'
                                                         value={this.props.audioFeatures.instrumentalness * 100}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[3]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[3]}/>
                             speechiness: <Progress color='success' value={this.props.audioFeatures.speechiness * 100}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[4]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[4]}/>
                             Tempo: <Progress color='success' value={(this.props.audioFeatures.tempo - 50) / 1.7}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[5]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[5]}/>
                             Valence: <Progress color='success' value={this.props.audioFeatures.valence * 100}/>
-                            <Progress color="normal" value={this.props.desiredFeatures[6]}/>
+                            <Progress striped color="info" value={this.props.desiredFeatures[6]}/>
                         </div>
                     </Collapse>
                 }
