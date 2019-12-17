@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
 
-import {Button, Col, Collapse, Progress, Row} from 'reactstrap'
+import {Collapse, Progress} from 'reactstrap'
 import styled from "styled-components";
 
 
@@ -96,28 +96,32 @@ class Track extends Component {
                 <ListItem>
                     <CoverImageDiv>
                         <PreviewDiv>
-                        {
-                            preview_url &&
+                            {
                                 this.state.playingPreview
-                                ?
-                                <PreviewSVG onClick={() => this.setState({playingPreview: !this.state.playingPreview})} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"></path>
-                                </PreviewSVG>
-                                :
-                                <PreviewSVG onClick={() => this.setState({playingPreview: !this.state.playingPreview})} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M0 0h24v24H0z" fill="none"></path>
-                                <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
-                                </PreviewSVG>
+                                    ?
+                                    <PreviewSVG fill={preview_url ? "black" : "none"}
+                                                onClick={() => this.setState({playingPreview: !this.state.playingPreview})}
+                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M9 16h2V8H9v8zm3-14C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm1-4h2V8h-2v8z"></path>
+                                    </PreviewSVG>
+                                    :
+                                    <PreviewSVG fill =  {preview_url ? "black":"none"}
+                                        onClick={() => this.setState({playingPreview: !this.state.playingPreview})}
+                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                                    </PreviewSVG>
 
-                        }
-                        {
-                            this.state.playingPreview &&
-                            <iframe title={preview_url} src={preview_url} style={{display: 'none'}}
-                                    allow="encrypted-media"/>
-                        }
+                            }
+                            {
+                                this.state.playingPreview &&
+                                <iframe title={preview_url} src={preview_url} style={{display: 'none'}}
+                                        allow="encrypted-media"/>
+                            }
                         </PreviewDiv>
-                        <CoverImage src={album.images[0].url} width="10%" height="auto" alt="" />
+                        <CoverImage src={album.images[0].url} width="10%" height="auto" alt=""/>
                     </CoverImageDiv>
 
                     <NameDiv><NameHeader>{name}</NameHeader></NameDiv>
@@ -134,23 +138,23 @@ class Track extends Component {
 
                     </OptionDiv>
                 </ListItem>
-                    {
-                        this.props.audioFeatures &&
-                        <Collapse isOpen={this.state.featuresDisplayed}>
-                            <div>
-                                Acousticness: <Progress color='success'
-                                                        value={this.props.audioFeatures.acousticness * 100}/>
-                                Danceability: <Progress color='success'
-                                                        value={this.props.audioFeatures.danceability * 100}/>
-                                Energy: <Progress color='success' value={this.props.audioFeatures.energy * 100}/>
-                                instrumentalness: <Progress color='success'
-                                                            value={this.props.audioFeatures.instrumentalness * 100}/>
-                                speechiness: <Progress color='success' value={this.props.audioFeatures.speechiness * 100}/>
-                                Tempo: <Progress color='success' value={(this.props.audioFeatures.tempo-50)/1.7}/>
-                                Valence: <Progress color='success' value={this.props.audioFeatures.valence * 100}/>
-                            </div>
-                        </Collapse>
-                    }
+                {
+                    this.props.audioFeatures &&
+                    <Collapse isOpen={this.state.featuresDisplayed}>
+                        <div>
+                            Acousticness: <Progress color='success'
+                                                    value={this.props.audioFeatures.acousticness * 100}/>
+                            Danceability: <Progress color='success'
+                                                    value={this.props.audioFeatures.danceability * 100}/>
+                            Energy: <Progress color='success' value={this.props.audioFeatures.energy * 100}/>
+                            instrumentalness: <Progress color='success'
+                                                        value={this.props.audioFeatures.instrumentalness * 100}/>
+                            speechiness: <Progress color='success' value={this.props.audioFeatures.speechiness * 100}/>
+                            Tempo: <Progress color='success' value={(this.props.audioFeatures.tempo - 50) / 1.7}/>
+                            Valence: <Progress color='success' value={this.props.audioFeatures.valence * 100}/>
+                        </div>
+                    </Collapse>
+                }
 
             </>
         );
