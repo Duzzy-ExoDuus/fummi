@@ -1,14 +1,12 @@
 import axios from 'axios'
 
 import React, {Component} from 'react'
-import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import PropTypes from 'prop-types'
 
 import {Row} from 'reactstrap'
 import SeedSelectorPage from './SeedSelector/SeedSelectorPage'
 import AttributeSelector from './AttributeSelector'
-import DurationSelector from './DurationSelector'
 
 
 import {buildUrl} from '../../../util/queryBuilder'
@@ -112,7 +110,6 @@ const P = styled.p`
 `;
 
 
-
 class CreationPage extends Component {
 
     constructor() {
@@ -123,36 +120,28 @@ class CreationPage extends Component {
             seeds: [],
             sliders: [],
             limit: 100,
-            features:[],
+            features: [],
             grownPlaylist: null,
+            previewPlaylist: null,
             seedSelection: false,
             infoPopUp: false
         }
     }
 
 
-
     isTrack = seed => {
-        console.log(seed);
-        return seed.album != null;
-    };
-
-    getFeatures = track => {
-        return [track.acousticness,track.danceability,track.energy,track.instrumentalness,track.speechiness,track.tempo,track.valence];
+        return seed.type === 'track';
     };
 
 
-
-    getInitialFeatures = () => {
-        const features =this.state.seeds.filter(seed => this.isTrack(seed)).map(track => this.getFeatures(track));
-        const transposedFeatures = features.map((col, i) => features.map(row => row[i]));
-        return transposedFeatures.map(featureVals => this.arrAvg(featureVals))
-    };
-
-    arrAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+    arrAvg = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
 
     transposeArr = a => {
-        return a[0].map(function (_, c) { return a.map(function (r) { return r[c]; }); });
+        return a[0].map(function (_, c) {
+            return a.map(function (r) {
+                return r[c];
+            });
+        });
     }
 
     handleSliderUpdate = e => {
@@ -166,10 +155,11 @@ class CreationPage extends Component {
                 ...prevState,
                 sliders: sliders
             }
-        })
+        });
+        this.getPreview(3)
     };
 
-    parseParamsFromState = () => {
+    parseParamsFromState = (limit) => {
         const seed_artists = [];
         const seed_tracks = [];
         this.state.seeds.forEach(
@@ -187,7 +177,7 @@ class CreationPage extends Component {
             }
         );
         let params = {
-            limit: this.state.limit,
+            limit: limit,
             seed_artists,
             seed_tracks
         };
@@ -199,13 +189,23 @@ class CreationPage extends Component {
         return params
     };
 
-    getPlaylist = () => {
+    getPlaylist = limit => {
         const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
-        fetch(buildUrl('https://api.spotify.com/v1/recommendations', this.parseParamsFromState()), headers)
+        fetch(buildUrl('https://api.spotify.com/v1/recommendations', this.parseParamsFromState(limit)), headers)
             .then(response => response.json())
             .then(res => {
                 res.tracks &&
                 this.setState({grownPlaylist: res})
+            })
+    };
+
+    getPreview = limit => {
+        const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
+        fetch(buildUrl('https://api.spotify.com/v1/recommendations', this.parseParamsFromState(limit)), headers)
+            .then(response => response.json())
+            .then(res => {
+                res.tracks &&
+                this.setState({previewPlaylist: res})
             })
     };
 
@@ -216,10 +216,12 @@ class CreationPage extends Component {
             .then(response => response.json())
             .then(resp => {
                 const audioFeatures = resp.audio_features;
-                const allFeatures = audioFeatures.map(featureVals => {return [featureVals.acousticness*100,featureVals.danceability*100,featureVals.energy*100,featureVals.instrumentalness*100,featureVals.speechiness*100,(featureVals.tempo-50)/1.7,featureVals.valence*100]});
+                const allFeatures = audioFeatures.map(featureVals => {
+                    return [featureVals.acousticness * 100, featureVals.danceability * 100, featureVals.energy * 100, featureVals.instrumentalness * 100, featureVals.speechiness * 100, (featureVals.tempo - 50) / 1.7, featureVals.valence * 100]
+                });
 
                 const avgFeatures = this.transposeArr(allFeatures).map(featureVals => Math.round(this.arrAvg(featureVals)));
-                this.setState({features:avgFeatures});
+                this.setState({features: avgFeatures});
 
             });
 
@@ -254,10 +256,15 @@ class CreationPage extends Component {
                             <ModalContent>
 
                                 <H2>What are seeds?</H2>
-                                <P>Seeds are either tracks or artists. You can choose up to 5 seeds which will be used as a base upon which to grow your playlist.</P>
-                                <div style = {{width:"100%",height:"20px"}}>
-                                    <svg style = {{float:"right", marginRight:"20px"}} onClick = {() => this.setState({infoPopUp:false})} width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8.95508 8.2832C8.95508 9.25846 8.78646 10.1152 8.44922 10.8535C8.11198 11.5872 7.62891 12.1523 7 12.5488C6.37565 12.9408 5.6556 13.1367 4.83984 13.1367C4.0332 13.1367 3.31315 12.9408 2.67969 12.5488C2.05078 12.1523 1.56315 11.5895 1.2168 10.8604C0.875 10.1312 0.701823 9.29036 0.697266 8.33789V7.77734C0.697266 6.80664 0.868164 5.94987 1.20996 5.20703C1.55632 4.46419 2.04167 3.89681 2.66602 3.50488C3.29492 3.1084 4.01497 2.91016 4.82617 2.91016C5.63737 2.91016 6.35514 3.10612 6.97949 3.49805C7.6084 3.88542 8.09375 4.44596 8.43555 5.17969C8.77734 5.90885 8.95052 6.75879 8.95508 7.72949V8.2832ZM7.22559 7.76367C7.22559 6.66081 7.01595 5.81543 6.59668 5.22754C6.18197 4.63965 5.5918 4.3457 4.82617 4.3457C4.07878 4.3457 3.49316 4.63965 3.06934 5.22754C2.65007 5.81087 2.43587 6.63802 2.42676 7.70898V8.2832C2.42676 9.37695 2.63867 10.2223 3.0625 10.8193C3.49089 11.4163 4.08333 11.7148 4.83984 11.7148C5.60547 11.7148 6.19336 11.4232 6.60352 10.8398C7.01823 10.2565 7.22559 9.4043 7.22559 8.2832V7.76367ZM14.0352 8.7002L12.9072 9.89648V13H11.1777V3.04688H12.9072V7.71582L13.8643 6.5332L16.7764 3.04688H18.8682L15.1699 7.45605L19.0801 13H17.0293L14.0352 8.7002Z" fill="#009688"/>
+                                <P>Seeds are either tracks or artists. You can choose up to 5 seeds which will be used
+                                    as a base upon which to grow your playlist.</P>
+                                <div style={{width: "100%", height: "20px"}}>
+                                    <svg style={{float: "right", marginRight: "20px"}}
+                                         onClick={() => this.setState({infoPopUp: false})} width="20" height="17"
+                                         viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M8.95508 8.2832C8.95508 9.25846 8.78646 10.1152 8.44922 10.8535C8.11198 11.5872 7.62891 12.1523 7 12.5488C6.37565 12.9408 5.6556 13.1367 4.83984 13.1367C4.0332 13.1367 3.31315 12.9408 2.67969 12.5488C2.05078 12.1523 1.56315 11.5895 1.2168 10.8604C0.875 10.1312 0.701823 9.29036 0.697266 8.33789V7.77734C0.697266 6.80664 0.868164 5.94987 1.20996 5.20703C1.55632 4.46419 2.04167 3.89681 2.66602 3.50488C3.29492 3.1084 4.01497 2.91016 4.82617 2.91016C5.63737 2.91016 6.35514 3.10612 6.97949 3.49805C7.6084 3.88542 8.09375 4.44596 8.43555 5.17969C8.77734 5.90885 8.95052 6.75879 8.95508 7.72949V8.2832ZM7.22559 7.76367C7.22559 6.66081 7.01595 5.81543 6.59668 5.22754C6.18197 4.63965 5.5918 4.3457 4.82617 4.3457C4.07878 4.3457 3.49316 4.63965 3.06934 5.22754C2.65007 5.81087 2.43587 6.63802 2.42676 7.70898V8.2832C2.42676 9.37695 2.63867 10.2223 3.0625 10.8193C3.49089 11.4163 4.08333 11.7148 4.83984 11.7148C5.60547 11.7148 6.19336 11.4232 6.60352 10.8398C7.01823 10.2565 7.22559 9.4043 7.22559 8.2832V7.76367ZM14.0352 8.7002L12.9072 9.89648V13H11.1777V3.04688H12.9072V7.71582L13.8643 6.5332L16.7764 3.04688H18.8682L15.1699 7.45605L19.0801 13H17.0293L14.0352 8.7002Z"
+                                            fill="#009688"/>
                                     </svg>
                                 </div>
 
@@ -272,7 +279,8 @@ class CreationPage extends Component {
                         <SeedSelectorPage seeds={this.state.seeds}
                                           updateSeeds={seeds => {
                                               this.setState({seeds});
-                                              this.getSeedFeatures(seeds)
+                                              this.getSeedFeatures(seeds);
+                                              this.getPreview(3);
                                           }} close={() => this.setState({seedSelection: false})}
                         />
                         :
@@ -363,7 +371,8 @@ class CreationPage extends Component {
                                         <br/>
                                         <AttributeSelector attributes={attributes}
                                                            handleSliderUpdate={this.handleSliderUpdate}
-                                        features = {this.state.features}/>
+                                                           previewTracks={this.state.previewPlaylist}
+                                                           features={this.state.features}/>
 
                                         {/*<hr/>*/}
 
@@ -372,7 +381,7 @@ class CreationPage extends Component {
                                         <div style={{padding: "20px"}}>
                                             <Button color="success" onClick={
                                                 () => {
-                                                    this.getPlaylist();
+                                                    this.getPlaylist(100);
 
                                                 }}>Grow your playlist
                                             </Button>

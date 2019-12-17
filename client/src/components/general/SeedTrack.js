@@ -83,7 +83,7 @@ const OptionDiv = styled.div`
     width:0%;
 `;
 
-class Track extends Component {
+class SeedTrack extends Component {
 
     state = {
         playingPreview: false,
@@ -153,10 +153,10 @@ class Track extends Component {
     }
 }
 
-Track.propTypes = {
+SeedTrack.propTypes = {
     track: PropTypes.object.isRequired,
     audioFeatures: PropTypes.object
 };
 
 
-export default Track;
+export default SeedTrack;

@@ -14,6 +14,7 @@ class AttributeSelector extends Component {
                 key={name}
                 name={name}
                 description={description}
+                previewTracks={this.props.previewTracks}
                 initialValue={this.props.features[i]}
                 handleSliderUpdate={e => this.props.handleSliderUpdate(e)}
             />)

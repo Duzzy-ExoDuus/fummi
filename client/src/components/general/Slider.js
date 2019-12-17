@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 
 import {Badge, Button, UncontrolledCollapse} from 'reactstrap'
 import styled from 'styled-components'
-
+import SeedTrack from './SeedTrack'
+import Track from "./Track";
 
 const SliderInput = styled.input`
 -webkit-appearance: none;  /* Override default CSS styles */
@@ -100,6 +101,7 @@ class Slider extends Component {
                 </div>
                 <UncontrolledCollapse toggler={`${this.props.name}-toggler`}>
                     {this.props.description}
+                    {this.props.previewTracks.tracks.map(track => <SeedTrack track={track}/>)}
                 </UncontrolledCollapse>
                 <SliderInput
                     style={sliderStyle}
