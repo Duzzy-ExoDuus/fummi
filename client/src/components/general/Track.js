@@ -10,6 +10,7 @@ import Rating from '@material-ui/lab/Rating';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
+import Badge from "reactstrap/es/Badge";
 
 
 const labels = {
@@ -206,6 +207,8 @@ class Track extends Component {
                                         }
                                     }/>
                         </Box>
+                        <Badge color='success'>Song Features</Badge><br/>
+                        <Badge striped color='info'>Requested Features</Badge>
                         <div>
 
                             Acousticness:
