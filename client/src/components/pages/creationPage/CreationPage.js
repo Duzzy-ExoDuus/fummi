@@ -105,6 +105,9 @@ const H2 = styled.h2`
   font-family: Roboto;
 `;
 
+const H3 = styled.h4`
+  font-family: Roboto;
+`;
 const P = styled.p`
   font-family: Roboto;
 `;
@@ -258,7 +261,7 @@ class CreationPage extends Component {
                         <ModalDiv>
                             <ModalContent>
 
-                                <H2>How Many Songs would you like your playlist to contain?</H2>
+                                <H3>How Many Songs would you like your playlist to contain?</H3>
                                 <input onChange={e=>this.setState({limit:e.target.value})} placeholder="100" value = {this.state.limit}/>
                                 <div style={{width: "100%", height: "20px"}}>
                                     <svg style={{float: "right", marginRight: "20px"}}

@@ -31,6 +31,7 @@ const SaveButton = styled.button`
   border:  none;
   font-weight: bolder;
   float:right;
+  margin-right: 10px;
  
 `;
 
@@ -48,7 +49,7 @@ const PlaylistNameInput = styled.input`
   width: 60vw;
   display: block;
   margin: auto;
-  border-radius: 10px;
+  border-radius: 2px;
 `
 
 const ConfirmSaveButton = styled.button`
@@ -56,7 +57,7 @@ const ConfirmSaveButton = styled.button`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  background-color: #1DB954; 
+  background-color: rgb(0, 150, 136); 
   border: none;
   color: white;
   //padding: 30px; 
