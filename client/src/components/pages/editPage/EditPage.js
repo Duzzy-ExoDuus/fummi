@@ -9,47 +9,39 @@ import {getUser} from '../../../actions/userActions'
 import Playlist from '../../general/Playlist'
 
 import {buildHeader, buildUrl} from '../../../util/queryBuilder'
-
 import styled from "styled-components";
 
-const SaveButton = styled.button`
-   margin-top: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(90,90,90,0.98); 
-  border: none;
+const HeaderDiv = styled.div`
+  background-color: rgb(0, 150, 136);
   color: white;
-  //padding: 30px; 
-  cursor: pointer;
-  border-radius: 65px;
-  text-align:center;
+  width:100vw;
+  float: left;
+  margin-top: -50px;
+  font-family: Roboto;
+  font-size:large;
+  padding: 5% 5% 15px;
+  margin-bottom:10px;
+`;
+
+
+const SaveButton = styled.button`
+  background-color: transparent;
+  color: rgb(0, 150, 136);
   font-family:"Roboto";
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 22px;
-  padding: 1%;
-  width:80%;  
+  border:  none;
+  font-weight: bolder;
+  float:right;
+ 
 `;
 
 const CreateLink = styled(Link)`
-  margin-top: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: rgba(90,90,90,0.98); 
-  border: none;
-  color: white;
-  //padding: 30px; 
-  cursor: pointer;
-  border-radius: 65px;
-  text-align:center;
+  background-color: transparent;
+  color: rgb(0, 150, 136);
   font-family:"Roboto";
-  font-size: 18px;
-  font-weight: normal;
-  line-height: 22px;
-  padding: 1%;
-  width:80%;  
+  font-weight: bolder;
+  :focus{
+  
+  }
 `;
 
 const PlaylistNameInput = styled.input`
@@ -142,8 +134,10 @@ class EditPage extends Component {
     render() {
         return (
             <>
+                <HeaderDiv>Your Playlist</HeaderDiv>
                 <SaveButton onClick={() => this.setState({tryToSave: !this.state.tryToSave})}>Save playlist to
                     spotify</SaveButton>
+                <br/><br/>
                 {this.state.tryToSave
                     ?
                     <>
@@ -160,7 +154,7 @@ class EditPage extends Component {
                     <></>
                 }
                 <br/>
-                <CreateLink to="/create">Create another playlist</CreateLink>
+                {/*<CreateLink to="/create">Create another playlist</CreateLink>*/}
 
                 <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures}
                           removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures}/>
