@@ -174,7 +174,7 @@ class EditPage extends Component {
                                            onChange={
                                                e => this.setState({playlistName: e.target.value})
                                            }
-                                           placeholder={this.state.playlistName}
+                                           placeholder="SeedBox Playlist"
                         />
                         <ConfirmSaveButton onClick={() => this.savePlayListToSpotify()}>Save</ConfirmSaveButton>
                     </>
