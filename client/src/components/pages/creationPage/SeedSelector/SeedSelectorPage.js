@@ -52,9 +52,7 @@ class SeedSelectorPage extends Component {
                 <SeedSelector seeds={this.props.seeds} updateSeeds={this.props.updateSeeds} close={this.props.close}/>
                 <ConfirmButton onClick={this.props.close}>Confirm</ConfirmButton>
                 <br/>
-                {/*<HeaderDiv2>*/}
-                {/*    Recommended seeds*/}
-                {/*</HeaderDiv2>*/}
+
                 <SeedRecommender/>
 
             </div>

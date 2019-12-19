@@ -11,6 +11,30 @@ import Playlist from '../../general/Playlist'
 import {buildHeader, buildUrl} from '../../../util/queryBuilder'
 import styled from "styled-components";
 
+/* The Modal (background) */
+const ModalDiv = styled.div`
+    display: block; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+`;
+
+/* Modal Content */
+const ModalContent = styled.div`{
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+`;
+
 const HeaderDiv = styled.div`
   background-color: rgb(0, 150, 136);
   color: white;
@@ -81,16 +105,17 @@ class EditPage extends Component {
         tracks: [],
         audioFeatures: [],
         desiredFeatures: [],
+        loading: true,
     };
 
     componentDidMount() {
-        this.initializeState()
-        this.props.getUser(this.props.token)
+        this.initializeState();
+        this.props.getUser(this.props.token);
     }
 
     initializeState = () => {
         const {location, token} = this.props
-        this.setState({desiredFeatures:location.desiredFeatures})
+        this.setState({desiredFeatures: location.desiredFeatures})
         const params = []
         location.playlist.tracks.forEach(track => params.push(track.id))
         fetch(buildUrl('https://api.spotify.com/v1/audio-features', {ids: params}), buildHeader(token))
@@ -132,6 +157,8 @@ class EditPage extends Component {
         })
     }
 
+
+
     render() {
         return (
             <>
@@ -155,10 +182,11 @@ class EditPage extends Component {
                     <></>
                 }
                 <br/>
-                {/*<CreateLink to="/create">Create another playlist</CreateLink>*/}
+
 
                 <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures}
-                          removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures}/>
+                              removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures}/>
+
             </>
         );
     }

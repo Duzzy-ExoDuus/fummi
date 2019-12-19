@@ -112,23 +112,34 @@ const P = styled.p`
   font-family: Roboto;
 `;
 
+const featureNames = ["acousticness", "danceability", "energy", "instrumentalness", "speechiness", "tempo", "valence"]
+const featureIndices = {
+    "acousticness": 0,
+    "danceability": 1,
+    "energy": 2,
+    "instrumentalness": 3,
+    "speechiness": 4,
+    "tempo": 5,
+    "valence": 6
+}
 
 class CreationPage extends Component {
 
     constructor() {
+
         super();
-        // const sliders = {};
-        // attributes.forEach(attribute => sliders[attribute.name] = 50);
+        // const features = {};
+        // attributes.forEach(attribute => features[attribute.name] = 50);
         this.state = {
             seeds: [],
-            sliders: [],
             limit: 100,
-            features: [50,50,50,50,50,50,50],
             grownPlaylist: null,
             previewPlaylist: null,
             seedSelection: false,
             infoPopUp: false,
-            savePopup:false,
+            savePopup: false,
+            initialFeatures: null,
+            features: [50, 50, 50, 50, 50, 50, 50],
         }
     }
 
@@ -149,18 +160,19 @@ class CreationPage extends Component {
     }
 
     handleSliderUpdate = e => {
-        let name = e.target.name;
+        let name = e.target.name.toLowerCase();
         let value = e.target.value;
+        let index = featureIndices[name]
         this.setState(prevState => {
-            const sliders = prevState.sliders;
-            const newSlider = {name: name, value: value};
-            sliders.push(newSlider);
+            const features = prevState.features;
+            features[index] = value;
             this.getPreview(3);
             return {
                 ...prevState,
-                sliders: sliders
-            }
+                features: features
+            };
         });
+
 
     };
 
@@ -186,11 +198,13 @@ class CreationPage extends Component {
             seed_artists,
             seed_tracks
         };
-        this.state.sliders.forEach(
-            attribute => {
-                params[`target_${attribute.name.toLowerCase()}`] = attribute.value
+
+        featureNames.forEach(
+            featureName => {
+                params[`target_${featureName}`] = this.state.features[featureIndices[featureName]]
             }
         );
+
         return params
     };
 
@@ -214,6 +228,7 @@ class CreationPage extends Component {
             })
     };
 
+
     getSeedFeatures = (seeds) => {
         const headers = {headers: {'Authorization': 'Bearer ' + this.props.token}};
         seeds = seeds.filter(s => this.isTrack(s));
@@ -227,8 +242,10 @@ class CreationPage extends Component {
                 });
 
                 const avgFeatures = this.transposeArr(allFeatures).map(featureVals => Math.round(this.arrAvg(featureVals)));
-                this.setState({features: avgFeatures});
-
+                this.setState({
+                    initialFeatures: [...avgFeatures],
+                    features: avgFeatures,
+                });
             });
 
     };
@@ -262,7 +279,8 @@ class CreationPage extends Component {
                             <ModalContent>
 
                                 <H3>How Many Songs would you like your playlist to contain?</H3>
-                                <input onChange={e=>this.setState({limit:e.target.value})} placeholder="100" value = {this.state.limit}/>
+                                <input onChange={e => this.setState({limit: e.target.value})} placeholder="100"
+                                       value={this.state.limit}/>
                                 <div style={{width: "100%", height: "20px"}}>
                                     <svg style={{float: "right", marginRight: "20px"}}
                                          onClick={() => this.getPlaylist(this.state.limit)} width="20" height="17"
@@ -385,7 +403,6 @@ class CreationPage extends Component {
                                             fill="#979797"/>
                                     </InfoSVG>
 
-
                                 </Row>
                             </GrowPlaylistDiv>
 
@@ -411,11 +428,13 @@ class CreationPage extends Component {
                                         <div style={{padding: "20px"}}>
                                             <Button color="success" onClick={
                                                 () => {
-                                                    this.setState({savePopup:true})
+                                                    this.setState({savePopup: true})
                                                 }}>Grow your playlist
                                             </Button>
                                             {
                                                 this.state.grownPlaylist &&
+                                                (console.log(this.state.initialFeatures + " " + this.state.features)||true)
+                                                &&
                                                 this.props.history.push({
                                                     pathname: "/playlist/new",
                                                     playlist: this.state.grownPlaylist,
