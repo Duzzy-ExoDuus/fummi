@@ -1,0 +1,60 @@
+import React, {Component} from "react";
+
+import Radio from "@material-ui/core/Radio";
+import Artist from "../../general/Artist";
+const [selectedValue, setSelectedValue] = React.useState("a");
+
+const handleChange = event => {
+    setSelectedValue(event.target.value);
+    console.log(event.target.value);
+};
+class Question extends Component {
+
+    render (){
+        return(<>
+            <p style={{ fontFamily: "Roboto" }}>
+                How well do you understand the features (acousticness,
+                danceability,...)?
+            </p>
+            <div style={{ fontFamily: "Roboto" }}>
+                <Radio
+                    checked={selectedValue === "1"}
+                    onChange={handleChange}
+                    value="1"
+                    name="radio-button-demo"
+                    inputProps={{ "aria-label": "A" }}
+                />
+                not at all
+                <Radio
+                    checked={selectedValue === "2"}
+                    onChange={handleChange}
+                    value="2"
+                    name="radio-button-demo"
+                    inputProps={{ "aria-label": "B" }}
+                />
+                not really
+                <Radio
+                    checked={selectedValue === "3"}
+                    onChange={handleChange}
+                    value="3"
+                    name="radio-button-demo"
+                />
+                sort of
+                <Radio
+                    checked={selectedValue === "4"}
+                    onChange={handleChange}
+                    value="4"
+                    name="radio-button-demo"
+                />
+                well
+                <Radio
+                    checked={selectedValue === "5"}
+                    onChange={handleChange}
+                    value="5"
+                    name="radio-button-demo"
+                />
+                completely
+            </div>
+        </>)}
+}
+export default Artist;

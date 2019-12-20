@@ -101,7 +101,7 @@ class Slider extends Component {
                 </div>
                 <UncontrolledCollapse toggler={`${this.props.name}-toggler`}>
                     {this.props.description}
-                    {this.props.previewTracks.tracks.map(track => <SeedTrack track={track}/>)}
+                    {this.props.previewTracks.tracks.map(track => <SeedTrack key={track.name} track={track}/>)}
                 </UncontrolledCollapse>
                 <SliderInput
                     style={sliderStyle}

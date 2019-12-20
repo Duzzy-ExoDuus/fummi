@@ -161,7 +161,7 @@ class Track extends Component {
                                     </PreviewSVG>
                                     :
                                     <PreviewSVG fill={preview_url ? "black" : "none"}
-                                                onClick={() => this.setState({playingPreview: !this.state.playingPreview})}
+                                                onClick={() => {this.setState({playingPreview: !this.state.playingPreview});console.log(name + ":" + "Preview played")}}
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -199,16 +199,16 @@ class Track extends Component {
                         <br/>
                         <Box component="fieldset" mb={3} borderColor="transparent">
                             <Typography component="legend">Rate This Song</Typography>
-                            <Rating name={name} value={this.state.rating == null ? "5" : this.state.rating} max={10}
+                            <Rating name={name} value={this.state.rating == null ? 5 : this.state.rating} max={10}
                                     onChange={
                                         e => {
-                                            this.setState({rating: e.target.value});
-                                            console.log(e.target.value)
+                                            this.setState({rating: Number(e.target.value)});
+                                            console.log(e.target.name+ ":" + e.target.value)
                                         }
                                     }/>
                         </Box>
                         <Badge color='success'>Song Features</Badge><br/>
-                        <Badge striped color='info'>Requested Features</Badge>
+                        <Badge color='info'>Requested Features</Badge>
                         <div>
 
                             Acousticness:

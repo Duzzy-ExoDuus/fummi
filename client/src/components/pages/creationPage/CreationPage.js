@@ -433,13 +433,14 @@ class CreationPage extends Component {
                                             </Button>
                                             {
                                                 this.state.grownPlaylist &&
-                                                (console.log(this.state.initialFeatures + " " + this.state.features)||true)
-                                                &&
-                                                this.props.history.push({
-                                                    pathname: "/playlist/new",
-                                                    playlist: this.state.grownPlaylist,
-                                                    desiredFeatures: this.state.features
-                                                })
+                                                (console.log("initial features: " + this.state.initialFeatures + "\n" +
+                                                              "adapted features: " + this.state.features)||true)
+                                                    &&
+                                                    this.props.history.push({
+                                                        pathname: "/playlist/new",
+                                                        playlist: this.state.grownPlaylist,
+                                                        desiredFeatures: this.state.features
+                                                    })
                                             }
                                         </div>
 

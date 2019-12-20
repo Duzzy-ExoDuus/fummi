@@ -11,6 +11,14 @@ import Playlist from '../../general/Playlist'
 import {buildHeader, buildUrl} from '../../../util/queryBuilder'
 import styled from "styled-components";
 
+
+import Rating from '@material-ui/lab/Rating';
+import Tooltip from '@material-ui/core/Tooltip';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
+import Badge from "reactstrap/es/Badge";
+import Radio from "@material-ui/core/Radio";
+
 /* The Modal (background) */
 const ModalDiv = styled.div`
     display: block; /* Hidden by default */
@@ -98,6 +106,10 @@ const ConfirmSaveButton = styled.button`
 
 class EditPage extends Component {
 
+    handleChange = event => {
+        this.setState({selectedValue:event.target.value});
+        console.log("Understanding of features: " + event.target.value);
+    };
     state = {
         playlistName: "SeedBox Playlist",
         tryToSave: false,
@@ -106,6 +118,7 @@ class EditPage extends Component {
         audioFeatures: [],
         desiredFeatures: [],
         loading: true,
+        selectedValue: "3"
     };
 
     componentDidMount() {
@@ -160,11 +173,58 @@ class EditPage extends Component {
 
 
     render() {
+        const selectedValue  = this.state.selectedValue;
         return (
             <>
                 <HeaderDiv>Your Playlist</HeaderDiv>
+
+                <p style={{ fontFamily: "Roboto" }}>
+                    How well do you understand the features (acousticness,
+                    danceability,...)?
+                </p>
+                <div style={{ fontFamily: "Roboto" }}>
+                    <Radio
+                        checked={selectedValue === "1"}
+                        onChange={this.handleChange}
+                        value="1"
+                        name="radio-button-demo"
+                        inputProps={{ "aria-label": "A" }}
+                    />
+                    not at all<br/>
+                    <Radio
+                        checked={selectedValue === "2"}
+                        onChange={this.handleChange}
+                        value="2"
+                        name="radio-button-demo"
+                        inputProps={{ "aria-label": "B" }}
+                    />
+                    not really<br/>
+                    <Radio
+                        checked={selectedValue === "3"}
+                        onChange={this.handleChange}
+                        value="3"
+                        name="radio-button-demo"
+                    />
+                    sort of<br/>
+                    <Radio
+                        checked={selectedValue === "4"}
+                        onChange={this.handleChange}
+                        value="4"
+                        name="radio-button-demo"
+                    />
+                    well<br/>
+                    <Radio
+                        checked={selectedValue === "5"}
+                        onChange={this.handleChange}
+                        value="5"
+                        name="radio-button-demo"
+                    />
+                    completely
+                </div>
+
                 <SaveButton onClick={() => this.setState({tryToSave: !this.state.tryToSave})}>Save playlist to
                     spotify</SaveButton>
+
                 <br/><br/>
                 {this.state.tryToSave
                     ?

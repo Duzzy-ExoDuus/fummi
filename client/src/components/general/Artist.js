@@ -53,7 +53,7 @@ const CoverImageDiv = styled.div`
 
 const NameHeader = styled.h1`
     font-size:16px;
-    font-weight:medium;
+    font-weight:normal;
     margin:auto;
     vertical-align:middle;
     //line-height:100%;
@@ -81,7 +81,7 @@ const OptionDiv = styled.div`
     width:0%;
 `;
 
-class Track extends Component {
+class Artist extends Component {
 
     state = {
         playingPreview: false,
@@ -103,10 +103,9 @@ class Track extends Component {
     }
 }
 
-Track.propTypes = {
-    imgUrl: PropTypes.object.isRequired,
-    name: PropTypes.object.isRequired
+Artist.propTypes = {
+
 };
 
 
-export default Track;
+export default Artist;

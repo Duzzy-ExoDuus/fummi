@@ -30,6 +30,12 @@ const TracksVsArtistButton = styled.button`
   margin: 2% 1% 2%;
 `;
 
+function removeDuplicates(myArr, prop) {
+    return myArr.filter((obj, pos, arr) => {
+        return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
+    });
+}
+
 class SearchResultDisplay extends Component {
     state = {
         trackDisplayed: true,
@@ -54,15 +60,17 @@ class SearchResultDisplay extends Component {
                         this.state.trackDisplayed && searchResult && searchResult.tracks &&
                         <>
                             {
-                                searchResult.tracks.items.map(
-                                    track =>
-                                        <div>
-                                            <SeedTrack track={track}/>
-                                            <AddSVG
+
+                                removeDuplicates(searchResult.tracks.items,"name")
+                                .map(
+                                    (track,index) =>
+                                        <div key={track.name}>
+                                            <SeedTrack key={track} track={track}/>
+                                            <AddSVG key={index}
                                                 onClick={() => addSeed(track)}
                                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd"
+                                                <path opacity="0.54" fillRule="evenodd" clipRule="evenodd"
                                                       d="M11 5V11H5V13H11V19H13V13H19V11H13V5H11Z" fill="black"/>
                                             </AddSVG>
 
@@ -76,17 +84,20 @@ class SearchResultDisplay extends Component {
                         (!this.state.trackDisplayed) && searchResult && searchResult.artists &&
                         <ArtistDiv>
                             {
-                                searchResult.artists.items.map(
-                                    artist =>
-                                        <div>
-                                            <Artist
+                                searchResult.artists.items.filter((thing, index, self) =>
+                                index === self.findIndex((t) => (t.name === thing.name
+                                ))
+                                ).map(
+                                    (artist,index) =>
+                                        <div key={artist.name}>
+                                            <Artist key={artist}
                                                 imgUrl={(artist.images[0] == null) ? defaultArtistImg : artist.images[0].url}
                                                 name={artist.name}/>
-                                            <AddSVG
+                                            <AddSVG key={index}
                                                 onClick={() => addSeed(artist)}
                                                 width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path opacity="0.54" fill-rule="evenodd" clip-rule="evenodd"
+                                                <path opacity="0.54" fillRule="evenodd" clipRule="evenodd"
                                                       d="M11 5V11H5V13H11V19H13V13H19V11H13V5H11Z" fill="black"/>
                                             </AddSVG>
                                         </div>
