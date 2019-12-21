@@ -101,7 +101,10 @@ class Slider extends Component {
                 </div>
                 <UncontrolledCollapse toggler={`${this.props.name}-toggler`}>
                     {this.props.description}
-                    {this.props.previewTracks.tracks.map(track => <SeedTrack key={track.name} track={track}/>)}
+                    {/*COMMENT/UNCOMMENT FOR VERSION SWITCH:*/}
+                    {console.log("Version : " + "non preview")}
+                    {/*{console.log("Version : " + "preview")}*/}
+                    {/*{this.props.previewTracks.tracks.map(track => <SeedTrack key={track.name} track={track}/>)}*/}
                 </UncontrolledCollapse>
                 <SliderInput
                     style={sliderStyle}
