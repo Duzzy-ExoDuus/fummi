@@ -16,6 +16,7 @@ class AttributeSelector extends Component {
                 description={description}
                 previewTracks={this.props.previewTracks}
                 initialValue={this.props.features[i]}
+                initiallyOpen={i === 0}
                 handleSliderUpdate={e => this.props.handleSliderUpdate(e)}
             />)
         }

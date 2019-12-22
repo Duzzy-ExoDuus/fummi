@@ -243,7 +243,7 @@ class EditPage extends Component {
                 }
                 <br/>
 
-
+                <p>Please rate some songs for the experiment</p>
                 <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures}
                               removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures}/>
 
