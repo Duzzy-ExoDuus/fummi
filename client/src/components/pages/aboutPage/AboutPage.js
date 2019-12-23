@@ -30,7 +30,9 @@ const HeaderDiv = styled.div`
 class AboutPage extends Component {
   render() {
     return (
+
         <>
+          {console.log("Window width: " + window.innerWidth)}
           <HeaderDiv>Welcome to SeedBox!</HeaderDiv>
           <Container style={{fontFamily: "Montserrat", fontSize: "14px"}}>
             <Col>

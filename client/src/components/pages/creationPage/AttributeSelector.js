@@ -5,6 +5,10 @@ import {Container} from 'reactstrap'
 
 
 class AttributeSelector extends Component {
+    state={openedIndex:0};
+
+    handleAttributeClick = (index) => this.setState({openedIndex:(this.state.openedIndex===index ? -1:index)});
+
     render() {
         const slidersToRender = [];
 
@@ -13,10 +17,12 @@ class AttributeSelector extends Component {
             slidersToRender.push(<Slider
                 key={name}
                 name={name}
+                index = {i}
                 description={description}
                 previewTracks={this.props.previewTracks}
                 initialValue={this.props.features[i]}
-                initiallyOpen={i === 0}
+                openedIndex={this.state.openedIndex}
+                handleAttributeClick = {this.handleAttributeClick}
                 handleSliderUpdate={e => this.props.handleSliderUpdate(e)}
             />)
         }
