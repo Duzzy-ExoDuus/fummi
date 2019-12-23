@@ -1,4 +1,4 @@
-import React,{ReactDOM,Component} from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
 import {Container} from 'reactstrap'
@@ -35,32 +35,36 @@ const ModalContent = styled.div`{
 
 class Playlist extends Component {
 
-    getTrackItems = () =>{
-      const {tracks, audioFeatures, removeTrack, desiredFeatures} = this.props;
-      return tracks.map(function (track, index) {
-        return <div key={track.id}>
-          {index + 1}
-          <DeleteSVG
-              onClick={() => removeTrack(track.id)} width="24" height="24" viewBox="0 0 24 24" fill="none"
-              xmlns="http://www.w3.org/2000/svg">
-            <path opacity="0.54" fillRule="evenodd" clipRule="evenodd"
-                  d="M19 6.4L17.6 5L12 10.6L6.4 5L5 6.4L10.6 12L5 17.6L6.4 19L12 13.4L17.6 19L19 17.6L13.4 12L19 6.4Z"
-                  fill="black"/>
-          </DeleteSVG>
-          <Track track={track} audioFeatures={audioFeatures[index]} desiredFeatures={desiredFeatures}/>
+    state = {playingPreview: null};
+    handlePlayingPreview = (index) => this.setState({playingPreview: (this.state.playingPreview === index ? -1 : index)});
 
-          <hr/>
-        </div>
-      });
+    getTrackItems = () => {
+        const {tracks, audioFeatures, removeTrack, desiredFeatures} = this.props;
+        return tracks.map((track, index) => {
+            return <div key={track.id}>
+                {index + 1}
+                <DeleteSVG
+                    onClick={() => removeTrack(track.id)} width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.54" fillRule="evenodd" clipRule="evenodd"
+                          d="M19 6.4L17.6 5L12 10.6L6.4 5L5 6.4L10.6 12L5 17.6L6.4 19L12 13.4L17.6 19L19 17.6L13.4 12L19 6.4Z"
+                          fill="black"/>
+                </DeleteSVG>
+                <Track track={track} audioFeatures={audioFeatures[index]} desiredFeatures={desiredFeatures}
+                       handlePlayingPreview={this.handlePlayingPreview} playingPreview={this.state.playingPreview} index = {index}/>
+
+                <hr/>
+            </div>
+        });
     };
-    
-  componentDidMount() {
 
-  }
+    componentDidMount() {
 
-  render() {
-       return <Container>
-         {this.getTrackItems()}
+    }
+
+    render() {
+        return <Container>
+            {this.getTrackItems()}
 
         </Container>;
     }

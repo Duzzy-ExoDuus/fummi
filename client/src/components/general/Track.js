@@ -149,10 +149,10 @@ class Track extends Component {
                     <CoverImageDiv>
                         <PreviewDiv>
                             {
-                                this.state.playingPreview
+                                this.props.playingPreview===this.props.index
                                     ?
                                     <PreviewSVG fill={preview_url ? "black" : "none"}
-                                                onClick={() => this.setState({playingPreview: !this.state.playingPreview})}
+                                                onClick={() => this.props.handlePlayingPreview(this.props.index)}
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -161,7 +161,7 @@ class Track extends Component {
                                     </PreviewSVG>
                                     :
                                     <PreviewSVG fill={preview_url ? "black" : "none"}
-                                                onClick={() => {this.setState({playingPreview: !this.state.playingPreview});console.log("Preview Played: "+name)}}
+                                                onClick={() => {this.props.handlePlayingPreview(this.props.index);console.log("Preview Played: "+name)}}
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -171,7 +171,7 @@ class Track extends Component {
 
                             }
                             {
-                                this.state.playingPreview &&
+                                this.props.playingPreview===this.props.index&&
                                 <iframe title={preview_url} src={preview_url} style={{display: 'none'}}
                                         allow="encrypted-media"/>
                             }
