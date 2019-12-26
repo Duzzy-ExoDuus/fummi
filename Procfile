@@ -1,2 +1,3 @@
+web: npm install 
 web: npm install client
-web: npm run dev
+web: npm start
