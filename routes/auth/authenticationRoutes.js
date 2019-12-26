@@ -7,11 +7,11 @@ let client_secret = '4d8431bae5ea404a99d42b6f6c6cba34'
 let redirect_uri = undefined
 let uri = undefined
 if (process.env.NODE_ENV === 'production') { 
-  redirect_uri = 'https://seed-box.herokuapp.com/callback'
-  uri = 'https://seed-box.herokuapp.com/'
+  redirect_uri = 'https://seed-box-backend.herokuapp.com/callback'
+  uri = 'https://seed-box-backend.herokuapp.com/'
 } else {
-  redirect_uri = 'https://seed-box.herokuapp.com/callback'
-  uri = 'https://seed-box.herokuapp.com'
+  redirect_uri = 'https://seed-box-backend.herokuapp.com/callback'
+  uri = 'https://seed-box-backend.herokuapp.com'
 }
 
 module.exports = (app) => {

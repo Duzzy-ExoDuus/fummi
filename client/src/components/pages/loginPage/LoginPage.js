@@ -38,7 +38,7 @@ const LoginPage = () =>
       onClick={() => {
         window.location = window.location.href.includes('localhost')
           ? 'http://localhost:5000/login'
-          : 'https://fummi-backend.herokuapp.com/login'
+          : 'https://seedbox-backend.herokuapp.com/login'
       }}>
         CONNECT WITH SPOTIFY
       </Button>
