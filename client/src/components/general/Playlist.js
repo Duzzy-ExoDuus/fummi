@@ -51,7 +51,7 @@ class Playlist extends Component {
                           fill="black"/>
                 </DeleteSVG>
                 <Track track={track} audioFeatures={audioFeatures[index]} desiredFeatures={desiredFeatures}
-                       handlePlayingPreview={this.handlePlayingPreview} playingPreview={this.state.playingPreview} index = {index}/>
+                       handlePlayingPreview={this.handlePlayingPreview} playingPreview={this.state.playingPreview} index = {index} saveToDB={this.props.saveToDB}/>
 
                 <hr/>
             </div>

@@ -106,9 +106,20 @@ const ConfirmSaveButton = styled.button`
 
 class EditPage extends Component {
 
+    saveToDB = (string) => {
+        const data = {
+            "name": this.props.user.user.display_name,
+            "info": [{
+                "attribute": string,
+                "value": 0
+            }]
+        };
+        axios.post('/api/data', data).then(res => console.log(res))
+    };
+
     handleChange = event => {
         this.setState({selectedValue:event.target.value});
-        console.log("Understanding of features: " + event.target.value);
+        this.saveToDB("Understanding of features: " + event.target.value);
     };
     state = {
         playlistName: "SeedBox Playlist",
@@ -124,6 +135,7 @@ class EditPage extends Component {
     componentDidMount() {
         this.initializeState();
         this.props.getUser(this.props.token);
+
     }
 
     initializeState = () => {
@@ -245,7 +257,7 @@ class EditPage extends Component {
 
                 <p  style = {{fontFamily:"Roboto",fontSize:20}}>Please rate some songs for the experiment</p>
                 <Playlist tracks={this.state.tracks} audioFeatures={this.state.audioFeatures}
-                              removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures}/>
+                              removeTrack={this.removeTrack} desiredFeatures={this.state.desiredFeatures} saveToDB={this.saveToDB}/>
 
             </>
         );
@@ -253,10 +265,10 @@ class EditPage extends Component {
 }
 
 EditPage.propTypes = {
+    getUser: PropTypes.func.isRequired,
     token: PropTypes.string.isRequired,
     location: PropTypes.object.isRequired,
     user: PropTypes.object.isRequired
-
 }
 
 const mapStateToProps = (state) => {

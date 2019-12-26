@@ -7,8 +7,8 @@ let client_secret = '4d8431bae5ea404a99d42b6f6c6cba34'
 let redirect_uri = undefined
 let uri = undefined
 if (process.env.NODE_ENV === 'production') { 
-  redirect_uri = 'https://murmuring-castle-75525.herokuapp.com/callback'
-  uri = 'https://murmuring-castle-75525.herokuapp.com/'
+  redirect_uri = 'https://seed-box.herokuapp.com/callback'
+  uri = 'https://seed-box.herokuapp.com/'
 } else {
   redirect_uri = 'http://localhost:5000/callback'
   uri = 'http://localhost:3000'

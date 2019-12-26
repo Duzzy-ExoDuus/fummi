@@ -161,7 +161,7 @@ class Track extends Component {
                                     </PreviewSVG>
                                     :
                                     <PreviewSVG fill={preview_url ? "black" : "none"}
-                                                onClick={() => {this.props.handlePlayingPreview(this.props.index);console.log("Preview Played: "+name)}}
+                                                onClick={() => {this.props.handlePlayingPreview(this.props.index);this.props.saveToDB("Preview Played: "+name)}}
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -203,7 +203,7 @@ class Track extends Component {
                                     onChange={
                                         e => {
                                             this.setState({rating: Number(e.target.value)});
-                                            console.log("RATING: " +e.target.name+ ":" + e.target.value)
+                                            this.props.saveToDB("RATING: " +e.target.name+ ":" + e.target.value)
                                         }
                                     }/>
                         </Box>

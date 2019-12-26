@@ -14,6 +14,7 @@ import {attributes} from '../../../assets/attributes'
 import Button from './GrowButton'
 import SeedDisplay from './SeedDisplay'
 import styled from "styled-components";
+import {getUser} from "../../../actions/userActions";
 
 const GrowPlaylistDiv = styled.div`
     width:80vw;
@@ -142,6 +143,9 @@ class CreationPage extends Component {
             features: [50, 50, 50, 50, 50, 50, 50],
         }
     }
+    componentDidMount() {
+        this.props.getUser(this.props.token);
+    }
 
 
     isTrack = seed => {
@@ -250,12 +254,12 @@ class CreationPage extends Component {
 
     };
 
-    saveClickToDB = () => {
+    saveToDB = (string) => {
         const data = {
-            "name": "ButtonPress",
+            "name": this.props.user.user.display_name,
             "info": [{
-                "attribute": "test",
-                "value": 50
+                "attribute": string,
+                "value": 0
             }]
         };
         axios.post('/api/data', data).then(res => console.log(res))
@@ -433,7 +437,9 @@ class CreationPage extends Component {
                                             </Button>
                                             {
                                                 this.state.grownPlaylist &&
-                                                (console.log("initial features: " + this.state.initialFeatures + "\n" +
+                                                (this.saveToDB("Version: preview\n" +
+                                                    "Window width: " + window.innerWidth+"\n"+
+                                                    "initial features: " + this.state.initialFeatures + "\n" +
                                                               "adapted features: " + this.state.features)||true)
                                                     &&
                                                     this.props.history.push({
@@ -455,11 +461,13 @@ class CreationPage extends Component {
 }
 
 CreationPage.propTypes = {
-    token: PropTypes.string.isRequired
-};
+    token: PropTypes.string.isRequired,
+    location: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+}
 
 const mapStateToProps = (state) => {
-    return {token: state.token.token}
-};
+    return {token: state.token.token, user: state.user}
+}
 
-export default connect(mapStateToProps)(CreationPage);
+export default connect(mapStateToProps, {getUser})(CreationPage);

@@ -25,7 +25,6 @@ font-size:14vw;
 color: #8B9358;
 font-family: "Montserrat";
 font-weight: lighter;
- 
 `
 
 
@@ -39,7 +38,7 @@ const LoginPage = () =>
       onClick={() => {
         window.location = window.location.href.includes('localhost')
           ? 'http://localhost:5000/login'
-          : 'https://fummi-backend.herokuapp.com/login'
+          : 'https://seed-box.herokuapp.com/login'
       }}>
         CONNECT WITH SPOTIFY
       </Button>
