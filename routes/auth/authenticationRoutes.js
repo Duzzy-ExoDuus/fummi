@@ -1,8 +1,8 @@
 let request = require('request')
 let querystring = require('querystring')
 
-let client_id = 'f825b4e0dd7c4b6b90a407a573c0de93'
-let client_secret = '4d8431bae5ea404a99d42b6f6c6cba34'
+let client_id = 'a0c56aa8ac474c29944d275244f5b72a'
+let client_secret = '93fea2e0466d41f1a6098a67500627eb'
 
 let redirect_uri = undefined
 let uri = undefined
