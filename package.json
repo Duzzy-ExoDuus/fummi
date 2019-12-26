@@ -25,7 +25,8 @@
     "querystring": "^0.2.0",
     "request": "^2.88.0",
     "seedbox": "file:client",
-    "styled-components": "^4.4.1"
+    "styled-components": "^4.4.1",
+    "nodemon": "^1.19.4"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
