@@ -22,6 +22,7 @@
     "mongoose": "^5.7.11",
     "querystring": "^0.2.0",
     "request": "^2.88.0",
+    "seedbox": "file:client",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {
