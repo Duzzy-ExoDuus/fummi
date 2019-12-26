@@ -10,8 +10,8 @@ if (process.env.NODE_ENV === 'production') {
   redirect_uri = 'https://seed-box.herokuapp.com/callback'
   uri = 'https://seed-box.herokuapp.com/'
 } else {
-  redirect_uri = 'http://localhost:5000/callback'
-  uri = 'http://localhost:3000'
+  redirect_uri = 'https://seed-box.herokuapp.com/callback'
+  uri = 'https://seed-box.herokuapp.com'
 }
 
 module.exports = (app) => {
