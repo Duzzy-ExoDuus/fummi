@@ -139,7 +139,7 @@ class Track extends Component {
 
     render() {
 
-
+        const preview = new Audio(preview_url);
         const {artists, name, preview_url, album} = this.props.track;
         let artistList = artists.map(artist => artist.name + ', ');
         artistList[artistList.length - 1] = artistList[artistList.length - 1].substring(0, artistList[artistList.length - 1].length - 2);
@@ -152,7 +152,7 @@ class Track extends Component {
                                 this.props.playingPreview===this.props.index
                                     ?
                                     <PreviewSVG fill={preview_url ? "black" : "none"}
-                                                onClick={() => this.props.handlePlayingPreview(this.props.index)}
+                                                onClick={() => {preview.pause();this.props.handlePlayingPreview(this.props.index)}}
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -161,7 +161,7 @@ class Track extends Component {
                                     </PreviewSVG>
                                     :
                                     <PreviewSVG fill={preview_url ? "black" : "none"}
-                                                onClick={() => {this.props.handlePlayingPreview(this.props.index);this.props.saveToDB("Preview Played: "+name)}}
+                                                onClick={() => {preview.play();this.props.handlePlayingPreview(this.props.index);this.props.saveToDB("Preview Played: "+name)}}
                                                 xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24">
                                         <path d="M0 0h24v24H0z" fill="none"></path>
@@ -169,11 +169,6 @@ class Track extends Component {
                                             d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
                                     </PreviewSVG>
 
-                            }
-                            {
-                                this.props.playingPreview===this.props.index&&
-                                <iframe title={preview_url} src={preview_url} style={{display: 'none'}}
-                                        allow="encrypted-media"/>
                             }
                         </PreviewDiv>
                         <CoverImage src={album.images[0].url} width="10%" height="auto" alt=""/>

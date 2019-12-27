@@ -114,7 +114,7 @@ class EditPage extends Component {
                 "value": 0
             }]
         };
-        axios.create({baseURL: 'http://seed-box-backend.herokuapp.com'}).post('/api/data', data).then(res => console.log(res))
+        axios.create({baseURL: 'https://seed-box-backend.herokuapp.com'}).post('/api/data', data).then(res => console.log(res))
     };
 
     handleChange = event => {
